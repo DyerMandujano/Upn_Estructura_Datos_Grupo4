@@ -103,7 +103,7 @@ namespace PryHoteleria_Upn_Grupo4
                         } while (opC != 9);
                         break;
                     case 2:
-                        Console.WriteLine("COLOCA TU CODIGO DE EMPLEADOS MANO :V hasta el viernes como maximo :D");
+                        Console.WriteLine("Realizar mas codigo e implementarlo");
                         Console.ReadKey();
                         break;
                 }
