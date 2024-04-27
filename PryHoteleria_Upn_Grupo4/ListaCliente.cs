@@ -36,10 +36,10 @@ namespace PryHoteleria_Upn_Grupo4
             }else return false;
         }
 
-        public void InsertarClienteInicio(int id, string nombre, string dni, string f_nac, string email, string telefono)
+        public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
         {
             //Creamos el nodo cliente a ingresar
-            Cliente q = new Cliente(id, nombre, dni, f_nac, email, telefono);
+            Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
             if (Lista_cliente == null)
             {
                 //La lista apuntará al objeto 'q' que estamos agregando.
@@ -54,10 +54,10 @@ namespace PryHoteleria_Upn_Grupo4
         }
 
 
-        public void InsertarClienteAlFinal(int id, string nombre, string dni, string f_nac , string email, string telefono)
+        public void InsertarClienteAlFinal(string nombre, string dni, string f_nac , string email, string telefono)
         {
             //Creamos el objeto que se ingresará al final de la lista
-            Cliente q = new Cliente(id,nombre,dni,f_nac,email,telefono);
+            Cliente q = new Cliente(nombre,dni,f_nac,email,telefono);
             //Si la lista es Null
             if (Lista_cliente == null)
             {

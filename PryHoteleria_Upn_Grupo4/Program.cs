@@ -61,12 +61,12 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 case 1:
                                     IngresoDatos();
-                                    cliente.InsertarClienteInicio(C_id, C_nombre, C_dni, C_f_nac, C_email, C_telf);
+                                    cliente.InsertarClienteInicio(C_nombre, C_dni, C_f_nac, C_email, C_telf);
                                     break;
 
                                 case 2:
                                     IngresoDatos();
-                                    cliente.InsertarClienteAlFinal(C_id, C_nombre, C_dni, C_f_nac, C_email, C_telf);
+                                    cliente.InsertarClienteAlFinal(C_nombre, C_dni, C_f_nac, C_email, C_telf);
                                     break;
 
                                 case 3:
@@ -103,8 +103,7 @@ namespace PryHoteleria_Upn_Grupo4
                         } while (opC != 9);
                         break;
                     case 2:
-                        Console.WriteLine("Realizar mas codigo e implementarlo");
-                        Console.ReadKey();
+                        
                         break;
                 }
             } while (op != 3);
@@ -115,8 +114,6 @@ namespace PryHoteleria_Upn_Grupo4
 
         public static void IngresoDatos()
         {
-            Console.Write("Ingresar ID: ");
-            C_id = int.Parse(Console.ReadLine());
             Console.Write("Ingresar Nombre: ");
             C_nombre = Console.ReadLine();
             Console.Write("Ingresar Dni: ");

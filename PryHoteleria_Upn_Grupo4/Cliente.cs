@@ -8,6 +8,7 @@ namespace PryHoteleria_Upn_Grupo4
 {
     internal class Cliente
     {
+        public static int contador = 10000;
         //ATRIBUTOS
         private int id;
         private string nombre;
@@ -24,10 +25,10 @@ namespace PryHoteleria_Upn_Grupo4
         }
 
         //CONSTRUCTOR CON PARAMETROS
-        public Cliente(int ID, string nom, string DNI, string fec_Naci, string correo, string telef)
+        public Cliente(string nom, string DNI, string fec_Naci, string correo, string telef)
         {
-    //PROPIEDADES - ARGUMENTOS
-            Id        = ID;
+            Id = contador++;
+       //PROPIEDADES - ARGUMENTOS
             Nombre    = nom;
             Dni       = DNI;
             FechaNaci = fec_Naci;
