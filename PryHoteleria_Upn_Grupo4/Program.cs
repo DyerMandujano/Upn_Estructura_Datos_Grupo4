@@ -15,14 +15,23 @@ namespace PryHoteleria_Upn_Grupo4
         //Variables a utilizar para los datos del Cliente.
         static string C_nombre, C_dni, C_f_nac, C_email, C_telf;
 
-        //
+        //EMPLEADOS
         static int Empleado_id, opcion, opcion_empleados;
 
         static string Empleado_nom, Empleado_apell, Empleado_dni, Empleado_correo, Empleado_telefono, Empleado_direccion, Empleado_sueldo;
+
+        //MATERIALES
+        //MT es la variable para majeras las opciones de los materiales
+        static int MT_id, MT_cantidad, opM;
+        //Variables a utilizar para los datos de Material.
+        static string MT_nombre_material;
+        static double MT_costo;
+
         static void Main(string[] args)
         {
             ListaCliente cliente = new ListaCliente();
             Lista_Empleados Empleados = new Lista_Empleados();
+            ListaMateriales materiales = new ListaMateriales();
 
             /*
             cliente.InsertarClienteAlFinal(1, "pepe", "78000654", "20/04/02", "pepe@gmail.com", "980054321");
@@ -181,6 +190,78 @@ namespace PryHoteleria_Upn_Grupo4
                                 }
                             } while (opcion_empleados != 9);
                             break;
+                        case 3:
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine("Lista de materiales");
+                                Console.WriteLine("******************************");
+                                Console.WriteLine("[1]Ingresar Material al Inicio");
+                                Console.WriteLine("[2]Ingresar Material al Final");
+                                Console.WriteLine("[3]Eliminar el Primer Material");
+                                Console.WriteLine("[4]Eliminar el Ultimo Material");
+                                Console.WriteLine("[5]Eliminar Material por ID");
+                                Console.WriteLine("[6]Eliminar Toda la Lista de Matariales");
+                                Console.WriteLine("[7]Buscar Materiales");
+                                Console.WriteLine("[8]Listar Materiales");
+                                Console.WriteLine("[9] Salir");
+                                Console.Write("ELIJA UNA OPCION: ");
+                                try
+                                {
+                                    opM = int.Parse(Console.ReadLine());
+                                    switch (opM)
+                                    {
+                                        case 1:
+                                            IngresoDatosMateriales();
+                                            materiales.InsertarMaterialInicio(MT_id, MT_nombre_material, MT_cantidad, MT_costo);
+                                            break;
+
+                                        case 2:
+                                            IngresoDatosMateriales();
+                                            materiales.InsertarMaterialAlFinal(MT_id, MT_nombre_material, MT_cantidad, MT_costo);
+                                            break;
+
+                                        case 3:
+                                            materiales.EliminarMaterialInicio();
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 4:
+                                            materiales.EliminarMaterialFinal();
+                                            Console.ReadKey();
+                                            break;
+                                        case 5:
+                                            Console.Write("Ingrese ID del Material: ");
+                                            MT_id = int.Parse(Console.ReadLine());
+                                            materiales.EliminarMaterialPorID(MT_id);
+                                            Console.ReadKey();
+                                            break;
+                                        case 6:
+                                            materiales.EliminaTodaLaLista();
+                                            Console.ReadKey();
+                                            break;
+                                        case 7:
+                                            Console.Write("Ingrese el nombre del Material: ");
+                                            MT_nombre_material = Console.ReadLine();
+                                            materiales.BuscarMateriales(MT_nombre_material);
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 8:
+                                            materiales.ImprimirMaterial();
+                                            Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Ingrese un valor correcto!");
+                                    Console.ReadKey();
+                                }
+                                
+                            } while (opM != 9);
+                            break;
+
                     }
                 }
                 catch
@@ -228,6 +309,20 @@ namespace PryHoteleria_Upn_Grupo4
             Console.Write("Ingresar Sueldo: ");
             Empleado_sueldo = Console.ReadLine();
             Console.WriteLine("Empleado Ingresado Correctamente!");
+            Console.ReadKey();
+        }
+
+        public static void IngresoDatosMateriales()
+        {
+            Console.Write("Ingresar ID: ");
+            MT_id = int.Parse(Console.ReadLine());
+            Console.Write("Ingresar Nombre del Material: ");
+            MT_nombre_material = Console.ReadLine();
+            Console.Write("Ingresar la cantidad del Material: ");
+            MT_cantidad = int.Parse(Console.ReadLine());
+            Console.Write("Ingresar el Costo: ");
+            MT_costo = double.Parse(Console.ReadLine());
+            Console.WriteLine("Material Ingresado Correctamente!");
             Console.ReadKey();
         }
     }
