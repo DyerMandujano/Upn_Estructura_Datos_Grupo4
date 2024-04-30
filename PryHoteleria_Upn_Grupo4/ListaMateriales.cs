@@ -36,10 +36,10 @@ namespace PryHoteleria_Upn_Grupo4
             else return false;
         }
 
-        public void InsertarMaterialInicio(int id, string nombre_material, int cantidad, double costo)
+        public void InsertarMaterialInicio(string nombre_material, int cantidad, double costo)
         {
             //Creamos el nodo material a ingresar
-            Materiales q = new Materiales(id, nombre_material, cantidad, costo);
+            Materiales q = new Materiales(nombre_material, cantidad, costo);
             if (Lista_material == null)
             {
                 //La lista apuntará al objeto 'q' que estamos agregando.
@@ -55,10 +55,10 @@ namespace PryHoteleria_Upn_Grupo4
         }
 
 
-        public void InsertarMaterialAlFinal(int id, string nombre_material, int cantidad, double costo)
+        public void InsertarMaterialAlFinal(string nombre_material, int cantidad, double costo)
         {
             //Creamos el objeto que se ingresará al final de la lista
-            Materiales q = new Materiales(id, nombre_material, cantidad, costo);
+            Materiales q = new Materiales(nombre_material, cantidad, costo);
             //Si la lista es Null
             if (Lista_material == null)
             {
@@ -87,12 +87,12 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
             else
                 Lista_material = Lista_material.MT_Sgte;
-            Console.WriteLine("\nMATERIAL INICIAL ELIMINADO!");
+            Console.WriteLine("\n MATERIAL INICIAL ELIMINADO!");
         }
 
 
@@ -100,7 +100,7 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
             else
@@ -130,7 +130,7 @@ namespace PryHoteleria_Upn_Grupo4
                     //EL OBJETO 'nd_anterior' APUNTARA AL NULL YA QUE AHORA ESE SE CONVERTIRA EN EL ULTIMO NODO, PORQUE EL OTRO HA SIDO ELMINADO
                     nd_ant.MT_Sgte = null;
                 }
-                Console.WriteLine("\nMATERIAL FINAL ELIMINADO!");
+                Console.WriteLine("\n MATERIAL FINAL ELIMINADO!");
             }
         }
 
@@ -138,7 +138,7 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
             bool encontrado = false;
@@ -165,7 +165,7 @@ namespace PryHoteleria_Upn_Grupo4
                         //y continue con el siguiente nodo.
                         ant.MT_Sgte = p.MT_Sgte;
                     }
-                    Console.WriteLine("Cliente con ID " + id + " Eliminado Correctamente!");
+                    Console.WriteLine(" Material con ID " + id + " Eliminado Correctamente!");
                     encontrado = true;
                     break;
                 }
@@ -177,7 +177,7 @@ namespace PryHoteleria_Upn_Grupo4
             }
             if (!encontrado)
             {
-                Console.WriteLine("No se encontró ningún cliente con el ID " + id);
+                Console.WriteLine(" No se encontró ningún material con el ID " + id);
             }
 
 
@@ -188,7 +188,7 @@ namespace PryHoteleria_Upn_Grupo4
         public void EliminaTodaLaLista()
         {
             Lista_material = null;
-            Console.WriteLine("LISTA ELIMINADA CORRECTAMENTE!");
+            Console.WriteLine(" LISTA ELIMINADA CORRECTAMENTE!");
         }
 
         public void BuscarMateriales(string nombre_material)
@@ -199,7 +199,7 @@ namespace PryHoteleria_Upn_Grupo4
             while ((p != null) && (p.NombreMaterial != nombre_material))
             {
                 //Imprime el valor q tiene el 'p'
-                Console.WriteLine(p.NombreMaterial);
+                Console.WriteLine(" " + p.NombreMaterial);
                 //p apunta al siguiente nodo
                 p = p.MT_Sgte;
             }
@@ -208,38 +208,45 @@ namespace PryHoteleria_Upn_Grupo4
             //Es por ello que si 'p' es null
             if (p == null)
                 //el elemento buscado no se encuentra en la lista
-                Console.WriteLine("El ID " + nombre_material + " no se encuentra en la lista");
+                Console.WriteLine(" El material " + nombre_material + " no se encuentra en la lista");
             //De lo contrario, si esta.
             else
             {
-                Console.WriteLine("Datos del Material");
-                Console.WriteLine("******************************");
-                Console.WriteLine(p.Id + "->" + p.NombreMaterial + "->" + p.Cantidad + "->" + p.Costo);
+                Console.WriteLine(" Datos del Material");
+                
+                Console.WriteLine(" *****************************************************************************");
+                Console.WriteLine(" *|     ID     |     Nombre Material     |     Cantidad     |     Costo     |*");
+                Console.WriteLine(" *****************************************************************************");
+                Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|*", p.Id, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" *****************************************************************************");
 
             }
         }
 
 
+        
         public void ImprimirMaterial()
         {
             Materiales p = Lista_material;
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
-            //Recorrer la lista
-            Console.WriteLine("Lista Enlazada con Datos");
-            Console.WriteLine("*************************");
-            Console.Write("Lista -> ");
+
+            Console.WriteLine(" *****************************************************************************");
+            Console.WriteLine(" *|     ID     |     Nombre Material     |     Cantidad     |     Costo     |*");
+            Console.WriteLine(" *****************************************************************************");
+
+            // Recorrer la lista
             while (p != null)
             {
-                Console.WriteLine(p.Id + "->" + p.NombreMaterial + "->" + p.Cantidad + "->" + p.Costo);
+                Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|*", p.Id, p.NombreMaterial, p.Cantidad, p.Costo);
                 p = p.MT_Sgte;
+                Console.WriteLine(" *****************************************************************************");
             }
-            Console.WriteLine("NULL ");
-
-
         }
+
     }
 }
+

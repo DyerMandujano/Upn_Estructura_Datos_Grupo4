@@ -8,14 +8,14 @@ namespace PryHoteleria_Upn_Grupo4
 {
     internal class Empleados
     {
-        public static int contador = 10000;
+        public static int contador = 1000;
         private int id;
         private string nom;
-        private string apell;
         private string dni;
         private string correo;
         private string telefono;
         private string direccion;
+        private string cargo;
         private string sueldo;
         private Empleados emple_sgt;
 
@@ -23,19 +23,18 @@ namespace PryHoteleria_Upn_Grupo4
         {
 
         }
-        public Empleados(string nom, string apell, string dni, string correo, string telefono, string direccion, string sueldo)
+        public Empleados(string nom, string dni, string correo, string telefono, string direccion, string cargo,string sueldo)
         {
 
             Id = contador++;
 
             Nom = nom;
-            Apell = apell;
             Dni = dni;
             Correo = correo;
             Telefono = telefono;
             Direccion = direccion;
+            Cargo = cargo;
             Sueldo = sueldo;
-
             emple_sgt = null;
         }
         public Empleados Emple_Sgt
@@ -53,10 +52,10 @@ namespace PryHoteleria_Upn_Grupo4
             get { return nom; }
             set { nom = value; }
         }
-        public string Apell
+        public string Cargo
         {
-            get { return apell; }
-            set { apell = value; }
+            get { return cargo; }
+            set { cargo = value; }
         }
         public string Dni
         {

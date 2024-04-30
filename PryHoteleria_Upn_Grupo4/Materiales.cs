@@ -8,6 +8,7 @@ namespace PryHoteleria_Upn_Grupo4
 {
     internal class Materiales
     {
+        public static int contador = 1000;
         //ATRIBUTOS
         private int id;
         private string nombre_material;
@@ -20,10 +21,10 @@ namespace PryHoteleria_Upn_Grupo4
 
         }
 
-        public Materiales(int ID, string nombre_material, int cantidad, double costo)
+        public Materiales(string nombre_material, int cantidad, double costo)
         {
+            Id = contador++;
             //MATERIALES DEL PRODUCTO
-            Id = ID;
             NombreMaterial = nombre_material;
             Cantidad = cantidad;
             Costo = costo;

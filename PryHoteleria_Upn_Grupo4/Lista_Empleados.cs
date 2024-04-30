@@ -26,9 +26,9 @@ namespace PryHoteleria_Upn_Grupo4
             }
             else return false;
         }
-        public void InsertarEmpleadoInicio(string nom, string apell, string dni, string correo, string telefono, string direccion, string sueldo)
+        public void InsertarEmpleadoInicio(string nom,string dni, string correo, string telefono, string direccion, string cargo,string sueldo)
         {
-            Empleados q = new Empleados(nom, apell, dni, correo, telefono, direccion, sueldo);
+            Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo,sueldo);
 
             if (ListaEmpleados == null)
             {
@@ -41,9 +41,9 @@ namespace PryHoteleria_Upn_Grupo4
                 ListaEmpleados = q;
             }
         }
-        public void InsertarEmpleadoFinal(string nom, string apell, string dni, string correo, string telefono, string direccion, string sueldo)
+        public void InsertarEmpleadoFinal(string nom, string dni, string correo, string telefono, string direccion, string cargo, string sueldo)
         {
-            Empleados q = new Empleados(nom, apell, dni, correo, telefono, direccion, sueldo);
+            Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo, sueldo);
 
             if (ListaEmpleados == null)
             {
@@ -64,20 +64,20 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (ListaVacia())
             {
-                Console.WriteLine("La lista esta vacia!");
+                Console.WriteLine(" La lista esta vacia!");
                 return;
             }
             else
             {
                 ListaEmpleados = ListaEmpleados.Emple_Sgt;
-                Console.WriteLine("\nEmpleado inicial eliminado!");
+                Console.WriteLine("\n Empleado inicial eliminado!");
             }
         }
         public void EliminarEmpleadoFinal()
         {
             if (ListaVacia())
             {
-                Console.WriteLine("La lista esta vacia!");
+                Console.WriteLine(" La lista esta vacia!");
                 return;
             }
             else
@@ -100,14 +100,14 @@ namespace PryHoteleria_Upn_Grupo4
                     }
                     nd_ant.Emple_Sgt = null;
                 }
-                Console.WriteLine("\nEmpleado final eliminado!");
+                Console.WriteLine("\n Empleado final eliminado!");
             }
         }
         public void EliminarEmpleadoPorID(int id)
         {
             if (ListaVacia())
             {
-                Console.WriteLine("La lista esta vacia!");
+                Console.WriteLine(" La lista esta vacia!");
                 return;
             }
             bool buscado = false;
@@ -126,7 +126,7 @@ namespace PryHoteleria_Upn_Grupo4
                     {
                         ant.Emple_Sgt = p.Emple_Sgt;
                     }
-                    Console.WriteLine("Empleado con ID " + id + " eliminado Correctamente!");
+                    Console.WriteLine(" Empleado con ID " + id + " eliminado Correctamente!");
                     buscado = true;
                     break;
                 }
@@ -136,13 +136,13 @@ namespace PryHoteleria_Upn_Grupo4
             }
             if (!buscado)
             {
-                Console.WriteLine("No se encontró ningún empleado con el ID que ingreso");
+                Console.WriteLine(" No se encontró ningún empleado con el ID que ingreso");
             }
         }
         public void EliminarListaCompleta()
         {
             ListaEmpleados = null;
-            Console.WriteLine("Lista completamente eliminada");
+            Console.WriteLine(" Lista completamente eliminada");
         }
         public void BuscarEmpleadoPorDNI(string dni)
         {
@@ -150,23 +150,23 @@ namespace PryHoteleria_Upn_Grupo4
 
             while ((p != null) && (p.Dni != dni))
             {
-                Console.WriteLine(p.Dni);
+                Console.WriteLine(" " + p.Dni);
 
                 p = p.Emple_Sgt;
             }
             if (p == null)
 
-                Console.WriteLine("El DNI " + dni + " no se encuentra en la lista");
+                Console.WriteLine(" El DNI " + dni + " no se encuentra en la lista");
 
             else
             {
-                Console.WriteLine("************************************************************************************************************************************************");
-                Console.WriteLine("*|    ID    |      Nombre      |    Apellido    |    DNI    |            Correo             |    Teléfono    |    Dirección    |    Sueldo    |*");
-                Console.WriteLine("************************************************************************************************************************************************");
+                Console.WriteLine(" ************************************************************************************************************************************************");
+                Console.WriteLine(" *|    ID    |      Nombre      |    Apellido    |    DNI    |            Correo             |    Teléfono    |    Dirección    |    Sueldo    |*");
+                Console.WriteLine(" ************************************************************************************************************************************************");
 
 
-                Console.WriteLine("*|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Apell, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Sueldo);
-                Console.WriteLine("************************************************************************************************************************************************");
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo,p.Sueldo);
+                Console.WriteLine(" ************************************************************************************************************************************************");
             }
         }
         public void ImprimirEmpleados()
@@ -174,18 +174,18 @@ namespace PryHoteleria_Upn_Grupo4
             Empleados p = ListaEmpleados;
             if (ListaVacia())
             {
-                Console.WriteLine("La lista esta vacia!");
+                Console.WriteLine(" La lista esta vacia!");
                 return;
             }
 
-            Console.WriteLine("************************************************************************************************************************************************");
-            Console.WriteLine("*|    ID    |      Nombre      |    Apellido    |    DNI    |            Correo             |    Teléfono    |    Dirección    |    Sueldo    |*");
-            Console.WriteLine("************************************************************************************************************************************************");
+            Console.WriteLine(" ************************************************************************************************************************************************");
+            Console.WriteLine(" *|    ID    |      Nombre      |    DNI    |            Correo             |    Teléfono    |    Dirección    |      Cargo      |    Sueldo   |*");
+            Console.WriteLine(" ************************************************************************************************************************************************");
             while (p != null)
             {
-                Console.WriteLine("*|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Apell, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Sueldo);
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo,p.Sueldo);
                 p = p.Emple_Sgt;
-                Console.WriteLine("************************************************************************************************************************************************");
+                Console.WriteLine(" ************************************************************************************************************************************************");
             }
 
         }

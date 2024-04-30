@@ -8,7 +8,7 @@ namespace PryHoteleria_Upn_Grupo4
 {
     internal class Cliente
     {
-        public static int contador = 10000;
+        public static int contador = 1000;
         //ATRIBUTOS
         private int id;
         private string nombre;

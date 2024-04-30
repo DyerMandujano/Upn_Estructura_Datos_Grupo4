@@ -86,12 +86,12 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }else
             {
                 Lista_cliente = Lista_cliente.Cl_Sgte;
-                Console.WriteLine("\nCLIENTE INICIAL ELIMINADO!");
+                Console.WriteLine("\n CLIENTE INICIAL ELIMINADO!");
             }
         }
 
@@ -99,7 +99,7 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
             else 
@@ -129,7 +129,7 @@ namespace PryHoteleria_Upn_Grupo4
                     //EL OBJETO 'nd_anterior' APUNTARA AL NULL YA QUE AHORA ESE SE CONVERTIRA EN EL ULTIMO NODO, PORQUE EL OTRO HA SIDO ELMINADO
                     nd_ant.Cl_Sgte = null;
                 }
-                Console.WriteLine("\nCLIENTE FINAL ELIMINADO!");
+                Console.WriteLine("\n CLIENTE FINAL ELIMINADO!");
             }
         }
 
@@ -137,7 +137,7 @@ namespace PryHoteleria_Upn_Grupo4
         {
             if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
             bool encontrado = false;
@@ -164,7 +164,7 @@ namespace PryHoteleria_Upn_Grupo4
                             //y continue con el siguiente nodo.
                             ant.Cl_Sgte = p.Cl_Sgte;
                         }
-                        Console.WriteLine("Cliente con ID " + id + " Eliminado Correctamente!");
+                        Console.WriteLine(" Cliente con ID " + id + " Eliminado Correctamente!");
                         encontrado = true;
                         break;
                 }
@@ -176,7 +176,7 @@ namespace PryHoteleria_Upn_Grupo4
                 }
             if(!encontrado)
             {
-                Console.WriteLine("No se encontró ningún cliente con el ID " + id);
+                Console.WriteLine(" No se encontró ningún cliente con el ID " + id);
             }
             
             
@@ -187,34 +187,36 @@ namespace PryHoteleria_Upn_Grupo4
         public void EliminaTodaLaLista()
         {
             Lista_cliente = null;
-            Console.WriteLine("LISTA ELIMINADA CORRECTAMENTE!");
+            Console.WriteLine(" LISTA ELIMINADA CORRECTAMENTE!");
         }
 
         public void BuscarClientePorDNI(string dni)
         {
             Cliente p = Lista_cliente;
-            //Mientras el 'p' sea diferente de null y su valor sea distinto al que se esta pasando por parametro
-            //Va a recorrer la lista hasta encontrar el valor deseado
+
+            // Mientras 'p' no sea nulo y su DNI sea diferente al que se pasa por parámetro
+            // Recorre la lista hasta encontrar el valor deseado
             while ((p != null) && (p.Dni != dni))
             {
-                //Imprime el valor q tiene el 'p'
-                Console.WriteLine(p.Dni);
-                //p apunta al siguiente nodo
+                // Imprime el valor del DNI de 'p'
+                Console.WriteLine(" " +p.Dni);
+                // Avanza al siguiente nodo
                 p = p.Cl_Sgte;
             }
-            //SI YA RECORRIO TODA LA LISTA, entonces entra a este 'if'
-            //Por lo tanto, cuando llega al ultimo elemento el p va a apuntar al null
-            //Es por ello que si 'p' es null
+
+            // Si 'p' es nulo, significa que el elemento buscado no se encuentra en la lista
             if (p == null)
-                //el elemento buscado no se encuentra en la lista
-                Console.WriteLine("El ID " + dni + " no se encuentra en la lista");
-            //De lo contrario, si esta.
+            {
+                Console.WriteLine(" El ID " + dni + " no se encuentra en la lista");
+            }
             else
             {
-                Console.WriteLine("Datos del Cliente");
-                Console.WriteLine("******************************");
-                Console.Write("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}", p.Id, "-", p.Nombre, " -> ", p.Dni, " -> ", p.FechaNaci, " -> ", p.Email, " -> ", p.Telefono, " -> ");
-
+                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
+                Console.WriteLine(" *****************************************************************************************************************");
+                                    
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                Console.WriteLine(" *****************************************************************************************************************");
             }
         }
 
@@ -222,21 +224,23 @@ namespace PryHoteleria_Upn_Grupo4
         public void ImprimirClientes()
         {
             Cliente p = Lista_cliente;
-            if(VerificarListaVacia())
+            if (VerificarListaVacia())
             {
-                Console.WriteLine("LA LISTA ESTÁ VACIA!!");
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
-            //Recorrer la lista
-            Console.WriteLine("Lista Enlazada con Datos");
-            Console.WriteLine("*************************");
-            Console.Write("Lista -> ");
+
+            Console.WriteLine(" *****************************************************************************************************************");
+            Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
+            Console.WriteLine(" *****************************************************************************************************************");
+
+            // Recorrer la lista
             while (p != null)
             {
-                Console.Write("{0}{1}{2}{3}{4}{5}{6}{7}{8}{9}{10}{11}", p.Id, "-", p.Nombre, " -> ", p.Dni, " -> ", p.FechaNaci, " -> ", p.Email, " -> ", p.Telefono, " -> ");
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
                 p = p.Cl_Sgte;
+                Console.WriteLine(" *****************************************************************************************************************");
             }
-            Console.WriteLine("NULL ");
 
 
         }
