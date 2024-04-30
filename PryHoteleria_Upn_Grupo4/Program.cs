@@ -130,7 +130,7 @@ namespace PryHoteleria_Upn_Grupo4
                                 }
                                 catch
                                 {
-                                    Console.WriteLine("Coloque una opción valida.");
+                                    Console.WriteLine("Coloque una opción valida!!.");
                                     Console.ReadKey(); 
                                 }
                                 
