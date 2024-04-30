@@ -141,7 +141,7 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 Console.Clear();
                                 Console.WriteLine("");
-                                Console.WriteLine(" Menu de Persona");
+                                Console.WriteLine(" Menu de Empleados");
                                 Console.WriteLine(" **********************************************");
                                 Console.WriteLine(" *[1]Ingresar Empleado al Inicio              *");
                                 Console.WriteLine(" *[2]Ingresar Empleado al Final               *");
@@ -214,7 +214,7 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 Console.Clear();
                                 Console.WriteLine("");
-                                Console.WriteLine(" Lista de materiales");
+                                Console.WriteLine(" Menu de Materiales");
                                 Console.WriteLine(" *******************************************");
                                 Console.WriteLine(" *[1]Ingresar Material al Inicio           *");
                                 Console.WriteLine(" *[2]Ingresar Material al Final            *");
