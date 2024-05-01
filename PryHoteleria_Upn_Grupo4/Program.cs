@@ -78,7 +78,7 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" *[6]Eliminar Toda la Lista de CLientes *");
                                 Console.WriteLine(" *[7]Buscar Cliente por DNI             *");
                                 Console.WriteLine(" *[8]Listar Clientes                    *");
-                                Console.WriteLine(" *[9] Salir                             *");
+                                Console.WriteLine(" *[10] Salir                             *");
                                 Console.WriteLine(" ****************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
@@ -123,7 +123,7 @@ namespace PryHoteleria_Upn_Grupo4
                                             break;
 
                                         case 8:
-                                            cliente.ImprimirClientes();
+                                            cliente.ImprimirListaCircular();
                                             Console.ReadKey();
                                             break;
                                     }
@@ -134,7 +134,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.ReadKey(); 
                                 }
                                 
-                            } while (opC != 9);
+                            } while (opC != 10);
                             break;
                         case 2:
                             do

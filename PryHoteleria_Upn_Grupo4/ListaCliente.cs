@@ -36,6 +36,7 @@ namespace PryHoteleria_Upn_Grupo4
             }else return false;
         }
 
+        /*
         public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
         {
             //Creamos el nodo cliente a ingresar
@@ -52,6 +53,40 @@ namespace PryHoteleria_Upn_Grupo4
                 Lista_cliente = q;
             }
         }
+        */
+        public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
+        {
+            //Creamos el nodo cliente a ingresar
+            Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
+            if (Lista_cliente == null)
+            {
+                //La lista apuntará al objeto 'q' que estamos agregando.
+                Lista_cliente = q;
+                // El nuevo cliente apunta al inicio de la lista y no a Null.
+                // Por lo tanto seria una lista circular.
+                q.Cl_Sgte = Lista_cliente;
+            }
+            else
+            {
+                //El valor ingresado a punta a la lista que ya se encontraba
+                q.Cl_Sgte = Lista_cliente;
+
+                Cliente p = Lista_cliente;
+                // Mientra que el p no apunte a la Lista_cliente
+                while (p.Cl_Sgte != Lista_cliente)
+                {
+                    //avanza al siguiente nodo
+                    p = p.Cl_Sgte;
+                }
+
+                // El último cliente apunta al nuevo cliente que se está ingresando
+                p.Cl_Sgte = q;
+
+                //La lista apunta al 'q' para q este sea el nuevo valor inicial
+                Lista_cliente = q;
+            }
+        }
+
 
 
         public void InsertarClienteAlFinal(string nombre, string dni, string f_nac , string email, string telefono)
@@ -63,6 +98,10 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 //La lista apuntará al objeto 'q' que estamos agregando.
                 Lista_cliente = q;
+                // El nuevo cliente apunta al inicio de la lista y no a Null.
+                // Por lo tanto seria una lista circular.
+                q.Cl_Sgte = Lista_cliente;  
+                
             }
             //DE LO CONTRARIO, SI HAY ELEMENTOS EN LA LISTA
             else
@@ -70,8 +109,8 @@ namespace PryHoteleria_Upn_Grupo4
                 //Esta variable 'p' se utilizará para recorrer la lista hasta encontrar el último nodo.
                 //Por lo que a 'p' le asignamos todos los valores que se encuentra en la Lista_cliente
                 Cliente p = Lista_cliente;
-                //Mientras la propiedad Cl_Sgte sea distinto de null
-                while (p.Cl_Sgte != null) 
+                //Mientras la propiedad Cl_Sgte sea distinto de la lista cliente
+                while (p.Cl_Sgte != Lista_cliente) 
                 {
                     //Avanzará hasta el ultimo nodo
                     p = p.Cl_Sgte;
@@ -79,6 +118,9 @@ namespace PryHoteleria_Upn_Grupo4
                 //UNA VEZ ENCONTRADO EL ULTIMO NODO
                 //La propiedad Cl_Sgte apuntará al nuevo Cliente ingresado
                 p.Cl_Sgte = q;
+                //Ahora la direccion del nuevo cliente ingresado apuntará a la Lista_cliente
+                // Por lo tanto seria una lista circular.
+                q.Cl_Sgte = Lista_cliente;
             }
         }
 
@@ -207,7 +249,7 @@ namespace PryHoteleria_Upn_Grupo4
             // Si 'p' es nulo, significa que el elemento buscado no se encuentra en la lista
             if (p == null)
             {
-                Console.WriteLine(" El ID " + dni + " no se encuentra en la lista");
+                Console.WriteLine(" El DNI " + dni + " no se encuentra en la lista");
             }
             else
             {
@@ -243,6 +285,35 @@ namespace PryHoteleria_Upn_Grupo4
             }
 
 
+        }
+
+        public void ImprimirListaCircular()
+        {
+            //Si la lista es diferente a null
+            if (Lista_cliente != null)
+            {
+                //instanciamos un objeto p
+                Cliente p = Lista_cliente;
+
+                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
+                Console.WriteLine(" *****************************************************************************************************************");
+                //Entra al bucle
+                do
+                {
+                    Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                 // Avanza al siguiente nodo
+                    p = p.Cl_Sgte;
+                    Console.WriteLine(" *****************************************************************************************************************");
+                }
+                //Mientras que 'p' sea distinto al primer elemento de la Lista_Cliente
+                //va a seguir imprimiendo los nodos.
+                while (p != Lista_cliente);
+            }
+            else
+            {
+                Console.WriteLine("La lista está vacía.");
+            }
         }
 
     }
