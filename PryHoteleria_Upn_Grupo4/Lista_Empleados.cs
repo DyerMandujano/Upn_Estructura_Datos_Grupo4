@@ -20,11 +20,13 @@ namespace PryHoteleria_Upn_Grupo4
         }
         public bool ListaVacia()
         {
+
             if (ListaEmpleados == null)
             {
                 return true;
             }
             else return false;
+
         }
         public void InsertarEmpleadoInicio(string nom,string dni, string correo, string telefono, string direccion, string cargo,string sueldo)
         {
