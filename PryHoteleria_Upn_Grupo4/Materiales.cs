@@ -11,6 +11,7 @@ namespace PryHoteleria_Upn_Grupo4
         public static int contador = 1000;
         //ATRIBUTOS
         private int id;
+        private string categoria;
         private string nombre_material;
         private int cantidad;
         private double costo;
