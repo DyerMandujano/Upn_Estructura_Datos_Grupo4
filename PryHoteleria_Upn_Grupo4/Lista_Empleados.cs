@@ -28,9 +28,10 @@ namespace PryHoteleria_Upn_Grupo4
             else return false;
 
         }
-        public void InsertarEmpleadoInicio(string nom,string dni, string correo, string telefono, string direccion, string cargo,string sueldo)
+        //Cambiado a lista doble
+        public void InsertarEmpleadoInicio(string nom, string dni, string correo, string telefono, string direccion, string cargo, string sueldo)
         {
-            Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo,sueldo);
+            Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo, sueldo);
 
             if (ListaEmpleados == null)
             {
@@ -39,10 +40,11 @@ namespace PryHoteleria_Upn_Grupo4
             else
             {
                 q.Emple_Sgt = ListaEmpleados;
-
+                ListaEmpleados.Emple_Ant = q;
                 ListaEmpleados = q;
             }
         }
+        //codigo cambiado
         public void InsertarEmpleadoFinal(string nom, string dni, string correo, string telefono, string direccion, string cargo, string sueldo)
         {
             Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo, sueldo);
@@ -60,6 +62,7 @@ namespace PryHoteleria_Upn_Grupo4
                     p = p.Emple_Sgt;
                 }
                 p.Emple_Sgt = q;
+                q.Emple_Ant = p;
             }
         }
         public void EliminarEmpleadoInicio()
@@ -75,6 +78,7 @@ namespace PryHoteleria_Upn_Grupo4
                 Console.WriteLine("\n Empleado inicial eliminado!");
             }
         }
+        //cambiado a lista doble
         public void EliminarEmpleadoFinal()
         {
             if (ListaVacia())
@@ -86,25 +90,22 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 if (ListaEmpleados.Emple_Sgt == null)
                 {
-                    ListaEmpleados = ListaEmpleados.Emple_Sgt;
+                    ListaEmpleados = null;
                 }
                 else
                 {
                     Empleados p = ListaEmpleados;
 
-                    Empleados nd_ant = new Empleados();
-
                     while (p.Emple_Sgt != null)
                     {
-                        nd_ant = p;
-
                         p = p.Emple_Sgt;
                     }
-                    nd_ant.Emple_Sgt = null;
+                    p.Emple_Ant.Emple_Sgt = null;
                 }
                 Console.WriteLine("\n Empleado final eliminado!");
             }
         }
+        //cambiado a lista doble
         public void EliminarEmpleadoPorID(int id)
         {
             if (ListaVacia())
@@ -157,17 +158,16 @@ namespace PryHoteleria_Upn_Grupo4
                 p = p.Emple_Sgt;
             }
             if (p == null)
-
+            {
                 Console.WriteLine(" El DNI " + dni + " no se encuentra en la lista");
-
+            }
             else
             {
                 Console.WriteLine(" ************************************************************************************************************************************************");
                 Console.WriteLine(" *|    ID    |      Nombre      |    Apellido    |    DNI    |            Correo             |    Teléfono    |    Dirección    |    Sueldo    |*");
                 Console.WriteLine(" ************************************************************************************************************************************************");
 
-
-                Console.WriteLine(" *|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo,p.Sueldo);
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo, p.Sueldo);
                 Console.WriteLine(" ************************************************************************************************************************************************");
             }
         }
@@ -185,11 +185,10 @@ namespace PryHoteleria_Upn_Grupo4
             Console.WriteLine(" ************************************************************************************************************************************************");
             while (p != null)
             {
-                Console.WriteLine(" *|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo,p.Sueldo);
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,16}|{3,11}|{4,31}|{5,16}|{6,17}|{7,14}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo, p.Sueldo);
                 p = p.Emple_Sgt;
                 Console.WriteLine(" ************************************************************************************************************************************************");
             }
-
         }
     }
 }
