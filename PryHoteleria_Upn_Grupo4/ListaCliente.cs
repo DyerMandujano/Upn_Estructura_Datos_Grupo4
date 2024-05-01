@@ -36,24 +36,7 @@ namespace PryHoteleria_Upn_Grupo4
             }else return false;
         }
 
-        /*
-        public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
-        {
-            //Creamos el nodo cliente a ingresar
-            Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
-            if (Lista_cliente == null)
-            {
-                //La lista apuntará al objeto 'q' que estamos agregando.
-                Lista_cliente = q;
-            }else
-            {
-                //El valor ingresado a punta a la lista que ya se encontraba
-                q.Cl_Sgte = Lista_cliente;
-                //La lista apunta al 'q' para q este sea el nuevo valor inicial
-                Lista_cliente = q;
-            }
-        }
-        */
+
         public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
         {
             //Creamos el nodo cliente a ingresar
@@ -124,15 +107,43 @@ namespace PryHoteleria_Upn_Grupo4
             }
         }
 
+
+
         public void EliminarClienteInicio()
         {
             if (VerificarListaVacia())
             {
                 Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
-            }else
+            }
+            else
             {
-                Lista_cliente = Lista_cliente.Cl_Sgte;
+                //Cuando hay un solo nodo en la lista
+                //Si la lista se apunta a si misma 
+                if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                {
+                    //Al momento de eliminar el unico nodo
+                    //la lista apuntará a null
+                    Lista_cliente = null;
+                }
+                //De lo contrario
+                else
+                {
+                    //instanciamos un objeto 'q' de tipo Cliente 
+                    Cliente q = Lista_cliente;
+                    //Con el objeto 'q' recorremos la lista
+                    //Mientras que el nodo 'q' no apunte al primer elemento de la lista
+                    while (q.Cl_Sgte != Lista_cliente) 
+                    {
+                        //Avanza al siguiente nodo
+                        q = q.Cl_Sgte;
+                    }
+                    //Una vez se termine el bucle
+                    // El segundo nodo de la listaCliente se convierte en el primero
+                    Lista_cliente = Lista_cliente.Cl_Sgte;
+                    //Y el último nodo apunta al nuevo primer nodo
+                    q.Cl_Sgte = Lista_cliente; 
+                }
                 Console.WriteLine("\n CLIENTE INICIAL ELIMINADO!");
             }
         }
@@ -144,36 +155,40 @@ namespace PryHoteleria_Upn_Grupo4
                 Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
             }
-            else 
+            else
             {
-                //CONSIDERANDO QUE SOLO HAYA UN NODO EN LA LISTA
-                //SI LA DIRECCION DEL NODO ES NULL
-                if (Lista_cliente.Cl_Sgte == null)
+                //Cuando hay un solo nodo en la lista
+                //Si la lista se apunta a si misma 
+                if (Lista_cliente.Cl_Sgte == Lista_cliente) 
                 {
-                    //LA LISTA APUNTARA A UNA DIRECCION NULA LO QUE CONLLEVA A LA ELIMINACION DEL UNICO NODO
-                    Lista_cliente = Lista_cliente.Cl_Sgte;
+                    //Al momento de eliminar el unico nodo
+                    //la lista apuntará a null
+                    Lista_cliente = null;
                 }
+                //De lo contrario
                 else
                 {
                     //EL 'p' NOS SERVIRA PARA RECORRER LA LISTA
                     Cliente p = Lista_cliente;
                     //El 'nd_ant' NOS SERVIRA PARA ALMACENAR LOS VALORES DEL 'p' MIENTRAS ESTE RECORRIENDO LA LISTA
-                    Cliente nd_ant= new Cliente();
-                    //MIENTRAS QUE LA DIRECCION DEL objeto 'p' SEA DISTINTO DE NULL 
-                    while (p.Cl_Sgte != null)
+                    Cliente nd_ant = new Cliente();
+                    //Mientras que el nodo 'q' no apunte al primer elemento de la lista
+                    while (p.Cl_Sgte != Lista_cliente)
                     {
                         //LOS DATOS DEL OBJETO 'p' SE ALMACENARÁN EN EL OBJETO 'nd_anterior'
                         nd_ant = p;
                         //Y EL OBJETO 'p' IRA AL SIGUIENTE NODO DE LA LISTA
                         p = p.Cl_Sgte;
                     }
-                    //UNA VEZ HAYA LLEGADO AL ULTIMO NODO, COMO EL Objeto 'nd_anterior' guardo el penultimo nodo del objeto 'p',
-                    //EL OBJETO 'nd_anterior' APUNTARA AL NULL YA QUE AHORA ESE SE CONVERTIRA EN EL ULTIMO NODO, PORQUE EL OTRO HA SIDO ELMINADO
-                    nd_ant.Cl_Sgte = null;
+                    //Una vez se termine el bucle, Es decir se haya encontrado al ultimo no y eliminado...
+                    // El penúltimo nodo apunta al primer nodo de la lista
+                    nd_ant.Cl_Sgte = Lista_cliente; 
                 }
                 Console.WriteLine("\n CLIENTE FINAL ELIMINADO!");
             }
         }
+
+        
 
         public void EliminarClientePorID(int id)
         {
@@ -318,3 +333,86 @@ namespace PryHoteleria_Upn_Grupo4
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+/*
+public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
+{
+    //Creamos el nodo cliente a ingresar
+    Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
+    if (Lista_cliente == null)
+    {
+        //La lista apuntará al objeto 'q' que estamos agregando.
+        Lista_cliente = q;
+    }else
+    {
+        //El valor ingresado a punta a la lista que ya se encontraba
+        q.Cl_Sgte = Lista_cliente;
+        //La lista apunta al 'q' para q este sea el nuevo valor inicial
+        Lista_cliente = q;
+    }
+}
+*/
+
+/*
+public void EliminarClienteInicio()
+{
+    if (VerificarListaVacia())
+    {
+        Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+        return;
+    }else
+    {
+        Lista_cliente = Lista_cliente.Cl_Sgte;
+        Console.WriteLine("\n CLIENTE INICIAL ELIMINADO!");
+    }
+}
+*/
+
+/*
+        public void EliminarClienteFinal()
+        {
+            if (VerificarListaVacia())
+            {
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+                return;
+            }
+            else 
+            {
+                //CONSIDERANDO QUE SOLO HAYA UN NODO EN LA LISTA
+                //SI LA DIRECCION DEL NODO ES NULL
+                if (Lista_cliente.Cl_Sgte == null)
+                {
+                    //LA LISTA APUNTARA A UNA DIRECCION NULA LO QUE CONLLEVA A LA ELIMINACION DEL UNICO NODO
+                    Lista_cliente = Lista_cliente.Cl_Sgte;
+                }
+                else
+                {
+                    //EL 'p' NOS SERVIRA PARA RECORRER LA LISTA
+                    Cliente p = Lista_cliente;
+                    //El 'nd_ant' NOS SERVIRA PARA ALMACENAR LOS VALORES DEL 'p' MIENTRAS ESTE RECORRIENDO LA LISTA
+                    Cliente nd_ant= new Cliente();
+                    //MIENTRAS QUE LA DIRECCION DEL objeto 'p' SEA DISTINTO DE NULL 
+                    while (p.Cl_Sgte != null)
+                    {
+                        //LOS DATOS DEL OBJETO 'p' SE ALMACENARÁN EN EL OBJETO 'nd_anterior'
+                        nd_ant = p;
+                        //Y EL OBJETO 'p' IRA AL SIGUIENTE NODO DE LA LISTA
+                        p = p.Cl_Sgte;
+                    }
+                    //UNA VEZ HAYA LLEGADO AL ULTIMO NODO, COMO EL Objeto 'nd_anterior' guardo el penultimo nodo del objeto 'p',
+                    //EL OBJETO 'nd_anterior' APUNTARA AL NULL YA QUE AHORA ESE SE CONVERTIRA EN EL ULTIMO NODO, PORQUE EL OTRO HA SIDO ELMINADO
+                    nd_ant.Cl_Sgte = null;
+                }
+                Console.WriteLine("\n CLIENTE FINAL ELIMINADO!");
+            }
+        }
+        */
