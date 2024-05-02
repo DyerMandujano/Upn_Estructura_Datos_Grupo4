@@ -175,19 +175,26 @@ namespace PryHoteleria_Upn_Grupo4
         public void ActualizarCorreoEmpleado(int id_empleado, string nuevo_correo)
         {
             Empleados p = ListaEmpleados;
+            bool empleadoBuscado = false;
             // Recorre la lista hasta encontrar el empleado con el ID deseado
-            while ((p != null) && (p.Id != id_empleado))
+            while (p != null)
             {
+                if (p.Id == id_empleado)
+                {
+                    empleadoBuscado = true;
+                    break;
+                }
                 p = p.Emple_Sgt;
             }
             // Si el empleado no se encuentra en la lista
-            if (p == null)
+            if (!empleadoBuscado)
             {
                 Console.WriteLine(" El empleado con el ID " + id_empleado + " no se encuentra en la lista");
             }
-            // Si el empleado se encuentra en la lista, actualiza su correo
             else
             {
+                Console.WriteLine("Ingrese el correo a actualizar:");
+                nuevo_correo = Console.ReadLine();
                 p.Correo = nuevo_correo;
                 Console.WriteLine(" El correo del empleado ha sido actualizado exitosamente");
             }
