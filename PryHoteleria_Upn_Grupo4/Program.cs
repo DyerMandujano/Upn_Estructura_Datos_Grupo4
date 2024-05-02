@@ -284,8 +284,6 @@ namespace PryHoteleria_Upn_Grupo4
                                         case 8:
                                             Console.Write(" Ingrese ID del Material: ");
                                             MT_id = int.Parse(Console.ReadLine());
-                                            Console.Write(" Ingrese nuevo nombre del Material: ");
-                                            MT_nombre_material = Console.ReadLine();
                                             materiales.ActualizarNombreMaterial(MT_id, MT_nombre_material);
                                             Console.ReadKey();
                                             break;

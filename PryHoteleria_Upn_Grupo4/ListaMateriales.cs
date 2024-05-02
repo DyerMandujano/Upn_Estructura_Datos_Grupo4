@@ -226,19 +226,26 @@ namespace PryHoteleria_Upn_Grupo4
         public void ActualizarNombreMaterial(int id, string nuevo_mat)
         {
             Materiales p = Lista_material;
-            // Recorre la lista hasta encontrar el material con el ID deseado
-            while ((p != null) && (p.Id != id))
+            bool Mat_Buscado = false;
+            // Recorre la lista hasta encontrar el empleado con el ID deseado
+            while (p != null)
             {
-                p = p.MT_Sgte;
+                if (p.Id == id)
+                {
+                    Mat_Buscado = true;
+                    break;
+                }
+                p = p.MT_Sgte ;
             }
-            // Si el material no se encuentra en la lista
-            if (p == null)
+            // Si el empleado no se encuentra en la lista
+            if (!Mat_Buscado)
             {
-                Console.WriteLine(" El material con el ID " + id + " no se encuentra en la lista");
+                Console.WriteLine(" El empleado con el ID " + id + " no se encuentra en la lista");
             }
-            // Si el material se encuentra en la lista, actualiza su nombre
             else
             {
+                Console.WriteLine("Ingrese el nombre del material nuevo:");
+                nuevo_mat = Console.ReadLine();
                 p.NombreMaterial = nuevo_mat;
                 Console.WriteLine(" El nombre del material ha sido actualizado exitosamente");
             }
