@@ -36,10 +36,10 @@ namespace PryHoteleria_Upn_Grupo4
             else return false;
         }
 
-        public void InsertarMaterialInicio(string nombre_material, int cantidad, double costo)
+        public void InsertarMaterialInicio(string categoria, string nombre_material, int cantidad, double costo)
         {
             //Creamos el nodo material a ingresar
-            Materiales q = new Materiales(nombre_material, cantidad, costo);
+            Materiales q = new Materiales(categoria, nombre_material, cantidad, costo);
             if (Lista_material == null)
             {
                 //La lista apuntará al objeto 'q' que estamos agregando.
@@ -55,10 +55,10 @@ namespace PryHoteleria_Upn_Grupo4
         }
 
 
-        public void InsertarMaterialAlFinal(string nombre_material, int cantidad, double costo)
+        public void InsertarMaterialAlFinal(string categoria, string nombre_material, int cantidad, double costo)
         {
             //Creamos el objeto que se ingresará al final de la lista
-            Materiales q = new Materiales(nombre_material, cantidad, costo);
+            Materiales q = new Materiales(categoria, nombre_material, cantidad, costo);
             //Si la lista es Null
             if (Lista_material == null)
             {
@@ -199,7 +199,7 @@ namespace PryHoteleria_Upn_Grupo4
             while ((p != null) && (p.NombreMaterial != nombre_material))
             {
                 //Imprime el valor q tiene el 'p'
-                Console.WriteLine(" " + p.NombreMaterial);
+                Console.WriteLine(" " + p.Categorias);
                 //p apunta al siguiente nodo
                 p = p.MT_Sgte;
             }
@@ -214,17 +214,15 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.WriteLine(" Datos del Material");
                 
-                Console.WriteLine(" *****************************************************************************");
-                Console.WriteLine(" *|     ID     |     Nombre Material     |     Cantidad     |     Costo     |*");
-                Console.WriteLine(" *****************************************************************************");
-                Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|*", p.Id, p.NombreMaterial, p.Cantidad, p.Costo);
-                Console.WriteLine(" *****************************************************************************");
+                Console.WriteLine(" **************************************************************************************************");
+                Console.WriteLine(" *|     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |*");
+                Console.WriteLine(" **************************************************************************************************");
+                Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|{4,20}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" *************************************************************************************************");
 
             }
         }
 
-
-        
         public void ImprimirMaterial()
         {
             Materiales p = Lista_material;
@@ -234,16 +232,16 @@ namespace PryHoteleria_Upn_Grupo4
                 return;
             }
 
-            Console.WriteLine(" *****************************************************************************");
-            Console.WriteLine(" *|     ID     |     Nombre Material     |     Cantidad     |     Costo     |*");
-            Console.WriteLine(" *****************************************************************************");
+            Console.WriteLine(" **************************************************************************************************");
+            Console.WriteLine(" |     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |");
+            Console.WriteLine(" **************************************************************************************************");
 
             // Recorrer la lista
             while (p != null)
             {
-                Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|*", p.Id, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" |{0,12}|{1,25}|{2,18}|{3,15}|{4,20}|", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
                 p = p.MT_Sgte;
-                Console.WriteLine(" *****************************************************************************");
+                Console.WriteLine(" **************************************************************************************************");
             }
         }
 

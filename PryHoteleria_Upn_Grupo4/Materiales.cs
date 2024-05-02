@@ -11,6 +11,7 @@ namespace PryHoteleria_Upn_Grupo4
         public static int contador = 1000;
         //ATRIBUTOS
         private int id;
+        private string categoria;
         private string nombre_material;
         private int cantidad;
         private double costo;
@@ -21,10 +22,11 @@ namespace PryHoteleria_Upn_Grupo4
 
         }
 
-        public Materiales(string nombre_material, int cantidad, double costo)
+        public Materiales(string categoria,string nombre_material, int cantidad, double costo)
         {
             Id = contador++;
             //MATERIALES DEL PRODUCTO
+            Categorias = categoria;
             NombreMaterial = nombre_material;
             Cantidad = cantidad;
             Costo = costo;
@@ -44,6 +46,12 @@ namespace PryHoteleria_Upn_Grupo4
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public string Categorias
+        {
+            get { return categoria; }
+            set { categoria = value; }
         }
 
         public string NombreMaterial
