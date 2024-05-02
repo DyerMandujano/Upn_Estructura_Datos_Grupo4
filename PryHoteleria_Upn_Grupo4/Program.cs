@@ -24,7 +24,7 @@ namespace PryHoteleria_Upn_Grupo4
         //MT es la variable para majeras las opciones de los materiales
         static int MT_id, MT_cantidad, opM;
         //Variables a utilizar para los datos de Material.
-        static string MT_nombre_material;
+        static string MT_categoria, MT_nombre_material;
         static double MT_costo;
 
         static void Main(string[] args)
@@ -234,19 +234,16 @@ namespace PryHoteleria_Upn_Grupo4
                                     {
                                         case 1:
                                             IngresoDatosMateriales();
-                                            materiales.InsertarMaterialInicio(MT_nombre_material, MT_cantidad, MT_costo);
+                                            materiales.InsertarMaterialInicio(MT_categoria, MT_nombre_material, MT_cantidad, MT_costo);
                                             break;
-
                                         case 2:
                                             IngresoDatosMateriales();
-                                            materiales.InsertarMaterialAlFinal(MT_nombre_material, MT_cantidad, MT_costo);
+                                            materiales.InsertarMaterialAlFinal(MT_categoria, MT_nombre_material, MT_cantidad, MT_costo);
                                             break;
-
                                         case 3:
                                             materiales.EliminarMaterialInicio();
                                             Console.ReadKey();
                                             break;
-
                                         case 4:
                                             materiales.EliminarMaterialFinal();
                                             Console.ReadKey();
@@ -267,7 +264,6 @@ namespace PryHoteleria_Upn_Grupo4
                                             materiales.BuscarMateriales(MT_nombre_material);
                                             Console.ReadKey();
                                             break;
-
                                         case 8:
                                             materiales.ImprimirMaterial();
                                             Console.ReadKey();
@@ -280,7 +276,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.ReadKey();
                                 }
                                 
-                            } while (opM != 9);
+                            } while (opM != 11);
                             break;
                     }
                 }
@@ -330,6 +326,8 @@ namespace PryHoteleria_Upn_Grupo4
 
         public static void IngresoDatosMateriales()
         {
+            Console.Write(" Ingresar la Categoria: ");
+            MT_categoria = Console.ReadLine();
             Console.Write(" Ingresar Nombre del Material: ");
             MT_nombre_material = Console.ReadLine();
             Console.Write(" Ingresar la cantidad del Material: ");
