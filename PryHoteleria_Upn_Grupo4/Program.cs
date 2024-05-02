@@ -128,9 +128,7 @@ namespace PryHoteleria_Upn_Grupo4
                                         case 8:
                                             Console.Write(" Ingrese ID del Cliente: ");
                                             C_id = int.Parse(Console.ReadLine());
-                                            Console.Write(" Ingrese nuevo Telfono: ");
-                                            C_telf = Console.ReadLine();
-                                            cliente.ActualizarTelefonoPorId(C_id, C_telf);
+                                            cliente.ActualizarTelefPorId(C_id);
                                             Console.ReadKey();
                                             break;
                                         case 9:

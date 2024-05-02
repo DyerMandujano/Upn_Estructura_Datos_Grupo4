@@ -309,6 +309,68 @@ namespace PryHoteleria_Upn_Grupo4
             }
         }
 
+        public void ActualizarTelefPorId(int id)
+        {
+            Cliente p = Lista_cliente;
+            Cliente inicio = p;
+            bool clienteBuscado = false;
+            // Recorre la lista hasta encontrar el empleado con el ID deseado
+            while (p != null && p != inicio || inicio == p && !clienteBuscado)
+            {
+                if (p.Id == id)
+                {
+                    clienteBuscado = true;
+                    break;
+                }
+                p = p.Cl_Sgte;
+                if (p == inicio)
+                {
+                    break;
+                }
+            }
+            // Si el empleado no se encuentra en la lista
+            if (!clienteBuscado)
+            {
+                Console.WriteLine(" El cliente con el ID " + id + " no se encuentra en la lista");
+            }
+            else
+            {
+                Console.WriteLine("Ingrese el telefono a actualizar:");
+                string telf_new = Console.ReadLine();
+                p.Telefono = telf_new;
+                Console.WriteLine(" El telefono del empleado ha sido actualizado exitosamente");
+            }
+        }
+        /*
+        public void ActualizarTelefPorId(int id)
+        {
+            Cliente p = Lista_cliente;
+            bool clienteBuscado = false;
+            // Recorre la lista hasta encontrar el empleado con el ID deseado
+            while (p != null)
+            {
+                if (p.Id == id)
+                {
+                    clienteBuscado = true;
+                    break;
+                }
+                p = p.Cl_Sgte;
+            }
+            // Si el empleado no se encuentra en la lista
+            if (!clienteBuscado)
+            {
+                Console.WriteLine(" El cliente con el ID " + id + " no se encuentra en la lista");
+            }
+            else
+            {
+                Console.WriteLine("Ingrese el telefono a actualizar:");
+                string telf_new = Console.ReadLine();
+                p.Telefono = telf_new;
+                Console.WriteLine(" El telefono del empleado ha sido actualizado exitosamente");
+            }
+        }
+        */
+
         public void ActualizarTelefonoPorId(int id, string newTelf)
         {
             if (VerificarListaVacia())
