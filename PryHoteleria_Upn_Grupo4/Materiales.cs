@@ -22,13 +22,14 @@ namespace PryHoteleria_Upn_Grupo4
 
         }
 
-        public Materiales(string categoria,string nombre_material, int cantidad, double costo)
+        public Materiales(string categoria,string nombre_material, double costo)
         {
+            Random r = new Random();
             Id = contador++;
             //MATERIALES DEL PRODUCTO
             Categorias = categoria;
             NombreMaterial = nombre_material;
-            Cantidad = cantidad;
+            Cantidad = r.Next(1, 100);
             Costo = costo;
             //Inicializar el enlace en null
             MT_Sgte = null;

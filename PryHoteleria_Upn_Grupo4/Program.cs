@@ -232,8 +232,9 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" *[5]Eliminar Material por ID              *");
                                 Console.WriteLine(" *[6]Eliminar Toda la Lista de Matariales  *");
                                 Console.WriteLine(" *[7]Buscar Materiales                     *");
-                                Console.WriteLine(" *[8]Listar Materiales                     *");
-                                Console.WriteLine(" *[9] Salir                                *");
+                                Console.WriteLine(" *[8]Actualiza Material por ID             *");
+                                Console.WriteLine(" *[9]Listar Materiales                     *");
+                                Console.WriteLine(" *[10]Salir                               *");
                                 Console.WriteLine(" *******************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
@@ -243,11 +244,11 @@ namespace PryHoteleria_Upn_Grupo4
                                     {
                                         case 1:
                                             IngresoDatosMateriales();
-                                            materiales.InsertarMaterialInicio(MT_categoria, MT_nombre_material, MT_cantidad, MT_costo);
+                                            materiales.InsertarMaterialInicio(MT_categoria, MT_nombre_material, MT_costo);
                                             break;
                                         case 2:
                                             IngresoDatosMateriales();
-                                            materiales.InsertarMaterialAlFinal(MT_categoria, MT_nombre_material, MT_cantidad, MT_costo);
+                                            materiales.InsertarMaterialAlFinal(MT_categoria, MT_nombre_material, MT_costo);
                                             break;
                                         case 3:
                                             materiales.EliminarMaterialInicio();
@@ -274,6 +275,14 @@ namespace PryHoteleria_Upn_Grupo4
                                             Console.ReadKey();
                                             break;
                                         case 8:
+                                            Console.Write(" Ingrese ID del Material: ");
+                                            MT_id = int.Parse(Console.ReadLine());
+                                            Console.Write(" Ingrese nuevo nombre del Material: ");
+                                            MT_nombre_material = Console.ReadLine();
+                                            materiales.ActualizarNombreMaterial(MT_id, MT_nombre_material);
+                                            Console.ReadKey();
+                                            break;
+                                        case 9:
                                             materiales.ImprimirMaterial();
                                             Console.ReadKey();
                                             break;
@@ -285,7 +294,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.ReadKey();
                                 }
                                 
-                            } while (opM != 11);
+                            } while (opM != 10);
                             break;
                     }
                 }
@@ -339,8 +348,6 @@ namespace PryHoteleria_Upn_Grupo4
             MT_categoria = Console.ReadLine();
             Console.Write(" Ingresar Nombre del Material: ");
             MT_nombre_material = Console.ReadLine();
-            Console.Write(" Ingresar la cantidad del Material: ");
-            MT_cantidad = int.Parse(Console.ReadLine());
             Console.Write(" Ingresar el Costo: ");
             MT_costo = double.Parse(Console.ReadLine());
             Console.WriteLine(" Material Ingresado Correctamente!");

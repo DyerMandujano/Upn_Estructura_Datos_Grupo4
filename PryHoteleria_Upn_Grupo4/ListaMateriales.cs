@@ -36,10 +36,10 @@ namespace PryHoteleria_Upn_Grupo4
             else return false;
         }
 
-        public void InsertarMaterialInicio(string categoria, string nombre_material, int cantidad, double costo)
+        public void InsertarMaterialInicio(string categoria, string nombre_material, double costo)
         {
             //Creamos el nodo material a ingresar
-            Materiales q = new Materiales(categoria, nombre_material, cantidad, costo);
+            Materiales q = new Materiales(categoria, nombre_material, costo);
             if (Lista_material == null)
             {
                 //La lista apuntará al objeto 'q' que estamos agregando.
@@ -55,10 +55,10 @@ namespace PryHoteleria_Upn_Grupo4
         }
 
 
-        public void InsertarMaterialAlFinal(string categoria, string nombre_material, int cantidad, double costo)
+        public void InsertarMaterialAlFinal(string categoria, string nombre_material, double costo)
         {
             //Creamos el objeto que se ingresará al final de la lista
-            Materiales q = new Materiales(categoria, nombre_material, cantidad, costo);
+            Materiales q = new Materiales(categoria, nombre_material, costo);
             //Si la lista es Null
             if (Lista_material == null)
             {
@@ -220,6 +220,27 @@ namespace PryHoteleria_Upn_Grupo4
                 Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|{4,20}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
                 Console.WriteLine(" *************************************************************************************************");
 
+            }
+        }
+
+        public void ActualizarNombreMaterial(int id, string nuevo_mat)
+        {
+            Materiales p = Lista_material;
+            // Recorre la lista hasta encontrar el material con el ID deseado
+            while ((p != null) && (p.Id != id))
+            {
+                p = p.MT_Sgte;
+            }
+            // Si el material no se encuentra en la lista
+            if (p == null)
+            {
+                Console.WriteLine(" El material con el ID " + id + " no se encuentra en la lista");
+            }
+            // Si el material se encuentra en la lista, actualiza su nombre
+            else
+            {
+                p.NombreMaterial = nuevo_mat;
+                Console.WriteLine(" El nombre del material ha sido actualizado exitosamente");
             }
         }
 
