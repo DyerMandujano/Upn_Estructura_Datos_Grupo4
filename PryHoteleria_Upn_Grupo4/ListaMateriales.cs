@@ -213,12 +213,12 @@ namespace PryHoteleria_Upn_Grupo4
             else
             {
                 Console.WriteLine(" Datos del Material");
-                
+
                 Console.WriteLine(" **************************************************************************************************");
                 Console.WriteLine(" *|     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |*");
                 Console.WriteLine(" **************************************************************************************************");
-                Console.WriteLine(" *|{0,12}|{1,25}|{2,18}|{3,15}|{4,20}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
-                Console.WriteLine(" *************************************************************************************************");
+                Console.WriteLine(" *|{0,12}|{1,20}|{2,25}|{3,18}|{4,15}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" **************************************************************************************************");
 
             }
         }
@@ -261,13 +261,13 @@ namespace PryHoteleria_Upn_Grupo4
             }
 
             Console.WriteLine(" **************************************************************************************************");
-            Console.WriteLine(" |     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |");
+            Console.WriteLine(" *|     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |*");
             Console.WriteLine(" **************************************************************************************************");
 
             // Recorrer la lista
             while (p != null)
             {
-                Console.WriteLine(" |{0,12}|{1,25}|{2,18}|{3,15}|{4,20}|", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" *|{0,12}|{1,20}|{2,25}|{3,18}|{4,15}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
                 p = p.MT_Sgte;
                 Console.WriteLine(" **************************************************************************************************");
             }

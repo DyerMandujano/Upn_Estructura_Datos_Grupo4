@@ -31,6 +31,7 @@ namespace PryHoteleria_Upn_Grupo4
 
         static void Main(string[] args)
         {
+            Console.SetWindowSize(140, 50);
             ListaCliente cliente = new ListaCliente();
             Lista_Empleados Empleados = new Lista_Empleados();
             ListaMateriales materiales = new ListaMateriales();
@@ -39,8 +40,8 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 try
                 {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Black;
                     Console.Clear();
 
                     Console.WriteLine("");
@@ -71,18 +72,18 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.Clear();
                                 Console.WriteLine("");
                                 Console.WriteLine(" Menu de Cliente");
-                                Console.WriteLine(" ****************************************");
-                                Console.WriteLine(" *[1]Ingresar Cliente al Inicio         *");
-                                Console.WriteLine(" *[2]Ingresar Cliente al Final          *");
-                                Console.WriteLine(" *[3]Eliminar el Primer Cliente         *");
-                                Console.WriteLine(" *[4]Eliminar el Ultimo Cliente         *");
-                                Console.WriteLine(" *[5]Eliminar Cliente por ID            *");
-                                Console.WriteLine(" *[6]Eliminar Toda la Lista de CLientes *");
-                                Console.WriteLine(" *[7]Buscar Cliente por DNI             *");
+                                Console.WriteLine(" ********************************************");
+                                Console.WriteLine(" *[1]Ingresar Cliente al Inicio             *");
+                                Console.WriteLine(" *[2]Ingresar Cliente al Final              *");
+                                Console.WriteLine(" *[3]Eliminar el Primer Cliente             *");
+                                Console.WriteLine(" *[4]Eliminar el Ultimo Cliente             *");
+                                Console.WriteLine(" *[5]Eliminar Cliente por ID                *");
+                                Console.WriteLine(" *[6]Eliminar Toda la Lista de CLientes     *");
+                                Console.WriteLine(" *[7]Buscar Cliente por DNI                 *");
                                 Console.WriteLine(" *[8]Actualizar Telefono del Cliente por ID *");
-                                Console.WriteLine(" *[9]Listar Clientes                    *");
-                                Console.WriteLine(" *[10] Salir                            *");
-                                Console.WriteLine(" ****************************************");
+                                Console.WriteLine(" *[9]Listar Clientes                        *");
+                                Console.WriteLine(" *[10] Salir                                *");
+                                Console.WriteLine(" ********************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
                                 {
@@ -241,7 +242,7 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" *[7]Buscar Materiales                     *");
                                 Console.WriteLine(" *[8]Actualiza Material por ID             *");
                                 Console.WriteLine(" *[9]Listar Materiales                     *");
-                                Console.WriteLine(" *[10]Salir                               *");
+                                Console.WriteLine(" *[10]Salir                                *");
                                 Console.WriteLine(" *******************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
