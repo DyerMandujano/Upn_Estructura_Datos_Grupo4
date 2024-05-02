@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace PryHoteleria_Upn_Grupo4
@@ -318,16 +320,47 @@ namespace PryHoteleria_Upn_Grupo4
 
         public static void IngresoDatos()
         {
-            Console.Write(" Ingresar Nombre: ");
-            C_nombre = Console.ReadLine();
-            Console.Write(" Ingresar Dni: ");
-            C_dni = Console.ReadLine();
+            do
+            {
+                Console.Write(" Ingresar Nombre: ");
+                C_nombre = Console.ReadLine();
+                if(int.TryParse(C_nombre, out _) == true)
+                {
+                    Console.WriteLine("Ingrese un valor correcto");
+                }
+            }
+            //Mientras que los valores pasados se puedan convertir a entero, va a seguir en el bucle
+            //Sino sale del bucle, ya que el valor que se estaria pasando seria un string
+            while (int.TryParse(C_nombre, out _));
+            do
+            {
+                Console.Write(" Ingresar Dni: ");
+                C_dni = Console.ReadLine();
+                if(!EsDNIValido(C_dni))
+                {
+                    Console.WriteLine("Coloque un DNI valido");
+                }
+            }
+            while (!EsDNIValido(C_dni));
+
+
             Console.Write(" Ingresar Fecha de Nacimiento: ");
             C_f_nac = Console.ReadLine();
+
             Console.Write(" Ingresar Email: ");
             C_email = Console.ReadLine();
-            Console.Write(" Ingresar Telefono: ");
-            C_telf = Console.ReadLine();
+
+            do
+            {
+                Console.Write(" Ingresar Telefono: ");
+                C_telf = Console.ReadLine();
+                if (!EsTelfValido(C_telf))
+                {
+                    Console.WriteLine("Coloque un telefono valido");
+                }
+            }
+            while (!EsTelfValido(C_telf));
+            
             Console.WriteLine(" Cliente Ingresado Correctamente!");
             Console.ReadKey();
         }
@@ -338,7 +371,10 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.Write("Ingresar Nombre: ");
                 Empleado_nom = Console.ReadLine();
-            } while (int.TryParse(Empleado_nom, out _));
+            } 
+           
+            while 
+            (int.TryParse(Empleado_nom, out _));
 
             do
             {
@@ -379,14 +415,54 @@ namespace PryHoteleria_Upn_Grupo4
 
         public static void IngresoDatosMateriales()
         {
-            Console.Write(" Ingresar la Categoria: ");
-            MT_categoria = Console.ReadLine();
-            Console.Write(" Ingresar Nombre del Material: ");
-            MT_nombre_material = Console.ReadLine();
-            Console.Write(" Ingresar el Costo: ");
-            MT_costo = double.Parse(Console.ReadLine());
+            do
+            {
+                Console.Write(" Ingresar la Categoria: ");
+                MT_categoria = Console.ReadLine();
+                if (int.TryParse(MT_categoria, out _) == true)
+                {
+                    Console.WriteLine("Ingrese un valor correcto");
+                }
+            }
+            while (int.TryParse(MT_categoria, out _));
+            do
+            {
+                Console.Write(" Ingresar Nombre del Material: ");
+                MT_nombre_material = Console.ReadLine();
+                if (int.TryParse(MT_nombre_material, out _) == true)
+                {
+                    Console.WriteLine("Ingrese un valor correcto");
+                }
+            }
+            while (int.TryParse(MT_nombre_material, out _));
+
+            do
+            {
+                Console.Write("Ingresar Costo: ");
+            } while (!double.TryParse(Console.ReadLine(), out MT_costo));
+
+
+
             Console.WriteLine(" Material Ingresado Correctamente!");
             Console.ReadKey();
+        }
+
+        static bool EsDNIValido(string dni)
+        {
+            // la clase 'Regex' nos sirve para verificar que el DNI contenga solo números
+            //Por lo tanto le estamos diciendo que acepte los digitos desde 0 a 9
+            //y tambien que solo acepte 8 caracteres.
+            Regex regex = new Regex(@"^\d{8}$");
+            return regex.IsMatch(dni);
+        }
+
+        static bool EsTelfValido(string telf)
+        {
+            // la clase 'Regex' nos sirve para verificar que el DNI contenga solo números
+            //Por lo tanto le estamos diciendo que acepte los digitos desde 0 a 9
+            //y tambien que solo acepte 9 caracteres.
+            Regex regex = new Regex(@"^\d{9}$");
+            return regex.IsMatch(telf);
         }
     }
 }
