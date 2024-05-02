@@ -161,9 +161,9 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" *[5]Eliminar Empleado por ID                 *");
                                 Console.WriteLine(" *[6]Eliminar Toda la Lista de los Empleados  *");
                                 Console.WriteLine(" *[7]Buscar Empleados por DNI                 *");
-                                Console.WriteLine(" *[8]Actualizar Correo de Empleado por ID                         *");
-                                Console.WriteLine(" *[9]Listar Empleados     *");
-                                Console.WriteLine(" *[10] Salir                                   *");
+                                Console.WriteLine(" *[8]Actualizar Correo de Empleado por ID     *");
+                                Console.WriteLine(" *[9]Listar Empleados                         *");
+                                Console.WriteLine(" *[10] Salir                                  *");
                                 Console.WriteLine(" **********************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
@@ -173,7 +173,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     {
                                         case 1:
                                             IngresoDatos2();
-                                            Empleados.InsertarEmpleadoInicio(Empleado_nom, Empleado_dni, Empleado_correo, Empleado_telefono, Empleado_direccion, Empleado_cargo,Empleado_sueldo);
+                                            Empleados.InsertarEmpleadoInicio(Empleado_nom, Empleado_dni, Empleado_correo, Empleado_telefono, Empleado_direccion, Empleado_cargo, Empleado_sueldo);
                                             break;
 
                                         case 2:
@@ -210,8 +210,6 @@ namespace PryHoteleria_Upn_Grupo4
                                         case 8:
                                             Console.Write(" Ingrese ID del Empleado: ");
                                             Empleado_id = int.Parse(Console.ReadLine());
-                                            Console.Write(" Ingrese el nuevo correo: ");
-                                            Empleado_correo = Console.ReadLine();
                                             Empleados.ActualizarCorreoEmpleado(Empleado_id, Empleado_correo);
                                             Console.ReadKey();
                                             break;
@@ -288,8 +286,6 @@ namespace PryHoteleria_Upn_Grupo4
                                         case 8:
                                             Console.Write(" Ingrese ID del Material: ");
                                             MT_id = int.Parse(Console.ReadLine());
-                                            Console.Write(" Ingrese nuevo nombre del Material: ");
-                                            MT_nombre_material = Console.ReadLine();
                                             materiales.ActualizarNombreMaterial(MT_id, MT_nombre_material);
                                             Console.ReadKey();
                                             break;
