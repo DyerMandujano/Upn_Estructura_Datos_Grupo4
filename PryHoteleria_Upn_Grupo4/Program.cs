@@ -159,8 +159,9 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" *[5]Eliminar Empleado por ID                 *");
                                 Console.WriteLine(" *[6]Eliminar Toda la Lista de los Empleados  *");
                                 Console.WriteLine(" *[7]Buscar Empleados por DNI                 *");
-                                Console.WriteLine(" *[8]Listar Empleados                         *");
-                                Console.WriteLine(" *[9] Salir                                   *");
+                                Console.WriteLine(" *[8]Actualizar Correo de Empleado por ID                         *");
+                                Console.WriteLine(" *[9]Listar Empleados     *");
+                                Console.WriteLine(" *[10] Salir                                   *");
                                 Console.WriteLine(" **********************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
@@ -205,6 +206,14 @@ namespace PryHoteleria_Upn_Grupo4
                                             break;
 
                                         case 8:
+                                            Console.Write(" Ingrese ID del Empleado: ");
+                                            Empleado_id = int.Parse(Console.ReadLine());
+                                            Console.Write(" Ingrese el nuevo correo: ");
+                                            Empleado_correo = Console.ReadLine();
+                                            Empleados.ActualizarCorreoEmpleado(Empleado_id, Empleado_correo);
+                                            Console.ReadKey();
+                                            break;
+                                        case 9:
                                             Empleados.ImprimirEmpleados();
                                             Console.ReadKey();
                                             break;
@@ -216,7 +225,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.WriteLine(" Ingrese un valor correcto!");
                                     Console.ReadKey();
                                 }
-                            } while (opcion_empleados != 9);
+                            } while (opcion_empleados != 10);
                             break;
                         case 3:
                             do
