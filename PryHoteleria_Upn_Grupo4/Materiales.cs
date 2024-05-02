@@ -11,6 +11,7 @@ namespace PryHoteleria_Upn_Grupo4
         public static int contador = 1000;
         //ATRIBUTOS
         private int id;
+        private string categoria;
         private string nombre_material;
         private int cantidad;
         private double costo;
@@ -21,12 +22,14 @@ namespace PryHoteleria_Upn_Grupo4
 
         }
 
-        public Materiales(string nombre_material, int cantidad, double costo)
+        public Materiales(string categoria,string nombre_material, double costo)
         {
+            Random r = new Random();
             Id = contador++;
             //MATERIALES DEL PRODUCTO
+            Categorias = categoria;
             NombreMaterial = nombre_material;
-            Cantidad = cantidad;
+            Cantidad = r.Next(1, 100);
             Costo = costo;
             //Inicializar el enlace en null
             MT_Sgte = null;
@@ -44,6 +47,12 @@ namespace PryHoteleria_Upn_Grupo4
         {
             get { return id; }
             set { id = value; }
+        }
+
+        public string Categorias
+        {
+            get { return categoria; }
+            set { categoria = value; }
         }
 
         public string NombreMaterial

@@ -36,24 +36,7 @@ namespace PryHoteleria_Upn_Grupo4
             }else return false;
         }
 
-        /*
-        public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
-        {
-            //Creamos el nodo cliente a ingresar
-            Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
-            if (Lista_cliente == null)
-            {
-                //La lista apuntará al objeto 'q' que estamos agregando.
-                Lista_cliente = q;
-            }else
-            {
-                //El valor ingresado a punta a la lista que ya se encontraba
-                q.Cl_Sgte = Lista_cliente;
-                //La lista apunta al 'q' para q este sea el nuevo valor inicial
-                Lista_cliente = q;
-            }
-        }
-        */
+
         public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
         {
             //Creamos el nodo cliente a ingresar
@@ -124,19 +107,340 @@ namespace PryHoteleria_Upn_Grupo4
             }
         }
 
+
+
         public void EliminarClienteInicio()
         {
             if (VerificarListaVacia())
             {
                 Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
                 return;
-            }else
+            }
+            else
             {
-                Lista_cliente = Lista_cliente.Cl_Sgte;
+                //Cuando hay un solo nodo en la lista
+                //Si la lista se apunta a si misma 
+                if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                {
+                    //Al momento de eliminar el unico nodo
+                    //la lista apuntará a null
+                    Lista_cliente = null;
+                }
+                //De lo contrario
+                else
+                {
+                    //instanciamos un objeto 'q' de tipo Cliente 
+                    Cliente q = Lista_cliente;
+                    //Con el objeto 'q' recorremos la lista
+                    //Mientras que el nodo 'q' no apunte al primer elemento de la lista
+                    while (q.Cl_Sgte != Lista_cliente) 
+                    {
+                        //Avanza al siguiente nodo
+                        q = q.Cl_Sgte;
+                    }
+                    //Una vez se termine el bucle
+                    // El segundo nodo de la listaCliente se convierte en el primero
+                    Lista_cliente = Lista_cliente.Cl_Sgte;
+                    //Y el último nodo apunta al nuevo primer nodo
+                    q.Cl_Sgte = Lista_cliente; 
+                }
                 Console.WriteLine("\n CLIENTE INICIAL ELIMINADO!");
             }
         }
 
+        public void EliminarClienteFinal()
+        {
+            if (VerificarListaVacia())
+            {
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+                return;
+            }
+            else
+            {
+                //Cuando hay un solo nodo en la lista
+                //Si la lista se apunta a si misma 
+                if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                {
+                    //Al momento de eliminar el unico nodo
+                    //la lista apuntará a null
+                    Lista_cliente = null;
+                }
+                //De lo contrario
+                else
+                {
+                    //EL 'p' NOS SERVIRA PARA RECORRER LA LISTA
+                    Cliente p = Lista_cliente;
+                    //El 'nd_ant' NOS SERVIRA PARA ALMACENAR LOS VALORES DEL 'p' MIENTRAS ESTE RECORRIENDO LA LISTA
+                    Cliente nd_ant = new Cliente();
+                    //Mientras que el nodo 'q' no apunte al primer elemento de la lista
+                    while (p.Cl_Sgte != Lista_cliente)
+                    {
+                        //LOS DATOS DEL OBJETO 'p' SE ALMACENARÁN EN EL OBJETO 'nd_anterior'
+                        nd_ant = p;
+                        //Y EL OBJETO 'p' IRA AL SIGUIENTE NODO DE LA LISTA
+                        p = p.Cl_Sgte;
+                    }
+                    //Una vez se termine el bucle, Es decir se haya encontrado al ultimo no y eliminado...
+                    // El penúltimo nodo apunta al primer nodo de la lista
+                    nd_ant.Cl_Sgte = Lista_cliente; 
+                }
+                Console.WriteLine("\n CLIENTE FINAL ELIMINADO!");
+            }
+        }
+
+        public void EliminarClientePorID(int id)
+        {
+            if (VerificarListaVacia())
+            {
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+                return;
+            }
+            //flag para saber si se ha encontrado el ID
+            bool encontrado = false;
+            Cliente p = Lista_cliente;
+            Cliente ant = null;
+
+            //el do-while va a ejecutar el codigo por primera vez sin hacer caso a la condicion
+            do
+            {
+                //Buscar el valor del nodo en la lista mediante el dato pasado por parametro
+                //Es decir, Si el 'valor' pasado por parametro es igual al numero que se encuentra en la propiedad 'Id' del nodo
+                if (p.Id == id)
+                {
+                    //Si el objeto 'p' que estoy buscando es el primero de la lista clientes
+                    if (p == Lista_cliente)
+                    {
+                        //PUEDE HABER DOS CASOS
+                        // Si solo hay un nodo en la lista, es decir que solo este el 'p'
+                        if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                        {
+                            Lista_cliente = null;
+                        }
+                        //de lo contrario
+                        else
+                        {
+                            //Si hay mas nodos de tipo Cliente
+                            // recorre la lista mediante el objeto 'p' hasta llegar al ultimo
+                            while (p.Cl_Sgte != Lista_cliente) 
+                            {
+                                //avanza al siguiente nodo
+                                p = p.Cl_Sgte;
+                            }
+                            //una vez terminado el bucle
+                            // El segundo nodo se convierte en el primero
+                            Lista_cliente = Lista_cliente.Cl_Sgte;
+                            // El último nodo apunta al nuevo primer nodo
+                            p.Cl_Sgte = Lista_cliente; 
+                        }
+                    }
+                    //Caso contrario de que no este en el primer lugar
+                    else
+                    {
+                        //el objeto 'ant' apuntará a la dirección del objeto 'q' Y NO AL MISMO OBJETO.
+                        ant.Cl_Sgte = p.Cl_Sgte;
+                    }
+                    Console.WriteLine(" Cliente con ID " + id + " Eliminado Correctamente!");
+                    encontrado = true;
+                    break;
+                }
+
+                //el 'ant' almacena los valores del 'p'
+                ant = p;
+                //Avanza al siguiente nodo 
+                p = p.Cl_Sgte;
+
+            }
+            //Mientras 'p' sea distinto del primer elemento
+            while (p != Lista_cliente);
+
+            if (!encontrado)
+            {
+                Console.WriteLine(" No se encontró ningún cliente con el ID " + id);
+            }
+        }
+
+        //Metodo para eliminar la lista
+        public void EliminaTodaLaLista()
+        {
+            Lista_cliente = null;
+            Console.WriteLine(" LISTA ELIMINADA CORRECTAMENTE!");
+        }
+
+
+        public void BuscarClientePorDNI(string dni)
+        {
+            if (VerificarListaVacia())
+            {
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+                return;
+            }
+
+            Cliente p = Lista_cliente;
+            bool encontrado = false;
+
+            // Comprueba si el primer nodo es el que se busca
+            if (p.Dni == dni)
+            {
+                encontrado = true;
+            }
+
+            // Si el primer nodo no es el que se busca, recorre la lista
+            while (p.Cl_Sgte != Lista_cliente && !encontrado)
+            {
+                p = p.Cl_Sgte;
+                if (p.Dni == dni)
+                {
+                    encontrado = true;
+                }
+            }
+
+            if (encontrado)
+            {
+                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
+                Console.WriteLine(" *****************************************************************************************************************");
+
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                Console.WriteLine(" *****************************************************************************************************************");
+            }
+            else
+            {
+                Console.WriteLine(" El DNI " + dni + " no se encuentra en la lista");
+            }
+        }
+
+        public void ActualizarTelefonoPorId(int id, string newTelf)
+        {
+            if (VerificarListaVacia())
+            {
+                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+                return;
+            }
+
+            //el objeto 'p' almacena la lista cliente
+            Cliente p = Lista_cliente;
+            //flag para saber si se ha encontrado o no el id
+            bool encontrado = false;
+
+            //Si el id que se busca se encuentra en el primer nodo...
+            // Si el valor pasado por el parametro es el mismo que el de la propiedad Id
+            if (p.Id == id)
+            {
+                encontrado = true;
+                //Actualiza el telefono
+                p.Telefono = newTelf;
+            }
+
+            // Si el primer nodo no es el que se busca, recorre la lista
+            //Mientras que el p no apunte a la lista cliente y no lo haya encontrado
+            while (p.Cl_Sgte != Lista_cliente && !encontrado)
+            {
+                //Avanza al siguiente nodo
+                p = p.Cl_Sgte;
+                // Si el valor pasado por el parametro es el mismo que el de la propiedad Id
+                if (p.Id == id)
+                {
+                    encontrado = true;
+                    //Actualiza el telefono
+                    p.Telefono = newTelf;
+                }
+            }
+
+            //Si lo encontró..
+            if (encontrado)
+            {
+                Console.WriteLine("Se actualizó el Telefono Correctamente!!\n");
+
+                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
+                Console.WriteLine(" *****************************************************************************************************************");
+
+                Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                Console.WriteLine(" *****************************************************************************************************************");
+            }
+            //Caso contrario
+            else
+            {
+                Console.WriteLine(" El ID " + id + " no se encuentra en la lista");
+            }
+        }
+
+        public void ImprimirListaCircular()
+        {
+            //Si la lista es diferente a null
+            if (Lista_cliente != null)
+            {
+                //instanciamos un objeto p
+                Cliente p = Lista_cliente;
+
+                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
+                Console.WriteLine(" *****************************************************************************************************************");
+                //Entra al bucle
+                do
+                {
+                    Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                 // Avanza al siguiente nodo
+                    p = p.Cl_Sgte;
+                    Console.WriteLine(" *****************************************************************************************************************");
+                }
+                //Mientras que 'p' sea distinto al primer elemento de la Lista_Cliente
+                //va a seguir imprimiendo los nodos.
+                while (p != Lista_cliente);
+            }
+            else
+            {
+                Console.WriteLine("La lista está vacía.");
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/*
+public void InsertarClienteInicio(string nombre, string dni, string f_nac, string email, string telefono)
+{
+    //Creamos el nodo cliente a ingresar
+    Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
+    if (Lista_cliente == null)
+    {
+        //La lista apuntará al objeto 'q' que estamos agregando.
+        Lista_cliente = q;
+    }else
+    {
+        //El valor ingresado a punta a la lista que ya se encontraba
+        q.Cl_Sgte = Lista_cliente;
+        //La lista apunta al 'q' para q este sea el nuevo valor inicial
+        Lista_cliente = q;
+    }
+}
+*/
+
+/*
+public void EliminarClienteInicio()
+{
+    if (VerificarListaVacia())
+    {
+        Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+        return;
+    }else
+    {
+        Lista_cliente = Lista_cliente.Cl_Sgte;
+        Console.WriteLine("\n CLIENTE INICIAL ELIMINADO!");
+    }
+}
+*/
+
+/*
         public void EliminarClienteFinal()
         {
             if (VerificarListaVacia())
@@ -174,64 +478,58 @@ namespace PryHoteleria_Upn_Grupo4
                 Console.WriteLine("\n CLIENTE FINAL ELIMINADO!");
             }
         }
+        */
+/*
+       public void EliminarClientePorID(int id)
+       {
+           if (VerificarListaVacia())
+           {
+               Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
+               return;
+           }
+           bool encontrado = false;
+           Cliente p = Lista_cliente;
+           Cliente ant = new Cliente();
 
-        public void EliminarClientePorID(int id)
-        {
-            if (VerificarListaVacia())
-            {
-                Console.WriteLine(" LA LISTA ESTÁ VACIA!!");
-                return;
-            }
-            bool encontrado = false;
-            Cliente p = Lista_cliente;
-            Cliente ant = new Cliente();
-            
-                while (p != null)
-                {
-                    //Buscar el valor del nodo en la lista mediante el dato pasado por parametro
-                    //Es decir, Si el 'valor' pasado por parametro es igual al numero que se encuentra en la propiedad 'Id' del nodo
-                    if (p.Id == id)
-                    {
-                        //Si el valor es encontrado en el primer elemento de la lista
-                        if (p == Lista_cliente)
-                        {
-                            //La lista va a apuntar a la direccion del siguiente nodo y por lo tanto eliminará el nodo q se estaba buscando
-                            Lista_cliente = Lista_cliente.Cl_Sgte;
-                        }
-                        else
-                        {
+               while (p != null)
+               {
+                   //Buscar el valor del nodo en la lista mediante el dato pasado por parametro
+                   //Es decir, Si el 'valor' pasado por parametro es igual al numero que se encuentra en la propiedad 'Id' del nodo
+                   if (p.Id == id)
+                   {
+                       //Si el valor es encontrado en el primer elemento de la lista
+                       if (p == Lista_cliente)
+                       {
+                           //La lista va a apuntar a la direccion del siguiente nodo y por lo tanto eliminará el nodo q se estaba buscando
+                           Lista_cliente = Lista_cliente.Cl_Sgte;
+                       }
+                       else
+                       {
 
-                            //Si se trata de un elemento diferente del primero
-                            //hacemos que el obj 'ant' de tipo nodo obtenga la direccion del siguiente nodo, para que el nodo con el valor encontrado se elimine
-                            //y continue con el siguiente nodo.
-                            ant.Cl_Sgte = p.Cl_Sgte;
-                        }
-                        Console.WriteLine(" Cliente con ID " + id + " Eliminado Correctamente!");
-                        encontrado = true;
-                        break;
-                }
-                    //Si todavia no encuentra el valor deseado, va a seguir estas instrucciones
-                    //Guarda el elemento de 'p' en 'ant'
-                    ant = p;
-                    //Ir al siguiente elemento de la lista
-                    p = p.Cl_Sgte;
-                }
-            if(!encontrado)
-            {
-                Console.WriteLine(" No se encontró ningún cliente con el ID " + id);
-            }
-            
-            
-            
-        }
+                           //Si se trata de un elemento diferente del primero
+                           //hacemos que el obj 'ant' de tipo nodo obtenga la direccion del siguiente nodo, para que el nodo con el valor encontrado se elimine
+                           //y continue con el siguiente nodo.
+                           ant.Cl_Sgte = p.Cl_Sgte;
+                       }
+                       Console.WriteLine(" Cliente con ID " + id + " Eliminado Correctamente!");
+                       encontrado = true;
+                       break;
+               }
+                   //Si todavia no encuentra el valor deseado, va a seguir estas instrucciones
+                   //Guarda el elemento de 'p' en 'ant'
+                   ant = p;
+                   //Ir al siguiente elemento de la lista
+                   p = p.Cl_Sgte;
+               }
+           if(!encontrado)
+           {
+               Console.WriteLine(" No se encontró ningún cliente con el ID " + id);
+           }
 
-        //Metodo para eliminar la lista
-        public void EliminaTodaLaLista()
-        {
-            Lista_cliente = null;
-            Console.WriteLine(" LISTA ELIMINADA CORRECTAMENTE!");
-        }
+       }
+       */
 
+/*
         public void BuscarClientePorDNI(string dni)
         {
             Cliente p = Lista_cliente;
@@ -261,8 +559,9 @@ namespace PryHoteleria_Upn_Grupo4
                 Console.WriteLine(" *****************************************************************************************************************");
             }
         }
+        */
 
-
+/*
         public void ImprimirClientes()
         {
             Cliente p = Lista_cliente;
@@ -283,38 +582,5 @@ namespace PryHoteleria_Upn_Grupo4
                 p = p.Cl_Sgte;
                 Console.WriteLine(" *****************************************************************************************************************");
             }
-
-
         }
-
-        public void ImprimirListaCircular()
-        {
-            //Si la lista es diferente a null
-            if (Lista_cliente != null)
-            {
-                //instanciamos un objeto p
-                Cliente p = Lista_cliente;
-
-                Console.WriteLine(" *****************************************************************************************************************");
-                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
-                Console.WriteLine(" *****************************************************************************************************************");
-                //Entra al bucle
-                do
-                {
-                    Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
-                 // Avanza al siguiente nodo
-                    p = p.Cl_Sgte;
-                    Console.WriteLine(" *****************************************************************************************************************");
-                }
-                //Mientras que 'p' sea distinto al primer elemento de la Lista_Cliente
-                //va a seguir imprimiendo los nodos.
-                while (p != Lista_cliente);
-            }
-            else
-            {
-                Console.WriteLine("La lista está vacía.");
-            }
-        }
-
-    }
-}
+        */
