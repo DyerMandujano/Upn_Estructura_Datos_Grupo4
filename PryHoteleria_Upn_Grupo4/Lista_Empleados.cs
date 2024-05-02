@@ -29,7 +29,7 @@ namespace PryHoteleria_Upn_Grupo4
 
         }
         //Cambiado a lista doble
-        public void InsertarEmpleadoInicio(string nom, string dni, string correo, string telefono, string direccion, string cargo, string sueldo)
+        public void InsertarEmpleadoInicio(string nom, int dni, string correo, int telefono, string direccion, string cargo, int sueldo)
         {
             Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo, sueldo);
 
@@ -45,7 +45,7 @@ namespace PryHoteleria_Upn_Grupo4
             }
         }
         //codigo cambiado
-        public void InsertarEmpleadoFinal(string nom, string dni, string correo, string telefono, string direccion, string cargo, string sueldo)
+        public void InsertarEmpleadoFinal(string nom, int dni, string correo, int telefono, string direccion, string cargo, int sueldo)
         {
             Empleados q = new Empleados(nom, dni, correo, telefono, direccion, cargo, sueldo);
 
@@ -147,7 +147,7 @@ namespace PryHoteleria_Upn_Grupo4
             ListaEmpleados = null;
             Console.WriteLine(" Lista completamente eliminada");
         }
-        public void BuscarEmpleadoPorDNI(string dni)
+        public void BuscarEmpleadoPorDNI(int dni)
         {
             Empleados p = ListaEmpleados;
 

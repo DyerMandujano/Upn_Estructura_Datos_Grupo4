@@ -16,9 +16,9 @@ namespace PryHoteleria_Upn_Grupo4
         static string C_nombre, C_dni, C_f_nac, C_email, C_telf;
 
         //EMPLEADOS
-        static int Empleado_id, opcion, opcion_empleados;
+        static int Empleado_id, opcion, opcion_empleados, Empleado_dni, Empleado_telefono, Empleado_sueldo;
 
-        static string Empleado_nom, Empleado_cargo, Empleado_dni, Empleado_correo, Empleado_telefono, Empleado_direccion, Empleado_sueldo;
+        static string Empleado_nom, Empleado_cargo, Empleado_correo, Empleado_direccion;
 
         //MATERIALES
         //MT es la variable para majeras las opciones de los materiales
@@ -200,7 +200,7 @@ namespace PryHoteleria_Upn_Grupo4
                                             break;
                                         case 7:
                                             Console.Write(" Ingrese DNI del Empleado: ");
-                                            Empleado_dni = Console.ReadLine();
+                                            Empleado_dni = int.Parse(Console.ReadLine());
                                             Empleados.BuscarEmpleadoPorDNI(Empleado_dni);
                                             Console.ReadKey();
                                             break;
@@ -331,22 +331,48 @@ namespace PryHoteleria_Upn_Grupo4
             Console.WriteLine(" Cliente Ingresado Correctamente!");
             Console.ReadKey();
         }
+        //validaciones empleados
         public static void IngresoDatos2()
         {
-            Console.Write(" Ingresar Nombre: ");
-            Empleado_nom = Console.ReadLine();
-            Console.Write(" Ingresar Dni: ");
-            Empleado_dni = Console.ReadLine();
-            Console.Write(" Ingresar Correo: ");
-            Empleado_correo = Console.ReadLine();
-            Console.Write(" Ingresar Telefono: ");
-            Empleado_telefono = Console.ReadLine();
-            Console.Write(" Ingresar Direccion: ");
-            Empleado_direccion = Console.ReadLine();
-            Console.Write(" Ingresar Cargo: ");
-            Empleado_cargo = Console.ReadLine();
-            Console.Write(" Ingresar Sueldo: ");
-            Empleado_sueldo = Console.ReadLine();
+            do
+            {
+                Console.Write("Ingresar Nombre: ");
+                Empleado_nom = Console.ReadLine();
+            } while (int.TryParse(Empleado_nom, out _));
+
+            do
+            {
+                Console.Write("Ingresar DNI: ");
+            } while (!int.TryParse(Console.ReadLine(), out Empleado_dni));
+
+            do
+            {
+                Console.Write(" Ingresar Correo: ");
+                Empleado_correo = Console.ReadLine();   
+            } while (int.TryParse(Empleado_correo, out _));
+
+            do
+            {
+                Console.Write("Ingresar Telefono: ");
+            } while (!int.TryParse(Console.ReadLine(), out Empleado_telefono));
+
+            do
+            {
+                Console.Write("Ingresar Direccion: ");
+                Empleado_direccion = Console.ReadLine();
+            } while (int.TryParse(Empleado_direccion, out _));
+
+            do
+            {
+                Console.Write("Ingresar Cargo: ");
+                Empleado_cargo = Console.ReadLine();
+            } while (int.TryParse(Empleado_cargo, out _));
+
+            do
+            {
+                Console.Write("Ingresar Sueldo: ");
+            } while (!int.TryParse(Console.ReadLine(), out Empleado_sueldo));
+
             Console.WriteLine(" Empleado Ingresado Correctamente!");
             Console.ReadKey();
         }
