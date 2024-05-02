@@ -18,6 +18,7 @@ namespace PryHoteleria_Upn_Grupo4
         private string cargo;
         private string sueldo;
         private Empleados emple_sgt;
+        private Empleados emple_ant;
 
         public Empleados()
         {
@@ -36,6 +37,12 @@ namespace PryHoteleria_Upn_Grupo4
             Cargo = cargo;
             Sueldo = sueldo;
             emple_sgt = null;
+            emple_ant = null;
+        }
+        public Empleados Emple_Ant
+        {
+            get { return emple_ant; }
+            set { emple_ant = value; }
         }
         public Empleados Emple_Sgt
         {
