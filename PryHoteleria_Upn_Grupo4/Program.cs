@@ -68,7 +68,7 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 Console.Clear();
                                 Console.WriteLine("");
-                                Console.WriteLine(" Menu de Persona");
+                                Console.WriteLine(" Menu de Cliente");
                                 Console.WriteLine(" ****************************************");
                                 Console.WriteLine(" *[1]Ingresar Cliente al Inicio         *");
                                 Console.WriteLine(" *[2]Ingresar Cliente al Final          *");
@@ -77,8 +77,9 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" *[5]Eliminar Cliente por ID            *");
                                 Console.WriteLine(" *[6]Eliminar Toda la Lista de CLientes *");
                                 Console.WriteLine(" *[7]Buscar Cliente por DNI             *");
-                                Console.WriteLine(" *[8]Listar Clientes                    *");
-                                Console.WriteLine(" *[10] Salir                             *");
+                                Console.WriteLine(" *[8]Actualizar Telefono del Cliente por ID *");
+                                Console.WriteLine(" *[9]Listar Clientes                    *");
+                                Console.WriteLine(" *[10] Salir                            *");
                                 Console.WriteLine(" ****************************************");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
@@ -123,6 +124,14 @@ namespace PryHoteleria_Upn_Grupo4
                                             break;
 
                                         case 8:
+                                            Console.Write(" Ingrese ID del Cliente: ");
+                                            C_id = int.Parse(Console.ReadLine());
+                                            Console.Write(" Ingrese nuevo Telfono: ");
+                                            C_telf = Console.ReadLine();
+                                            cliente.ActualizarTelefonoPorId(C_id, C_telf);
+                                            Console.ReadKey();
+                                            break;
+                                        case 9:
                                             cliente.ImprimirListaCircular();
                                             Console.ReadKey();
                                             break;
