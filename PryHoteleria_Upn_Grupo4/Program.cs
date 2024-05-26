@@ -458,6 +458,12 @@ namespace PryHoteleria_Upn_Grupo4
             //y tambien que solo acepte 9 caracteres.
             Regex regex = new Regex(@"^\d{9}$");
             return regex.IsMatch(telf);
+            //crjo
         }
     }
 }
+
+
+
+
+
