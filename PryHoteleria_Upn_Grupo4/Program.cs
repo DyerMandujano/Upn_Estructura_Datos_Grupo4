@@ -69,6 +69,7 @@ namespace PryHoteleria_Upn_Grupo4
                         case 1:
                             do
                             {
+                                //Menu Cliente
                                 Console.Clear();
                                 Console.WriteLine("");
                                 Console.WriteLine(" Menu de Cliente");
