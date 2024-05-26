@@ -151,6 +151,7 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 Console.Clear();
                                 Console.WriteLine("");
+                                //Menu de Empleados
                                 Console.WriteLine(" Menu de Empleados");
                                 Console.WriteLine(" **********************************************");
                                 Console.WriteLine(" *[1]Ingresar Empleado al Inicio              *");
