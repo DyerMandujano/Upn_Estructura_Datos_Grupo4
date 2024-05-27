@@ -5,12 +5,13 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace PryHoteleria_Upn_Grupo4
 {
     internal class Program
     {
-        
+
         //op es la variable para manejar las opciones del menú general
         //opC es una variable para majear las opciones que va a tener el menu de los clientes
         static int C_id, op, opC;
@@ -29,12 +30,24 @@ namespace PryHoteleria_Upn_Grupo4
         static string MT_categoria, MT_nombre_material;
         static double MT_costo;
 
+        //Reserva
+        static int reser_habitacion, reser_cliente, reser_id;
+        static DateTime reser_fecha_inicio, reser_fecha_final;
+        static int opcion_reserva;
+
+        static public ListaReserva cola = new ListaReserva();
+        static public PilaReserva pila = new PilaReserva();
+
         static void Main(string[] args)
         {
+            //Reserva
+            Reserva v;
             Console.SetWindowSize(140, 50);
             ListaCliente cliente = new ListaCliente();
             Lista_Empleados Empleados = new Lista_Empleados();
             ListaMateriales materiales = new ListaMateriales();
+            //Reserva
+            ListaReserva reserva = new ListaReserva();  
 
             do
             {
@@ -60,7 +73,8 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" *[1]Gestion de Clientes   *");
                     Console.WriteLine(" *[2]Gestion de Empleados  *");
                     Console.WriteLine(" *[3]Gestion de Materiales *");
-                    Console.WriteLine(" *[4]SALIR                 *");
+                    Console.WriteLine(" *[4]Gestion de Reservar   *");
+                    Console.WriteLine(" *[5]SALIR                 *");
                     Console.WriteLine(" ***************************");
                     Console.Write(" Elija una Opcion: ");
                     op = int.Parse(Console.ReadLine());
@@ -141,9 +155,9 @@ namespace PryHoteleria_Upn_Grupo4
                                 catch
                                 {
                                     Console.WriteLine("Coloque una opción valida!!.");
-                                    Console.ReadKey(); 
+                                    Console.ReadKey();
                                 }
-                                
+
                             } while (opC != 10);
                             break;
                         case 2:
@@ -299,17 +313,94 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.WriteLine(" Ingrese un valor correcto!");
                                     Console.ReadKey();
                                 }
-                                
+
                             } while (opM != 10);
                             break;
-                    }
+                        case 4:
+                            do 
+                            {
+                                Console.Clear();
+                                Console.WriteLine(" ");
+                                Console.WriteLine("********************************************");
+                                Console.WriteLine("*               Menu Reservar              *");
+                                Console.WriteLine(" *******************************************");
+                                Console.WriteLine(" *[1]Ingresar Datos                        *");
+                                Console.WriteLine(" *[2]Eliminar Datos                        *");
+                                Console.WriteLine(" *[3]Mostrar Datos                         *");
+                                Console.WriteLine(" *[4]Cambiar de Cola a pila                *");
+                                Console.WriteLine(" *[5]Elimina datos (pila)                  *");
+                                Console.WriteLine(" *[6]Mostrar Datos (pila)                  *");
+                                Console.WriteLine(" *[7]Salir                                 *");
+                                Console.WriteLine(" *******************************************");
+                                Console.Write(" ELIJA UNA OPCION: ");
+
+                                try
+                            {
+                                opcion_reserva = int.Parse(Console.ReadLine());
+                                    switch (opcion_reserva)
+                                    {
+                                        case 1:
+                                            IngresoDatosReserva();
+                                            reserva.queue(reser_habitacion, reser_cliente, reser_fecha_inicio, reser_fecha_final);
+                                            break;
+                                        case 2:
+                                            Reserva reservaEliminada = reserva.dequeue();
+                                            if (reservaEliminada != null)
+                                            {
+                                                Console.WriteLine("Reserva eliminada!");
+                                            }
+                                            Console.ReadKey();
+                                            break;
+                                        case 3:
+                                            reserva.Mostrar();
+                                            Console.ReadKey();
+                                            break;
+                                        case 4:
+                                            if (reserva.VerificarListaVacia())
+                                            {
+                                                Console.WriteLine("La cola está vacía!");
+                                            }
+                                            else
+                                            {
+                                                while (!reserva.VerificarListaVacia())
+                                                {
+                                                    v = reserva.dequeue(false);
+                                                    pila.push(v);
+                                                }
+                                                Console.WriteLine("Elementos de la cola transferidos a pila!");
+                                            }
+                                            Console.ReadKey();
+                                            break;
+                                        case 5:
+                                            Reserva reservaEliminadaPila = pila.pop();
+                                            if (reservaEliminadaPila != null)
+                                            {
+                                                Console.WriteLine("Reserva eliminada de la pila! ");
+                                            }
+                                            Console.ReadKey();
+                                            break;
+                                        case 6:
+                                            pila.muestraPila();
+                                            Console.ReadKey();
+                                            break;
+                                    }
+                            }
+                            catch
+                            {
+                                Console.WriteLine(" Ingrese un valor correcto!");
+                                Console.ReadKey();
+                            }
+
+                    } while (opcion_reserva != 7) ;
+                    break;
+                }
                 }
                 catch
                 {
                     Console.WriteLine(" Ingrese un valor valido");
                     Console.ReadKey();
                 }
-            } while (op != 4);
+            } while (op != 5);
 
         }
 
@@ -319,7 +410,7 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.Write(" Ingresar Nombre: ");
                 C_nombre = Console.ReadLine();
-                if(int.TryParse(C_nombre, out _) == true)
+                if (int.TryParse(C_nombre, out _) == true)
                 {
                     Console.WriteLine("Ingrese un valor correcto");
                 }
@@ -331,7 +422,7 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.Write(" Ingresar Dni: ");
                 C_dni = Console.ReadLine();
-                if(!EsDNIValido(C_dni))
+                if (!EsDNIValido(C_dni))
                 {
                     Console.WriteLine("Coloque un DNI valido");
                 }
@@ -355,7 +446,7 @@ namespace PryHoteleria_Upn_Grupo4
                 }
             }
             while (!EsTelfValido(C_telf));
-            
+
             Console.WriteLine(" Cliente Ingresado Correctamente!");
             Console.ReadKey();
         }
@@ -366,9 +457,9 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.Write("Ingresar Nombre: ");
                 Empleado_nom = Console.ReadLine();
-            } 
-           
-            while 
+            }
+
+            while
             (int.TryParse(Empleado_nom, out _));
 
             do
@@ -379,7 +470,7 @@ namespace PryHoteleria_Upn_Grupo4
             do
             {
                 Console.Write(" Ingresar Correo: ");
-                Empleado_correo = Console.ReadLine();   
+                Empleado_correo = Console.ReadLine();
             } while (int.TryParse(Empleado_correo, out _));
 
             do
@@ -458,6 +549,30 @@ namespace PryHoteleria_Upn_Grupo4
             //y tambien que solo acepte 9 caracteres.
             Regex regex = new Regex(@"^\d{9}$");
             return regex.IsMatch(telf);
+        }
+        public static void IngresoDatosReserva()
+        {
+            do
+            {
+                Console.Write("Ingresar ID de la habitación (4 dígitos): ");
+            } while (!int.TryParse(Console.ReadLine(), out reser_habitacion) || reser_habitacion.ToString().Length != 4);
+
+            do
+            {
+                Console.Write("Ingresar ID del Cliente (4 dígitos): ");
+            } while (!int.TryParse(Console.ReadLine(), out reser_cliente) || reser_cliente.ToString().Length != 4);
+            do
+            {
+                Console.Write("Ingrese Fecha de Inicio (Dia/Mes/Año): ");
+            } while (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out reser_fecha_inicio));
+
+            do
+            {
+                Console.Write("Ingrese Fecha de Final (Dia/Mes/Año): ");
+            } while (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out reser_fecha_final));
+
+            Console.WriteLine("Reservacion Satisfactoria!");
+            Console.ReadKey();
         }
     }
 }
