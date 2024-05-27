@@ -51,7 +51,7 @@ namespace PryHoteleria_Upn_Grupo4
             Lista_Empleados Empleados = new Lista_Empleados();
             ListaMateriales materiales = new ListaMateriales();
             //Reserva
-            ListaReserva reserva = new ListaReserva();  
+            ListaReserva reserva = new ListaReserva();
 
             do
             {
@@ -77,10 +77,10 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" *[1]Gestion de Clientes   *");
                     Console.WriteLine(" *[2]Gestion de Empleados  *");
                     Console.WriteLine(" *[3]Gestion de Materiales *");
+                    Console.WriteLine(" *[4]Gestion de Habitaciones*");
+                    Console.WriteLine(" *[5]Gestion de Reservas   *");
                     Console.WriteLine(" *[6]Gestion de Servicios   *");
                     Console.WriteLine(" *[7]SALIR                 *");
-                    Console.WriteLine(" *[4]Gestion de Reservar   *");
-                    Console.WriteLine(" *[5]SALIR                 *");
                     Console.WriteLine(" ***************************");
                     Console.Write(" Elija una Opcion: ");
                     op = int.Parse(Console.ReadLine());
@@ -321,82 +321,80 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.WriteLine(" Ingrese un valor correcto!");
                                     Console.ReadKey();
                                 }
-                                
+
                             } while (opM != 10);
                             break;
-                        case 6:
-                            MantenimientoServicios();
-                            break;
-                    }
-                }
                         case 4:
-                            do 
-                            {
-                                Console.Clear();
-                                Console.WriteLine(" ");
-                                Console.WriteLine("********************************************");
-                                Console.WriteLine("*               Menu Reservar              *");
-                                Console.WriteLine(" *******************************************");
-                                Console.WriteLine(" *[1]Ingresar Datos                        *");
-                                Console.WriteLine(" *[2]Eliminar Datos                        *");
-                                Console.WriteLine(" *[3]Mostrar Datos                         *");
-                                Console.WriteLine(" *[4]Cambiar de Cola a pila                *");
-                                Console.WriteLine(" *[5]Elimina datos (pila)                  *");
-                                Console.WriteLine(" *[6]Mostrar Datos (pila)                  *");
-                                Console.WriteLine(" *[7]Salir                                 *");
-                                Console.WriteLine(" *******************************************");
-                                Console.Write(" ELIJA UNA OPCION: ");
+                            break;
+                    
+                        case 5:
+                        do
+                        {
+                            Console.Clear();
+                            Console.WriteLine(" ");
+                            Console.WriteLine("********************************************");
+                            Console.WriteLine("*               Menu Reservar              *");
+                            Console.WriteLine(" *******************************************");
+                            Console.WriteLine(" *[1]Ingresar Datos                        *");
+                            Console.WriteLine(" *[2]Eliminar Datos                        *");
+                            Console.WriteLine(" *[3]Mostrar Datos                         *");
+                            Console.WriteLine(" *[4]Cambiar de Cola a pila                *");
+                            Console.WriteLine(" *[5]Elimina datos (pila)                  *");
+                            Console.WriteLine(" *[6]Mostrar Datos (pila)                  *");
+                            Console.WriteLine(" *[7]Salir                                 *");
+                            Console.WriteLine(" *******************************************");
+                            Console.Write(" ELIJA UNA OPCION: ");
 
-                                try
+                            try
                             {
                                 opcion_reserva = int.Parse(Console.ReadLine());
-                                    switch (opcion_reserva)
-                                    {
-                                        case 1:
-                                            IngresoDatosReserva();
-                                            reserva.queue(reser_habitacion, reser_cliente, reser_fecha_inicio, reser_fecha_final);
-                                            break;
-                                        case 2:
-                                            Reserva reservaEliminada = reserva.dequeue();
-                                            if (reservaEliminada != null)
+                                switch (opcion_reserva)
+                                {
+                                    case 1:
+                                        IngresoDatosReserva();
+                                        reserva.queue(reser_habitacion, reser_cliente, reser_fecha_inicio, reser_fecha_final);
+                                        break;
+                                    case 2:
+                                        Reserva reservaEliminada = reserva.dequeue();
+                                        if (reservaEliminada != null)
+                                        {
+                                            Console.WriteLine("Reserva eliminada!");
+                                        }
+                                        Console.ReadKey();
+                                        break;
+                                    case 3:
+                                        reserva.Mostrar();
+                                        Console.ReadKey();
+                                        break;
+                                    case 4:
+                                        if (reserva.VerificarListaVacia())
+                                        {
+                                            Console.WriteLine("La cola está vacía!");
+                                        }
+                                        else
+                                        {
+                                            while (!reserva.VerificarListaVacia())
                                             {
-                                                Console.WriteLine("Reserva eliminada!");
+                                                v = reserva.dequeue(false);
+                                                pila.push(v);
                                             }
-                                            Console.ReadKey();
-                                            break;
-                                        case 3:
-                                            reserva.Mostrar();
-                                            Console.ReadKey();
-                                            break;
-                                        case 4:
-                                            if (reserva.VerificarListaVacia())
-                                            {
-                                                Console.WriteLine("La cola está vacía!");
-                                            }
-                                            else
-                                            {
-                                                while (!reserva.VerificarListaVacia())
-                                                {
-                                                    v = reserva.dequeue(false);
-                                                    pila.push(v);
-                                                }
-                                                Console.WriteLine("Elementos de la cola transferidos a pila!");
-                                            }
-                                            Console.ReadKey();
-                                            break;
-                                        case 5:
-                                            Reserva reservaEliminadaPila = pila.pop();
-                                            if (reservaEliminadaPila != null)
-                                            {
-                                                Console.WriteLine("Reserva eliminada de la pila! ");
-                                            }
-                                            Console.ReadKey();
-                                            break;
-                                        case 6:
-                                            pila.muestraPila();
-                                            Console.ReadKey();
-                                            break;
-                                    }
+                                            Console.WriteLine("Elementos de la cola transferidos a pila!");
+                                        }
+                                        Console.ReadKey();
+                                        break;
+                                    case 5:
+                                        Reserva reservaEliminadaPila = pila.pop();
+                                        if (reservaEliminadaPila != null)
+                                        {
+                                            Console.WriteLine("Reserva eliminada de la pila! ");
+                                        }
+                                        Console.ReadKey();
+                                        break;
+                                    case 6:
+                                        pila.muestraPila();
+                                        Console.ReadKey();
+                                        break;
+                                }
                             }
                             catch
                             {
@@ -404,16 +402,19 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.ReadKey();
                             }
 
-                    } while (opcion_reserva != 7) ;
-                    break;
-                }
+                        } while (opcion_reserva != 7);
+                            break;
+                        case 6:
+                            MantenimientoServicios();
+                            break;
+                    }
                 }
                 catch
                 {
                     Console.WriteLine(" Ingrese un valor valido");
                     Console.ReadKey();
                 }
-            } while (op != 5);
+            } while (op != 7);
 
         }
 
@@ -699,7 +700,7 @@ namespace PryHoteleria_Upn_Grupo4
             Console.WriteLine("║" + unServicio.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
                               unServicio.Nombre_servi.PadRight(26, ' ') + "║" +
                               unServicio.Descripcion.PadRight(29, ' ') + "║" +
-                              unServicio.Horario.PadRight(25, ' ').Substring(0,25) + "║" +
+                              unServicio.Horario.PadRight(25, ' ').Substring(0, 25) + "║" +
                               unServicio.Precio.ToString().PadRight(8, ' ') + "║");
             if (unServicio.Siguiente != null)
             {
