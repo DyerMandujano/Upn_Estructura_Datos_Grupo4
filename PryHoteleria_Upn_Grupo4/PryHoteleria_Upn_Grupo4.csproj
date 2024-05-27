@@ -47,12 +47,15 @@
     <Compile Include="Empleados.cs" />
     <Compile Include="ListaCliente.cs" />
     <Compile Include="ListaMateriales.cs" />
+    <Compile Include="ListaReserva.cs" />
     <Compile Include="Lista_Empleados.cs" />
     <Compile Include="Materiales.cs" />
+    <Compile Include="PilaReserva.cs" />
     <Compile Include="NodoServicio.cs" />
     <Compile Include="NodoServicioEliminado.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reserva.cs" />
     <Compile Include="Servicios.cs" />
     <Compile Include="ServiciosEliminados.cs" />
   </ItemGroup>
