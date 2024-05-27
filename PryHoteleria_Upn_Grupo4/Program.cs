@@ -29,9 +29,14 @@ namespace PryHoteleria_Upn_Grupo4
         static string MT_categoria, MT_nombre_material;
         static double MT_costo;
 
+        //SERVICIOS
+        static Servicios _servicios = new Servicios();
+        static ServiciosEliminados _eliminados = new ServiciosEliminados();
+        static int _idServicio = 1;
+
         static void Main(string[] args)
         {
-            Console.SetWindowSize(140, 50);
+            //Console.SetWindowSize(140, 50);
             ListaCliente cliente = new ListaCliente();
             Lista_Empleados Empleados = new Lista_Empleados();
             ListaMateriales materiales = new ListaMateriales();
@@ -41,7 +46,7 @@ namespace PryHoteleria_Upn_Grupo4
                 try
                 {
                     Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                     Console.Clear();
 
                     Console.WriteLine("");
@@ -60,7 +65,8 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" *[1]Gestion de Clientes   *");
                     Console.WriteLine(" *[2]Gestion de Empleados  *");
                     Console.WriteLine(" *[3]Gestion de Materiales *");
-                    Console.WriteLine(" *[4]SALIR                 *");
+                    Console.WriteLine(" *[6]Gestion de Servicios   *");
+                    Console.WriteLine(" *[7]SALIR                 *");
                     Console.WriteLine(" ***************************");
                     Console.Write(" Elija una Opcion: ");
                     op = int.Parse(Console.ReadLine());
@@ -301,8 +307,11 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.WriteLine(" Ingrese un valor correcto!");
                                     Console.ReadKey();
                                 }
-                                
+        
                             } while (opM != 10);
+                            break;
+                        case 6:
+                            MantenimientoServicios();
                             break;
                     }
                 }
@@ -311,7 +320,7 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" Ingrese un valor valido");
                     Console.ReadKey();
                 }
-            } while (op != 4);
+            } while (op != 7);
 
         }
 
@@ -460,6 +469,152 @@ namespace PryHoteleria_Upn_Grupo4
             //y tambien que solo acepte 9 caracteres.
             Regex regex = new Regex(@"^\d{9}$");
             return regex.IsMatch(telf);
+        }
+
+        public static void MantenimientoServicios()
+        {
+            while (true)
+            {
+                Console.Clear();
+                string[] validar2 = { "1", "2", "3", "4", "5" };
+                Console.WriteLine(" ===============================================");
+                Console.WriteLine("\n\t    SERVICIOS");
+                Console.WriteLine("\n\t[1] Ingresar Servicios");
+                Console.WriteLine("\t[2] Eliminar Servicios");
+                Console.WriteLine("\t[3] Visualizar Servicios");
+                Console.WriteLine("\t[4] Mostrar de pila a cola");
+                Console.WriteLine("\t[5] Regresar al Menú Principal");
+                Console.WriteLine(" ===============================================");
+                string dato2 = Console.ReadLine();
+                int opcion2 = validar2.Contains(dato2) ? int.Parse(dato2) : 0;
+                switch (opcion2)
+                {
+                    case 1:
+                        IngresoServicios();
+                        break;
+                    case 2:
+                        EliminarServicios();
+                        break;
+                    case 3:
+                        VisualizarServicios();
+                        break;
+                    case 4:
+                        VisualizarServiciosEliminados();
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        Console.WriteLine(" Opción no válida");
+                        Console.ReadLine();
+                        break;
+                }
+                if (opcion2 == 5)
+                {
+                    break;
+                }
+            }
+        }
+
+        public static void IngresoServicios()
+        {
+            Console.Clear();
+            Console.WriteLine(" =============================================");
+            Console.WriteLine("   DATOS DEL SERVICIO");
+            Console.WriteLine(" =============================================");
+            Console.Write("  Id.Servicios     : " + _idServicio.ToString() + "\n");
+            Console.Write("  Nombre Servicio  : ");
+            string nombreServicio = Console.ReadLine();
+            Console.Write("  Descripción      : ");
+            string descServicio = Console.ReadLine();
+            Console.Write("  Horario          : ");
+            string horario = Console.ReadLine();
+            Console.Write("  Precio           : ");
+            string precio = Console.ReadLine();
+
+            NodoServicio _servicio = new NodoServicio
+            {
+                IdServicio = _idServicio,
+                Nombre_servi = nombreServicio,
+                Descripcion = descServicio,
+                Horario = horario,
+                Precio = String.IsNullOrWhiteSpace(precio) ? 0 : Decimal.Parse(precio)
+            };
+            _servicios.push(_servicio);
+            _idServicio++;
+            VisualizarServicios();
+        }
+
+        public static void EliminarServicios()
+        {
+            if (_servicios.Tope() != null)
+            {
+                _eliminados.Enqueue(_servicios.pop());
+                Console.WriteLine("Servicio Eliminado correctamente");
+            }
+            else
+            {
+                Console.WriteLine("Pila vacia");
+            }
+            Console.ReadKey();
+        }
+
+        public static void VisualizarServicios()
+        {
+            Console.Clear();
+            Console.WriteLine("SERVICIOS");
+            Console.WriteLine("╔════════════╦══════════════════════════╦═════════════════════════════╦═════════════════════════╦════════╗");
+            Console.WriteLine("║     NRO.   ║                          ║                             ║                         ║        ║");
+            Console.WriteLine("║  SERVICIO  ║        SERVICIO          ║        DESCRIPCION          ║      HORARIO            ║ PRECIO ║");
+            Console.WriteLine("╠════════════╬══════════════════════════╬═════════════════════════════╬═════════════════════════╬════════╣");
+            if (_servicios.Tope() != null)
+            {
+                MostrarServicio(_servicios.Tope());
+            }
+            Console.WriteLine("╚════════════╩══════════════════════════╩═════════════════════════════╩═════════════════════════╩════════╝");
+            Console.ReadLine();
+        }
+
+        public static void MostrarServicio(NodoServicio unServicio)
+        {
+
+
+
+            Console.WriteLine("║" + unServicio.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
+                              unServicio.Nombre_servi.PadRight(26, ' ') + "║" +
+                              unServicio.Descripcion.PadRight(29, ' ') + "║" +
+                              unServicio.Horario.PadRight(25, ' ').Substring(0,25) + "║" +
+                              unServicio.Precio.ToString().PadRight(8, ' ') + "║");
+            if (unServicio.Siguiente != null)
+            {
+                MostrarServicio(unServicio.Siguiente);
+            }
+        }
+        public static void VisualizarServiciosEliminados()
+        {
+            Console.Clear();
+            Console.WriteLine("SERVICIOS ELIMINADOS - COLA ");
+            Console.WriteLine("╔════════════╦══════════════════════════╦═════════════════════════════╦══════════════════════╦════════╗");
+            Console.WriteLine("║     NRO.   ║                          ║                             ║                      ║        ║");
+            Console.WriteLine("║  SERVICIO  ║        SERVICIO          ║        DESCRIPCION          ║      HORARIO         ║ PRECIO ║");
+            Console.WriteLine("╠════════════╬══════════════════════════╬═════════════════════════════╬══════════════════════╬════════╣");
+            MostrarServicioEliminado(_eliminados.Peek);
+            Console.WriteLine("╚════════════╩══════════════════════════╩═════════════════════════════╩══════════════════════╩════════╝");
+            Console.ReadLine();
+        }
+        public static void MostrarServicioEliminado(NodoServicioEliminado unServicioEliminado)
+        {
+            if (unServicioEliminado != null)
+            {
+                Console.WriteLine("║" + unServicioEliminado.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
+                             unServicioEliminado.Nombre_servi.PadRight(26, ' ') + "║" +
+                             unServicioEliminado.Descripcion.PadRight(29, ' ') + "║" +
+                             unServicioEliminado.Horario.PadRight(22, ' ') + "║" +
+                             unServicioEliminado.Precio.ToString().PadRight(8, ' ') + "║");
+                if (unServicioEliminado != null)
+                {
+                    MostrarServicioEliminado(unServicioEliminado.Siguiente);
+                }
+            }
         }
     }
 }
