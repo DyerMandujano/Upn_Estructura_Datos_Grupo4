@@ -45,7 +45,9 @@
   <ItemGroup>
     <Compile Include="Cliente.cs" />
     <Compile Include="Empleados.cs" />
+    <Compile Include="Habitacion.cs" />
     <Compile Include="ListaCliente.cs" />
+    <Compile Include="ListaHabitacion.cs" />
     <Compile Include="ListaMateriales.cs" />
     <Compile Include="ListaReserva.cs" />
     <Compile Include="Lista_Empleados.cs" />
