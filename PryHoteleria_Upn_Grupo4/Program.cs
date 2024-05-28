@@ -704,31 +704,92 @@ namespace PryHoteleria_Upn_Grupo4
 
         public static void IngresoServicios()
         {
-            Console.Clear();
-            Console.WriteLine(" =============================================");
-            Console.WriteLine("   DATOS DEL SERVICIO");
-            Console.WriteLine(" =============================================");
-            Console.Write("  Id.Servicios     : " + _idServicio.ToString() + "\n");
-            Console.Write("  Nombre Servicio  : ");
-            string nombreServicio = Console.ReadLine();
-            Console.Write("  Descripción      : ");
-            string descServicio = Console.ReadLine();
-            Console.Write("  Horario          : ");
-            string horario = Console.ReadLine();
-            Console.Write("  Precio           : ");
-            string precio = Console.ReadLine();
+            string nombreServicio = "", descServicio = "", horario = "", precio = "";
+            bool validado = false;
+            decimal _precio = 0;
 
-            NodoServicio _servicio = new NodoServicio
+            while (!validado)
             {
-                IdServicio = _idServicio,
-                Nombre_servi = nombreServicio,
-                Descripcion = descServicio,
-                Horario = horario,
-                Precio = String.IsNullOrWhiteSpace(precio) ? 0 : Decimal.Parse(precio)
-            };
-            _servicios.push(_servicio);
-            _idServicio++;
-            VisualizarServicios();
+                Console.Clear();
+                Console.WriteLine(" =============================================");
+                Console.WriteLine("   DATOS DEL SERVICIO");
+                Console.WriteLine(" =============================================");
+                Console.Write("  Id.Servicios     : " + _idServicio.ToString() + "\n");
+                Console.Write("  Nombre Servicio  : ");
+                nombreServicio = Console.ReadLine();
+                if (nombreServicio.Length == 0)
+                {
+                    Console.WriteLine("Nombre de servicio incorrecto.");
+                    Console.ReadKey();
+                }
+                else
+                {
+
+                    Console.Write("  Descripción      : ");
+                    descServicio = Console.ReadLine();
+                    if (descServicio.Length == 0)
+                    {
+                        Console.WriteLine("Descripción incorrecta.");
+                        Console.ReadKey();
+                    }
+                    else
+                    {
+                        Console.Write("  Horario          : ");
+                        horario = Console.ReadLine();
+                        if (horario.Length == 0)
+                        {
+                            Console.WriteLine("Horario incorrecto.");
+                            Console.ReadKey();
+                        }
+                        else
+                        {
+                            Console.Write("  Precio           : ");
+                            precio = Console.ReadLine();
+
+
+                            if (!String.IsNullOrWhiteSpace(precio))
+                            {
+                                if (decimal.TryParse(precio, out decimal num))
+                                {
+                                    _precio = Decimal.Parse(precio);
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Precio incorrecto.");
+                                    Console.ReadKey();
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("Precio incorrecto.");
+                                Console.ReadKey();
+                            }
+                        }
+                    }
+                }
+                if (nombreServicio.Length > 0 && descServicio.Length > 0 && horario.Length > 0 && _precio > 0)
+                { validado = true; }
+            }
+
+            if (validado)
+            {
+                NodoServicio _servicio = new NodoServicio
+                {
+                    IdServicio = _idServicio,
+                    Nombre_servi = nombreServicio,
+                    Descripcion = descServicio,
+                    Horario = horario,
+                    Precio = String.IsNullOrWhiteSpace(precio) ? 0 : Decimal.Parse(precio)
+                };
+                _servicios.push(_servicio);
+                _idServicio++;
+                VisualizarServicios();
+            }
+            else
+            {
+                Console.WriteLine("Datos incorrectos, no se grabó nada");
+                Console.ReadKey();
+            }
         }
 
         public static void EliminarServicios()
