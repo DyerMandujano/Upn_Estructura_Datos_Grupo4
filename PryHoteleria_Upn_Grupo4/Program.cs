@@ -404,13 +404,11 @@ namespace PryHoteleria_Upn_Grupo4
                             Console.WriteLine("********************************************");
                             Console.WriteLine("*               Menu Reservar              *");
                             Console.WriteLine(" *******************************************");
-                            Console.WriteLine(" *[1]Ingresar Datos                        *");
-                            Console.WriteLine(" *[2]Eliminar Datos                        *");
-                            Console.WriteLine(" *[3]Mostrar Datos                         *");
-                            Console.WriteLine(" *[4]Cambiar de Cola a pila                *");
-                            Console.WriteLine(" *[5]Elimina datos (pila)                  *");
-                            Console.WriteLine(" *[6]Mostrar Datos (pila)                  *");
-                            Console.WriteLine(" *[7]Salir                                 *");
+                            Console.WriteLine(" *[1]Ingresar Reservas                        *");
+                            Console.WriteLine(" *[2]Eliminar Reservas                        *");
+                            Console.WriteLine(" *[3]Mostrar Reservas                         *");
+                            Console.WriteLine(" *[4]Mostrar de Cola a pila                *");
+                            Console.WriteLine(" *[5]Salir                                 *");
                             Console.WriteLine(" *******************************************");
                             Console.Write(" ELIJA UNA OPCION: ");
 
@@ -424,10 +422,13 @@ namespace PryHoteleria_Upn_Grupo4
                                         reserva.queue(reser_habitacion, reser_cliente, reser_fecha_inicio, reser_fecha_final);
                                         break;
                                     case 2:
-                                        Reserva reservaEliminada = reserva.dequeue();
+                                            //almacenamos el valor de la reserva eliminada en el objeto reservaEliminada
+                                            //de tipo Reserva
+                                            Reserva reservaEliminada = reserva.dequeue();
                                         if (reservaEliminada != null)
                                         {
-                                            Console.WriteLine("Reserva eliminada!");
+                                            //La reserva eliminada se agregara a la pila
+                                            pila.push(reservaEliminada);
                                         }
                                         Console.ReadKey();
                                         break;
@@ -436,30 +437,6 @@ namespace PryHoteleria_Upn_Grupo4
                                         Console.ReadKey();
                                         break;
                                     case 4:
-                                        if (reserva.VerificarListaVacia())
-                                        {
-                                            Console.WriteLine("La cola está vacía!");
-                                        }
-                                        else
-                                        {
-                                            while (!reserva.VerificarListaVacia())
-                                            {
-                                                v = reserva.dequeue(false);
-                                                pila.push(v);
-                                            }
-                                            Console.WriteLine("Elementos de la cola transferidos a pila!");
-                                        }
-                                        Console.ReadKey();
-                                        break;
-                                    case 5:
-                                        Reserva reservaEliminadaPila = pila.pop();
-                                        if (reservaEliminadaPila != null)
-                                        {
-                                            Console.WriteLine("Reserva eliminada de la pila! ");
-                                        }
-                                        Console.ReadKey();
-                                        break;
-                                    case 6:
                                         pila.muestraPila();
                                         Console.ReadKey();
                                         break;
@@ -471,7 +448,7 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.ReadKey();
                             }
 
-                        } while (opcion_reserva != 7);
+                        } while (opcion_reserva != 5);
                             break;
                         case 6:
                             MantenimientoServicios();

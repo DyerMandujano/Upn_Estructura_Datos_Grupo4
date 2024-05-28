@@ -57,10 +57,11 @@ namespace PryHoteleria_Upn_Grupo4
             listareserva = listareserva.sgte;
             if (showOutput)
             {
-                Console.WriteLine("Elemento eliminado satisfactoriamente!");
+                Console.WriteLine("Reserva eliminada satisfactoriamente!");
             }
             return t;
         }
+
         public void Mostrar()
         {
             Reserva t = listareserva;

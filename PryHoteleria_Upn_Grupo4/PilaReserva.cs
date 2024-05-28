@@ -15,6 +15,7 @@ namespace PryHoteleria_Upn_Grupo4
             pila = null;
         }
 
+
         public void push(Reserva v)
         {
             if (pila == null)
