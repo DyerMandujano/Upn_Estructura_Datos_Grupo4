@@ -29,6 +29,11 @@ namespace PryHoteleria_Upn_Grupo4
         static string MT_categoria, MT_nombre_material;
         static double MT_costo;
 
+        //HABITACION
+        static int hb_id, hb_capacidad, opH;
+        static double hb_precio;
+        static string hb_tipoHabit, hb_serv_hab;
+
         //SERVICIOS
         static Servicios _servicios = new Servicios();
         static ServiciosEliminados _eliminados = new ServiciosEliminados();
@@ -50,6 +55,9 @@ namespace PryHoteleria_Upn_Grupo4
             ListaCliente cliente = new ListaCliente();
             Lista_Empleados Empleados = new Lista_Empleados();
             ListaMateriales materiales = new ListaMateriales();
+            ListaHabitacion habitacion = new ListaHabitacion();
+
+
             //Reserva
             ListaReserva reserva = new ListaReserva();
 
@@ -325,6 +333,67 @@ namespace PryHoteleria_Upn_Grupo4
                             } while (opM != 10);
                             break;
                         case 4:
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine("");
+                                Console.WriteLine(" Menu de Habitacion");
+                                Console.WriteLine(" *******************************************");
+                                Console.WriteLine(" *[1]Ingresar Habitacion al Inicio           *");
+                                Console.WriteLine(" *[2]Ingresar Habitacion al Final            *");
+                                Console.WriteLine(" *[3]Eliminar La primera Habitacion          *");
+                                Console.WriteLine(" *[4]Eliminar La ultima Habitacion             *");
+                                Console.WriteLine(" *[5]Eliminar Toda la Lista de Habitacion  *");
+                                Console.WriteLine(" *[6]Buscar Habitacion por ID                     *");
+                                Console.WriteLine(" *[7]Listar Habitaciones                     *");
+                                Console.WriteLine(" *[8]Salir                                *");
+                                Console.WriteLine(" *******************************************");
+                                Console.Write(" ELIJA UNA OPCION: ");
+                                try
+                                {
+                                    opH = int.Parse(Console.ReadLine());
+                                    switch(opH) 
+                                    {
+                                        case 1:
+                                            IngresoDatosHabi();
+                                            habitacion.InsertarHabitacionInicio(hb_tipoHabit, hb_capacidad, hb_precio, hb_serv_hab);
+                                            break;
+                                        case 2:
+                                            IngresoDatosHabi();
+                                            habitacion.InsertarHabitacionAlFinal(hb_tipoHabit, hb_capacidad, hb_precio, hb_serv_hab);
+                                            break;
+                                        case 3:
+                                            habitacion.EliminarHabitacionInicio();
+                                            Console.ReadKey();
+                                            break;
+                                        case 4:
+                                            habitacion.EliminarHabitacionFinal();
+                                            Console.ReadKey();
+                                            break;
+                                        case 5:
+                                            habitacion.EliminaTodaLaLista();
+                                            Console.ReadKey();
+                                            break;
+                                        case 6:
+                                            Console.Write(" Ingrese el Id de la Habitacion: ");
+                                            hb_id = int.Parse(Console.ReadLine());
+                                            habitacion.BuscarHabitacionPorId(hb_id);
+                                            Console.ReadKey();
+                                            break;
+                                        case 7:
+                                            habitacion.ImprimirListaCircular();
+                                            Console.ReadKey();
+                                            break;
+
+                                    }
+                                }
+                                catch
+                                {
+
+                                }
+
+
+                            } while (opH != 8);
                             break;
                     
                         case 5:
@@ -733,6 +802,48 @@ namespace PryHoteleria_Upn_Grupo4
                     MostrarServicioEliminado(unServicioEliminado.Siguiente);
                 }
             }
+        }
+        public static void IngresoDatosHabi()
+        {
+            do
+            {
+                Console.Write(" Ingresar Tipo Habitación: ");
+                hb_tipoHabit = Console.ReadLine();
+                if (int.TryParse(hb_tipoHabit, out _) == true)
+                {
+                    Console.WriteLine("Ingrese un valor correcto");
+                }
+            }
+            //Mientras que los valores pasados se puedan convertir a entero, va a seguir en el bucle
+            //Sino sale del bucle, ya que el valor que se estaria pasando seria un string
+            while (int.TryParse(hb_tipoHabit, out _));
+
+
+            do
+            {
+                Console.Write("Ingresar Capacidad: ");
+            } while (!int.TryParse(Console.ReadLine(), out hb_capacidad));
+
+            do
+            {
+                Console.Write(" Ingresar Servicios de la Habitación: ");
+                hb_serv_hab = Console.ReadLine();
+                if (int.TryParse(hb_serv_hab, out _) == true)
+                {
+                    Console.WriteLine("Ingrese un valor correcto");
+                }
+            }
+            //Mientras que los valores pasados se puedan convertir a entero, va a seguir en el bucle
+            //Sino sale del bucle, ya que el valor que se estaria pasando seria un string
+            while (int.TryParse(hb_serv_hab, out _));
+
+            do
+            {
+                Console.Write("Ingresar Precio por Noche: ");
+            } while (!double.TryParse(Console.ReadLine(), out hb_precio));
+
+            Console.WriteLine(" Habitación Ingresada Correctamente!");
+            Console.ReadKey();
         }
     }
 }
