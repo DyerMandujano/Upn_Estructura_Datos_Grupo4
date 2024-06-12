@@ -30,10 +30,11 @@ namespace PryHoteleria_Upn_Grupo4
         //Metodo para determinar si la lista esta vacia
         public bool VerificarListaVacia()
         {
-            if (Lista_cliente == null) 
+            if (Lista_cliente == null)
             {
                 return true;
-            }else return false;
+            }
+            else return false;
         }
 
 
@@ -72,10 +73,10 @@ namespace PryHoteleria_Upn_Grupo4
 
 
 
-        public void InsertarClienteAlFinal(string nombre, string dni, string f_nac , string email, string telefono)
+        public void InsertarClienteAlFinal(string nombre, string dni, string f_nac, string email, string telefono)
         {
             //Creamos el objeto que se ingresará al final de la lista
-            Cliente q = new Cliente(nombre,dni,f_nac,email,telefono);
+            Cliente q = new Cliente(nombre, dni, f_nac, email, telefono);
             //Si la lista es Null
             if (Lista_cliente == null)
             {
@@ -83,8 +84,8 @@ namespace PryHoteleria_Upn_Grupo4
                 Lista_cliente = q;
                 // El nuevo cliente apunta al inicio de la lista y no a Null.
                 // Por lo tanto seria una lista circular.
-                q.Cl_Sgte = Lista_cliente;  
-                
+                q.Cl_Sgte = Lista_cliente;
+
             }
             //DE LO CONTRARIO, SI HAY ELEMENTOS EN LA LISTA
             else
@@ -93,7 +94,7 @@ namespace PryHoteleria_Upn_Grupo4
                 //Por lo que a 'p' le asignamos todos los valores que se encuentra en la Lista_cliente
                 Cliente p = Lista_cliente;
                 //Mientras la propiedad Cl_Sgte sea distinto de la lista cliente
-                while (p.Cl_Sgte != Lista_cliente) 
+                while (p.Cl_Sgte != Lista_cliente)
                 {
                     //Avanzará hasta el ultimo nodo
                     p = p.Cl_Sgte;
@@ -120,7 +121,7 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 //Cuando hay un solo nodo en la lista
                 //Si la lista se apunta a si misma 
-                if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                if (Lista_cliente.Cl_Sgte == Lista_cliente)
                 {
                     //Al momento de eliminar el unico nodo
                     //la lista apuntará a null
@@ -133,7 +134,7 @@ namespace PryHoteleria_Upn_Grupo4
                     Cliente q = Lista_cliente;
                     //Con el objeto 'q' recorremos la lista
                     //Mientras que el nodo 'q' no apunte al primer elemento de la lista
-                    while (q.Cl_Sgte != Lista_cliente) 
+                    while (q.Cl_Sgte != Lista_cliente)
                     {
                         //Avanza al siguiente nodo
                         q = q.Cl_Sgte;
@@ -142,7 +143,7 @@ namespace PryHoteleria_Upn_Grupo4
                     // El segundo nodo de la listaCliente se convierte en el primero
                     Lista_cliente = Lista_cliente.Cl_Sgte;
                     //Y el último nodo apunta al nuevo primer nodo
-                    q.Cl_Sgte = Lista_cliente; 
+                    q.Cl_Sgte = Lista_cliente;
                 }
                 Console.WriteLine("\n CLIENTE INICIAL ELIMINADO!");
             }
@@ -159,7 +160,7 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 //Cuando hay un solo nodo en la lista
                 //Si la lista se apunta a si misma 
-                if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                if (Lista_cliente.Cl_Sgte == Lista_cliente)
                 {
                     //Al momento de eliminar el unico nodo
                     //la lista apuntará a null
@@ -182,7 +183,7 @@ namespace PryHoteleria_Upn_Grupo4
                     }
                     //Una vez se termine el bucle, Es decir se haya encontrado al ultimo no y eliminado...
                     // El penúltimo nodo apunta al primer nodo de la lista
-                    nd_ant.Cl_Sgte = Lista_cliente; 
+                    nd_ant.Cl_Sgte = Lista_cliente;
                 }
                 Console.WriteLine("\n CLIENTE FINAL ELIMINADO!");
             }
@@ -212,7 +213,7 @@ namespace PryHoteleria_Upn_Grupo4
                     {
                         //PUEDE HABER DOS CASOS
                         // Si solo hay un nodo en la lista, es decir que solo este el 'p'
-                        if (Lista_cliente.Cl_Sgte == Lista_cliente) 
+                        if (Lista_cliente.Cl_Sgte == Lista_cliente)
                         {
                             Lista_cliente = null;
                         }
@@ -221,7 +222,7 @@ namespace PryHoteleria_Upn_Grupo4
                         {
                             //Si hay mas nodos de tipo Cliente
                             // recorre la lista mediante el objeto 'p' hasta llegar al ultimo
-                            while (p.Cl_Sgte != Lista_cliente) 
+                            while (p.Cl_Sgte != Lista_cliente)
                             {
                                 //avanza al siguiente nodo
                                 p = p.Cl_Sgte;
@@ -230,7 +231,7 @@ namespace PryHoteleria_Upn_Grupo4
                             // El segundo nodo se convierte en el primero
                             Lista_cliente = Lista_cliente.Cl_Sgte;
                             // El último nodo apunta al nuevo primer nodo
-                            p.Cl_Sgte = Lista_cliente; 
+                            p.Cl_Sgte = Lista_cliente;
                         }
                     }
                     //Caso contrario de que no este en el primer lugar
@@ -296,12 +297,12 @@ namespace PryHoteleria_Upn_Grupo4
 
             if (encontrado)
             {
-                Console.WriteLine(" *****************************************************************************************************************");
-                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
-                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" ╔══════════╦══════════════════╦═══════════════╦═════════════════════╦══════════════════════════╦══════════════╗");
+                Console.WriteLine(" ║    ID    ║      Nombre      ║      DNI      ║   Fecha Nacimiento  ║          Correo          ║   Teléfono   ║");
+                Console.WriteLine(" ╠══════════╬══════════════════╬═══════════════╬═════════════════════╬══════════════════════════╬══════════════╣");
 
-                Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
-                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" ║{0,10}║{1,18}║{2,15}║{3,21}║{4,26}║{5,14}║*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                Console.WriteLine(" ╚══════════╩══════════════════╩═══════════════╩═════════════════════╩══════════════════════════╩══════════════╝");
             }
             else
             {
@@ -335,7 +336,7 @@ namespace PryHoteleria_Upn_Grupo4
             }
             else
             {
-                Console.WriteLine("Ingrese el telefono a actualizar:");
+                Console.WriteLine(" Ingrese el telefono a actualizar:");
                 string telf_new = Console.ReadLine();
                 p.Telefono = telf_new;
                 Console.WriteLine(" El telefono del empleado ha sido actualizado exitosamente");
@@ -411,14 +412,14 @@ namespace PryHoteleria_Upn_Grupo4
             //Si lo encontró..
             if (encontrado)
             {
-                Console.WriteLine("Se actualizó el Telefono Correctamente!!\n");
+                Console.WriteLine(" Se actualizó el Telefono Correctamente!!\n");
 
-                Console.WriteLine(" *****************************************************************************************************************");
-                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
-                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" ╔══════════╦══════════════════╦═══════════════╦═════════════════════╦══════════════════════════╦══════════════╗");
+                Console.WriteLine(" ║    ID    ║      Nombre      ║      DNI      ║   Fecha Nacimiento  ║          Correo          ║   Teléfono   ║");
+                Console.WriteLine(" ╠══════════╬══════════════════╬═══════════════╬═════════════════════╬══════════════════════════╬══════════════╣");
 
-                Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
-                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" ║{0,10}║{1,18}║{2,15}║{3,21}║{4,26}║{5,14}║*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                Console.WriteLine(" ╚══════════╩══════════════════╩═══════════════╩═════════════════════╩══════════════════════════╩══════════════╝");
             }
             //Caso contrario
             else
@@ -435,16 +436,16 @@ namespace PryHoteleria_Upn_Grupo4
                 //instanciamos un objeto p
                 Cliente p = Lista_cliente;
 
-                Console.WriteLine(" *****************************************************************************************************************");
-                Console.WriteLine(" *|    ID    |      Nombre      |      DNI      |   Fecha Nacimiento  |          Correo          |   Teléfono   |*");
-                Console.WriteLine(" *****************************************************************************************************************");
+                Console.WriteLine(" ╔══════════╦══════════════════╦═══════════════╦═════════════════════╦══════════════════════════╦══════════════╗");
+                Console.WriteLine(" ║    ID    ║      Nombre      ║      DNI      ║   Fecha Nacimiento  ║          Correo          ║   Teléfono   ║");
+                Console.WriteLine(" ╠══════════╬══════════════════╬═══════════════╬═════════════════════╬══════════════════════════╬══════════════╣");
                 //Entra al bucle
                 do
                 {
-                    Console.WriteLine(" *|{0,10}|{1,18}|{2,15}|{3,21}|{4,26}|{5,14}|*", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
-                 // Avanza al siguiente nodo
+                    Console.WriteLine(" ║{0,10}║{1,18}║{2,15}║{3,21}║{4,26}║{5,14}║", p.Id, p.Nombre, p.Dni, p.FechaNaci, p.Email, p.Telefono);
+                    // Avanza al siguiente nodo
                     p = p.Cl_Sgte;
-                    Console.WriteLine(" *****************************************************************************************************************");
+                    Console.WriteLine(" ╚══════════╩══════════════════╩═══════════════╩═════════════════════╩══════════════════════════╩══════════════╝");
                 }
                 //Mientras que 'p' sea distinto al primer elemento de la Lista_Cliente
                 //va a seguir imprimiendo los nodos.
@@ -452,7 +453,7 @@ namespace PryHoteleria_Upn_Grupo4
             }
             else
             {
-                Console.WriteLine("La lista está vacía.");
+                Console.WriteLine(" La lista está vacía.");
             }
         }
 

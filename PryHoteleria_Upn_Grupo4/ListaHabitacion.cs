@@ -105,6 +105,39 @@ namespace PryHoteleria_Upn_Grupo4
             }
         }
 
+        public void ActualizarServHabPorId(int id)
+        {
+            Habitacion p = Lista_habi;
+            Habitacion inicio = p;
+            bool HabitacionBuscado = false;
+            // Recorre la lista hasta encontrar el empleado con el ID deseado
+            while (p != null && p != inicio || inicio == p && !HabitacionBuscado)
+            {
+                if (p.Id == id)
+                {
+                    HabitacionBuscado = true;
+                    break;
+                }
+                p = p.H_Sgte;
+                if (p == inicio)
+                {
+                    break;
+                }
+            }
+            // Si el empleado no se encuentra en la lista
+            if (!HabitacionBuscado)
+            {
+                Console.WriteLine(" La Habitacion con el ID " + id + " no se encuentra en la lista");
+            }
+            else
+            {
+                Console.Write("Ingrese el Servicio a actualizar: ");
+                string hab_new = Console.ReadLine();
+                p.Serv_habitacion = hab_new;
+                Console.WriteLine(" El Servicio de la habitación ha sido actualizado exitosamente");
+            }
+        }
+
         public void EliminarHabitacionInicio()
         {
             if (VerificarListaVacia())

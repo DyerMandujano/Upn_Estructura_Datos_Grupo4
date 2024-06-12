@@ -45,17 +45,20 @@ namespace PryHoteleria_Upn_Grupo4
         public void muestraPila()
         {
             Reserva t = pila;
-            Console.WriteLine("|-------------------------------------------------------------------------------|");
-            Console.WriteLine("|                                 Reservación                                   |");
-            Console.WriteLine("|-------------------------------------------------------------------------------|");
-            Console.WriteLine("|  ID Reserva | ID Habitacion |   ID Cliente   | Fecha Inicial  |  Fecha final  |");
-            Console.WriteLine("|-------------------------------------------------------------------------------|");
+            Console.WriteLine(" ╔═══════════════════════════════════════════════════════════════════════════════╗");
+            Console.WriteLine(" ║                                 Reservación                                   ║");
+            Console.WriteLine(" ╠═════════════╦═══════════════╦════════════════╦════════════════╦═══════════════╣");
+            Console.WriteLine(" ║  ID Reserva ║ ID Habitacion ║   ID Cliente   ║ Fecha Inicial  ║  Fecha final  ║");
+
             while (t != null)
             {
-                Console.Write("|" + t.IdReserva + "\t" + t.IdHabitacion + "\t" + t.IdCliente + "\t" + t.FechaInicio.ToString("dd/MM/yyyy") + "\t" + t.FechaFin.ToString("dd/MM/yyyy") + "|\n");
+                Console.WriteLine(" ╠═════════════╬═══════════════╬════════════════╬════════════════╬═══════════════╣");
+                Console.WriteLine(" ║{0,13}║{1,15}║{2,16}║{3,16}║{4,15}║", t.IdReserva, t.idhabitacion, t.idcliente, t.fechainicio.ToString("dd/MM/yyyy"), t.fechafin.ToString("dd/MM/yyyy"));
                 t = t.Sgte;
+                //Console.Write(" ║" + t.IdReserva + "\t" + t.IdHabitacion + "\t" + t.IdCliente + "\t" + t.FechaInicio.ToString("dd/MM/yyyy") + "\t" + t.FechaFin.ToString("dd/MM/yyyy") + "|\n");
+                //t = t.Sgte;
             }
-            Console.WriteLine("|-------------------------------------------------------------------------------|");
+            Console.WriteLine(" ╚═════════════╩═══════════════╩════════════════╩════════════════╩═══════════════╝");
         }
     }
 }

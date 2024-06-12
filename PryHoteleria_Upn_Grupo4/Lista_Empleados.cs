@@ -163,12 +163,12 @@ namespace PryHoteleria_Upn_Grupo4
             }
             else
             {
-                Console.WriteLine(" ***************************************************************************************************************************************");
-                Console.WriteLine(" *|    ID    |     Nombre     |    DNI    |            Correo             |  Teléfono  |    Dirección    |      Cargo      |  Sueldo  |*");
-                Console.WriteLine(" ***************************************************************************************************************************************");
+                Console.WriteLine(" ╔══════════╦════════════════╦═══════════╦═══════════════════════════════╦════════════╦═════════════════╦═════════════════╦══════════╗");
+                Console.WriteLine(" ║    ID    ║     Nombre     ║    DNI    ║            Correo             ║  Teléfono  ║    Dirección    ║      Cargo      ║  Sueldo  ║");
+                Console.WriteLine(" ╠══════════╬════════════════╬═══════════╬═══════════════════════════════╬════════════╬═════════════════╬═════════════════╬══════════╣");
 
-                Console.WriteLine(" *|{0,10}|{1,16}|{2,11}|{3,31}|{4,12}|{5,17}|{6,17}|{7,10}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo, p.Sueldo);
-                Console.WriteLine(" ***************************************************************************************************************************************");
+                Console.WriteLine(" ║{0,10}║{1,16}║{2,11}║{3,31}║{4,12}║{5,17}║{6,17}║{7,10}║", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo, p.Sueldo);
+                Console.WriteLine(" ╚══════════╩════════════════╩═══════════╩═══════════════════════════════╩════════════╩═════════════════╩═════════════════╩══════════╝");
             }
         }
 
@@ -193,7 +193,7 @@ namespace PryHoteleria_Upn_Grupo4
             }
             else
             {
-                Console.WriteLine("Ingrese el correo a actualizar:");
+                Console.WriteLine(" Ingrese el correo a actualizar:");
                 nuevo_correo = Console.ReadLine();
                 p.Correo = nuevo_correo;
                 Console.WriteLine(" El correo del empleado ha sido actualizado exitosamente");
@@ -209,14 +209,14 @@ namespace PryHoteleria_Upn_Grupo4
                 return;
             }
 
-            Console.WriteLine(" ***************************************************************************************************************************************");
-            Console.WriteLine(" *|    ID    |     Nombre     |    DNI    |            Correo             |  Teléfono  |    Dirección    |      Cargo      |  Sueldo  |*");
-            Console.WriteLine(" ***************************************************************************************************************************************");
+            Console.WriteLine(" ╔══════════╦════════════════╦═══════════╦═══════════════════════════════╦════════════╦═════════════════╦═════════════════╦══════════╗");
+            Console.WriteLine(" ║    ID    ║     Nombre     ║    DNI    ║            Correo             ║  Teléfono  ║    Dirección    ║      Cargo      ║  Sueldo  ║");
+            Console.WriteLine(" ╠══════════╬════════════════╬═══════════╬═══════════════════════════════╬════════════╬═════════════════╬═════════════════╬══════════╣");
             while (p != null)
             {
-                Console.WriteLine(" *|{0,10}|{1,16}|{2,11}|{3,31}|{4,12}|{5,17}|{6,17}|{7,10}|*", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo, p.Sueldo);
+                Console.WriteLine(" ║{0,10}║{1,16}║{2,11}║{3,31}║{4,12}║{5,17}║{6,17}║{7,10}║", p.Id, p.Nom, p.Dni, p.Correo, p.Telefono, p.Direccion, p.Cargo, p.Sueldo);
                 p = p.Emple_Sgt;
-                Console.WriteLine(" ***************************************************************************************************************************************");
+                Console.WriteLine(" ╚══════════╩════════════════╩═══════════╩═══════════════════════════════╩════════════╩═════════════════╩═════════════════╩══════════╝");
             }
         }
     }

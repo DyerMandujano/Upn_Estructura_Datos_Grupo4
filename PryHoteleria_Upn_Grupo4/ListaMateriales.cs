@@ -214,11 +214,11 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.WriteLine(" Datos del Material");
 
-                Console.WriteLine(" **************************************************************************************************");
-                Console.WriteLine(" *|     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |*");
-                Console.WriteLine(" **************************************************************************************************");
-                Console.WriteLine(" *|{0,12}|{1,20}|{2,25}|{3,18}|{4,15}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
-                Console.WriteLine(" **************************************************************************************************");
+                Console.WriteLine(" ╔════════════╦════════════════════╦═════════════════════════╦══════════════════╦═══════════════╗");
+                Console.WriteLine(" ║     ID     ║     Categorias     ║     Nombre Material     ║     Cantidad     ║     Costo     ║");
+                Console.WriteLine(" ╠════════════╬════════════════════╬═════════════════════════╬══════════════════╬═══════════════╣");
+                Console.WriteLine(" ║{0,12}║{1,20}║{2,25}║{3,18}║{4,15}║", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" ╚════════════╩════════════════════╩═════════════════════════╩══════════════════╩═══════════════╝");
 
             }
         }
@@ -235,7 +235,7 @@ namespace PryHoteleria_Upn_Grupo4
                     Mat_Buscado = true;
                     break;
                 }
-                p = p.MT_Sgte ;
+                p = p.MT_Sgte;
             }
             // Si el empleado no se encuentra en la lista
             if (!Mat_Buscado)
@@ -260,16 +260,16 @@ namespace PryHoteleria_Upn_Grupo4
                 return;
             }
 
-            Console.WriteLine(" **************************************************************************************************");
-            Console.WriteLine(" *|     ID     |     Categorias     |     Nombre Material     |     Cantidad     |     Costo     |*");
-            Console.WriteLine(" **************************************************************************************************");
+            Console.WriteLine(" ╔════════════╦════════════════════╦═════════════════════════╦══════════════════╦═══════════════╗");
+            Console.WriteLine(" ║     ID     ║     Categorias     ║     Nombre Material     ║     Cantidad     ║     Costo     ║");
+            Console.WriteLine(" ╠════════════╬════════════════════╬═════════════════════════╬══════════════════╬═══════════════╣");
 
             // Recorrer la lista
             while (p != null)
             {
-                Console.WriteLine(" *|{0,12}|{1,20}|{2,25}|{3,18}|{4,15}|*", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
+                Console.WriteLine(" ║{0,12}║{1,20}║{2,25}║{3,18}║{4,15}║", p.Id, p.Categorias, p.NombreMaterial, p.Cantidad, p.Costo);
                 p = p.MT_Sgte;
-                Console.WriteLine(" **************************************************************************************************");
+                Console.WriteLine(" ╚════════════╩════════════════════╩═════════════════════════╩══════════════════╩═══════════════╝");
             }
         }
 

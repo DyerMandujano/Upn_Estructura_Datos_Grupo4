@@ -56,7 +56,7 @@ namespace PryHoteleria_Upn_Grupo4
             Lista_Empleados Empleados = new Lista_Empleados();
             ListaMateriales materiales = new ListaMateriales();
             ListaHabitacion habitacion = new ListaHabitacion();
-
+            habitacion.InsertarHabitacionInicio("Individual", 1, 50, "Tv");
 
             //Reserva
             ListaReserva reserva = new ListaReserva();
@@ -65,31 +65,33 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 try
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
 
                     Console.WriteLine("");
-                    Console.WriteLine(" *   * ***** *   * *   *       *   *  ***  ***** ***** *     ***** ****   ***   ***   *   * ****  *   * ");
-                    Console.WriteLine(" *   * *     *   * *   *       *   * *   *   *   *     *     *     *   *   *   *   *  *   * *   * *   * ");
-                    Console.WriteLine(" ** ** *     **  * *   *       *   * *   *   *   *     *     *     *   *   *   *   *  *   * *   * **  * ");
-                    Console.WriteLine(" * * * ****  * * * *   * ***** ***** *   *   *   ****  *     ****  ****    *   *****  *   * ****  * * * ");
-                    Console.WriteLine(" *   * *     *  ** *   *       *   * *   *   *   *     *     *     * *     *   *   *  *   * *     *  ** ");
-                    Console.WriteLine(" *   * *     *   * *   *       *   * *   *   *   *     *     *     *  *    *   *   *  *   * *     *   * ");
-                    Console.WriteLine(" *   * ***** *   *  ***        *   *  ***    *   ***** ***** ***** *   *  ***  *   *   ***  *     *   * ");
+
+                    Console.WriteLine("\t\t██╗   ██╗    █████╗   ███████═╗  ████████╗  ██╗        ████████╗  ████████═╗  ████████╗    ████╗            ");
+                    Console.WriteLine("\t\t██║   ██║  ██╔═══██╗     ██╔══╝  ██╔═════╝  ██║        ██╔═════╝  ██╔════██║     ██╔══╝   ██╔══██╗          ");
+                    Console.WriteLine("\t\t██╚═══██║  ██║   ██║     ██║     ██╝        ██║        ██╝        ██║    ██╝     ██║      ██║  ██║          ");
+                    Console.WriteLine("\t\t████████║  ██║   ██║     ██║     ██████╗    ██║        ██████╗    ██║ ███╝       ██║      ███████║          ");
+                    Console.WriteLine("\t\t██╔═══██║  ██║   ██║     ██║     ██╔═══╝    ██║        ██╔═══╝    ██║   ██╗      ██║      ██╔══██║          ");
+                    Console.WriteLine("\t\t██║   ██║  ██║   ██║     ██║     ██╝        ██║        ██╝        ██║   ╚██╗     ██╚══╗   ██║  ██║          ");
+                    Console.WriteLine("\t\t██║   ██║  ╚██████╔╝     ██║     ████████╗  ████████╗  ████████╗  ██║   ╚██╗  ████████║   ██║  ██║          ");
+                    Console.WriteLine("\t\t╚═╝   ╚═╝   ╚═════╝      ╚═╝     ╚═══════╝  ╚═══════╝  ╚═══════╝  ╚═╝    ╚═╝  ╚═══════╝   ╚═╝  ╚═╝          ");
 
                     Console.WriteLine("\t");
 
 
-                    Console.WriteLine(" ***************************");
-                    Console.WriteLine(" *[1]Gestion de Clientes   *");
-                    Console.WriteLine(" *[2]Gestion de Empleados  *");
-                    Console.WriteLine(" *[3]Gestion de Materiales *");
-                    Console.WriteLine(" *[4]Gestion de Habitaciones*");
-                    Console.WriteLine(" *[5]Gestion de Reservas   *");
-                    Console.WriteLine(" *[6]Gestion de Servicios   *");
-                    Console.WriteLine(" *[7]SALIR                 *");
-                    Console.WriteLine(" ***************************");
+                    Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                    Console.WriteLine(" ║[1]Gestion de Clientes                      ║");
+                    Console.WriteLine(" ║[2]Gestion de Empleados                     ║");
+                    Console.WriteLine(" ║[3]Gestion de Materiales                    ║");
+                    Console.WriteLine(" ║[4]Gestion de Habitaciones                  ║");
+                    Console.WriteLine(" ║[5]Gestion de Reservas                      ║");
+                    Console.WriteLine(" ║[6]Gestion de Servicios                     ║");
+                    Console.WriteLine(" ║[7]SALIR                                    ║");
+                    Console.WriteLine(" ╚════════════════════════════════════════════╝");
                     Console.Write(" Elija una Opcion: ");
                     op = int.Parse(Console.ReadLine());
                     switch (op)
@@ -100,19 +102,20 @@ namespace PryHoteleria_Upn_Grupo4
                                 //Menu Cliente
                                 Console.Clear();
                                 Console.WriteLine("");
-                                Console.WriteLine(" Menu de Cliente");
-                                Console.WriteLine(" ********************************************");
-                                Console.WriteLine(" *[1]Ingresar Cliente al Inicio             *");
-                                Console.WriteLine(" *[2]Ingresar Cliente al Final              *");
-                                Console.WriteLine(" *[3]Eliminar el Primer Cliente             *");
-                                Console.WriteLine(" *[4]Eliminar el Ultimo Cliente             *");
-                                Console.WriteLine(" *[5]Eliminar Cliente por ID                *");
-                                Console.WriteLine(" *[6]Eliminar Toda la Lista de CLientes     *");
-                                Console.WriteLine(" *[7]Buscar Cliente por DNI                 *");
-                                Console.WriteLine(" *[8]Actualizar Telefono del Cliente por ID *");
-                                Console.WriteLine(" *[9]Listar Clientes                        *");
-                                Console.WriteLine(" *[10] Salir                                *");
-                                Console.WriteLine(" ********************************************");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de Cliente                         ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Cliente al Inicio               ║");
+                                Console.WriteLine(" ║[2]Ingresar Cliente al Final                ║");
+                                Console.WriteLine(" ║[3]Eliminar el Primer Cliente               ║");
+                                Console.WriteLine(" ║[4]Eliminar el Ultimo Cliente               ║");
+                                Console.WriteLine(" ║[5]Eliminar Cliente por ID                  ║");
+                                Console.WriteLine(" ║[6]Eliminar Toda la Lista de CLientes       ║");
+                                Console.WriteLine(" ║[7]Buscar Cliente por DNI                   ║");
+                                Console.WriteLine(" ║[8]Actualizar Telefono del Cliente por ID   ║");
+                                Console.WriteLine(" ║[9]Listar Clientes                          ║");
+                                Console.WriteLine(" ║[10] Salir                                  ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
                                 {
@@ -181,19 +184,20 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.Clear();
                                 Console.WriteLine("");
                                 //Menu de Empleados
-                                Console.WriteLine(" Menu de Empleados");
-                                Console.WriteLine(" **********************************************");
-                                Console.WriteLine(" *[1]Ingresar Empleado al Inicio              *");
-                                Console.WriteLine(" *[2]Ingresar Empleado al Final               *");
-                                Console.WriteLine(" *[3]Eliminar el Primer Empleado              *");
-                                Console.WriteLine(" *[4]Eliminar el Ultimo Empleado              *");
-                                Console.WriteLine(" *[5]Eliminar Empleado por ID                 *");
-                                Console.WriteLine(" *[6]Eliminar Toda la Lista de los Empleados  *");
-                                Console.WriteLine(" *[7]Buscar Empleados por DNI                 *");
-                                Console.WriteLine(" *[8]Actualizar Correo de Empleado por ID     *");
-                                Console.WriteLine(" *[9]Listar Empleados                         *");
-                                Console.WriteLine(" *[10] Salir                                  *");
-                                Console.WriteLine(" **********************************************");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de Empleados                       ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Empleado al Inicio              ║");
+                                Console.WriteLine(" ║[2]Ingresar Empleado al Final               ║");
+                                Console.WriteLine(" ║[3]Eliminar el Primer Empleado              ║");
+                                Console.WriteLine(" ║[4]Eliminar el Ultimo Empleado              ║");
+                                Console.WriteLine(" ║[5]Eliminar Empleado por ID                 ║");
+                                Console.WriteLine(" ║[6]Eliminar Toda la Lista de los Empleados  ║");
+                                Console.WriteLine(" ║[7]Buscar Empleados por DNI                 ║");
+                                Console.WriteLine(" ║[8]Actualizar Correo de Empleado por ID     ║");
+                                Console.WriteLine(" ║[9]Listar Empleados                         ║");
+                                Console.WriteLine(" ║[10] Salir                                  ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
                                 {
@@ -261,19 +265,20 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 Console.Clear();
                                 Console.WriteLine("");
-                                Console.WriteLine(" Menu de Materiales");
-                                Console.WriteLine(" *******************************************");
-                                Console.WriteLine(" *[1]Ingresar Material al Inicio           *");
-                                Console.WriteLine(" *[2]Ingresar Material al Final            *");
-                                Console.WriteLine(" *[3]Eliminar el Primer Material           *");
-                                Console.WriteLine(" *[4]Eliminar el Ultimo Material           *");
-                                Console.WriteLine(" *[5]Eliminar Material por ID              *");
-                                Console.WriteLine(" *[6]Eliminar Toda la Lista de Matariales  *");
-                                Console.WriteLine(" *[7]Buscar Materiales                     *");
-                                Console.WriteLine(" *[8]Actualiza Material por ID             *");
-                                Console.WriteLine(" *[9]Listar Materiales                     *");
-                                Console.WriteLine(" *[10]Salir                                *");
-                                Console.WriteLine(" *******************************************");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de Materiales                      ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Material al Inicio              ║");
+                                Console.WriteLine(" ║[2]Ingresar Material al Final               ║");
+                                Console.WriteLine(" ║[3]Eliminar el Primer Material              ║");
+                                Console.WriteLine(" ║[4]Eliminar el Ultimo Material              ║");
+                                Console.WriteLine(" ║[5]Eliminar Material por ID                 ║");
+                                Console.WriteLine(" ║[6]Eliminar Toda la Lista de Matariales     ║");
+                                Console.WriteLine(" ║[7]Buscar Materiales                        ║");
+                                Console.WriteLine(" ║[8]Actualiza Material por ID                ║");
+                                Console.WriteLine(" ║[9]Listar Materiales                        ║");
+                                Console.WriteLine(" ║[10]Salir                                   ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
                                 {
@@ -337,22 +342,23 @@ namespace PryHoteleria_Upn_Grupo4
                             {
                                 Console.Clear();
                                 Console.WriteLine("");
-                                Console.WriteLine(" Menu de Habitacion");
-                                Console.WriteLine(" *******************************************");
-                                Console.WriteLine(" *[1]Ingresar Habitacion al Inicio           *");
-                                Console.WriteLine(" *[2]Ingresar Habitacion al Final            *");
-                                Console.WriteLine(" *[3]Eliminar La primera Habitacion          *");
-                                Console.WriteLine(" *[4]Eliminar La ultima Habitacion             *");
-                                Console.WriteLine(" *[5]Eliminar Toda la Lista de Habitacion  *");
-                                Console.WriteLine(" *[6]Buscar Habitacion por ID                     *");
-                                Console.WriteLine(" *[7]Listar Habitaciones                     *");
-                                Console.WriteLine(" *[8]Salir                                *");
-                                Console.WriteLine(" *******************************************");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de Habitacion                      ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Habitacion al Inicio            ║");
+                                Console.WriteLine(" ║[2]Ingresar Habitacion al Final             ║");
+                                Console.WriteLine(" ║[3]Eliminar La primera Habitacion           ║");
+                                Console.WriteLine(" ║[4]Eliminar La ultima Habitacion            ║");
+                                Console.WriteLine(" ║[5]Eliminar Toda la Lista de Habitacion     ║");
+                                Console.WriteLine(" ║[6]Buscar Habitacion por ID                 ║");
+                                Console.WriteLine(" ║[7]Listar Habitaciones                      ║");
+                                Console.WriteLine(" ║[8]Salir                                    ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
                                 {
                                     opH = int.Parse(Console.ReadLine());
-                                    switch(opH) 
+                                    switch (opH)
                                     {
                                         case 1:
                                             IngresoDatosHabi();
@@ -395,60 +401,60 @@ namespace PryHoteleria_Upn_Grupo4
 
                             } while (opH != 8);
                             break;
-                    
-                        case 5:
-                        do
-                        {
-                            Console.Clear();
-                            Console.WriteLine(" ");
-                            Console.WriteLine("********************************************");
-                            Console.WriteLine("*               Menu Reservar              *");
-                            Console.WriteLine(" *******************************************");
-                            Console.WriteLine(" *[1]Ingresar Reservas                        *");
-                            Console.WriteLine(" *[2]Eliminar Reservas                        *");
-                            Console.WriteLine(" *[3]Mostrar Reservas                         *");
-                            Console.WriteLine(" *[4]Mostrar de Cola a pila                *");
-                            Console.WriteLine(" *[5]Salir                                 *");
-                            Console.WriteLine(" *******************************************");
-                            Console.Write(" ELIJA UNA OPCION: ");
 
-                            try
+                        case 5:
+                            do
                             {
-                                opcion_reserva = int.Parse(Console.ReadLine());
-                                switch (opcion_reserva)
+                                Console.Clear();
+                                Console.WriteLine(" ");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║              Menu Reservar                 ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Reservas                        ║");
+                                Console.WriteLine(" ║[2]Eliminar Reservas                        ║");
+                                Console.WriteLine(" ║[3]Mostrar Reservas                         ║");
+                                Console.WriteLine(" ║[4]Mostrar de Cola a pila                   ║");
+                                Console.WriteLine(" ║[5]Salir                                    ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
+                                Console.Write(" ELIJA UNA OPCION: ");
+
+                                try
                                 {
-                                    case 1:
-                                        IngresoDatosReserva();
-                                        reserva.queue(reser_habitacion, reser_cliente, reser_fecha_inicio, reser_fecha_final);
-                                        break;
-                                    case 2:
+                                    opcion_reserva = int.Parse(Console.ReadLine());
+                                    switch (opcion_reserva)
+                                    {
+                                        case 1:
+                                            IngresoDatosReserva();
+                                            reserva.queue(reser_habitacion, reser_cliente, reser_fecha_inicio, reser_fecha_final);
+                                            break;
+                                        case 2:
                                             //almacenamos el valor de la reserva eliminada en el objeto reservaEliminada
                                             //de tipo Reserva
                                             Reserva reservaEliminada = reserva.dequeue();
-                                        if (reservaEliminada != null)
-                                        {
-                                            //La reserva eliminada se agregara a la pila
-                                            pila.push(reservaEliminada);
-                                        }
-                                        Console.ReadKey();
-                                        break;
-                                    case 3:
-                                        reserva.Mostrar();
-                                        Console.ReadKey();
-                                        break;
-                                    case 4:
-                                        pila.muestraPila();
-                                        Console.ReadKey();
-                                        break;
+                                            if (reservaEliminada != null)
+                                            {
+                                                //La reserva eliminada se agregara a la pila
+                                                pila.push(reservaEliminada);
+                                            }
+                                            Console.ReadKey();
+                                            break;
+                                        case 3:
+                                            reserva.Mostrar();
+                                            Console.ReadKey();
+                                            break;
+                                        case 4:
+                                            pila.muestraPila();
+                                            Console.ReadKey();
+                                            break;
+                                    }
                                 }
-                            }
-                            catch
-                            {
-                                Console.WriteLine(" Ingrese un valor correcto!");
-                                Console.ReadKey();
-                            }
+                                catch
+                                {
+                                    Console.WriteLine(" Ingrese un valor correcto!");
+                                    Console.ReadKey();
+                                }
 
-                        } while (opcion_reserva != 5);
+                            } while (opcion_reserva != 5);
                             break;
                         case 6:
                             MantenimientoServicios();
@@ -641,14 +647,15 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 Console.Clear();
                 string[] validar2 = { "1", "2", "3", "4", "5" };
-                Console.WriteLine(" ===============================================");
-                Console.WriteLine("\n\t    SERVICIOS");
-                Console.WriteLine("\n\t[1] Ingresar Servicios");
-                Console.WriteLine("\t[2] Eliminar Servicios");
-                Console.WriteLine("\t[3] Visualizar Servicios");
-                Console.WriteLine("\t[4] Mostrar de pila a cola");
-                Console.WriteLine("\t[5] Regresar al Menú Principal");
-                Console.WriteLine(" ===============================================");
+                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                Console.WriteLine(" ║              SERVICIOS                     ║");
+                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                Console.WriteLine(" ║[1] Ingresar Servicios                      ║");
+                Console.WriteLine(" ║[2] Eliminar Servicios                      ║");
+                Console.WriteLine(" ║[3] Visualizar Servicios                    ║");
+                Console.WriteLine(" ║[4] Mostrar de pila a cola                  ║");
+                Console.WriteLine(" ║[5] Regresar al Menú Principal              ║");
+                Console.WriteLine(" ╚════════════════════════════════════════════╝");
                 string dato2 = Console.ReadLine();
                 int opcion2 = validar2.Contains(dato2) ? int.Parse(dato2) : 0;
                 switch (opcion2)
@@ -688,15 +695,15 @@ namespace PryHoteleria_Upn_Grupo4
             while (!validado)
             {
                 Console.Clear();
-                Console.WriteLine(" =============================================");
-                Console.WriteLine("   DATOS DEL SERVICIO");
-                Console.WriteLine(" =============================================");
+                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                Console.WriteLine(" ║ DATOS DEL SERVICIO                         ║");
+                Console.WriteLine(" ╚════════════════════════════════════════════╝");
                 Console.Write("  Id.Servicios     : " + _idServicio.ToString() + "\n");
                 Console.Write("  Nombre Servicio  : ");
                 nombreServicio = Console.ReadLine();
                 if (nombreServicio.Length == 0)
                 {
-                    Console.WriteLine("Nombre de servicio incorrecto.");
+                    Console.WriteLine(" Nombre de servicio incorrecto.");
                     Console.ReadKey();
                 }
                 else
@@ -706,7 +713,7 @@ namespace PryHoteleria_Upn_Grupo4
                     descServicio = Console.ReadLine();
                     if (descServicio.Length == 0)
                     {
-                        Console.WriteLine("Descripción incorrecta.");
+                        Console.WriteLine(" Descripción incorrecta.");
                         Console.ReadKey();
                     }
                     else
@@ -715,7 +722,7 @@ namespace PryHoteleria_Upn_Grupo4
                         horario = Console.ReadLine();
                         if (horario.Length == 0)
                         {
-                            Console.WriteLine("Horario incorrecto.");
+                            Console.WriteLine(" Horario incorrecto.");
                             Console.ReadKey();
                         }
                         else
@@ -732,13 +739,13 @@ namespace PryHoteleria_Upn_Grupo4
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Precio incorrecto.");
+                                    Console.WriteLine(" Precio incorrecto.");
                                     Console.ReadKey();
                                 }
                             }
                             else
                             {
-                                Console.WriteLine("Precio incorrecto.");
+                                Console.WriteLine(" Precio incorrecto.");
                                 Console.ReadKey();
                             }
                         }
@@ -764,7 +771,7 @@ namespace PryHoteleria_Upn_Grupo4
             }
             else
             {
-                Console.WriteLine("Datos incorrectos, no se grabó nada");
+                Console.WriteLine(" Datos incorrectos, no se grabó nada");
                 Console.ReadKey();
             }
         }
@@ -774,11 +781,11 @@ namespace PryHoteleria_Upn_Grupo4
             if (_servicios.Tope() != null)
             {
                 _eliminados.Enqueue(_servicios.pop());
-                Console.WriteLine("Servicio Eliminado correctamente");
+                Console.WriteLine(" Servicio Eliminado correctamente");
             }
             else
             {
-                Console.WriteLine("Pila vacia");
+                Console.WriteLine(" Pila vacia");
             }
             Console.ReadKey();
         }
@@ -786,25 +793,25 @@ namespace PryHoteleria_Upn_Grupo4
         public static void VisualizarServicios()
         {
             Console.Clear();
-            Console.WriteLine("SERVICIOS");
-            Console.WriteLine("╔════════════╦══════════════════════════╦═════════════════════════════╦═════════════════════════╦════════╗");
-            Console.WriteLine("║     NRO.   ║                          ║                             ║                         ║        ║");
-            Console.WriteLine("║  SERVICIO  ║        SERVICIO          ║        DESCRIPCION          ║      HORARIO            ║ PRECIO ║");
-            Console.WriteLine("╠════════════╬══════════════════════════╬═════════════════════════════╬═════════════════════════╬════════╣");
+            Console.WriteLine(" SERVICIOS");
+            Console.WriteLine(" ╔════════════╦══════════════════════════╦═════════════════════════════╦═════════════════════════╦════════╗");
+            Console.WriteLine(" ║     NRO.   ║                          ║                             ║                         ║        ║");
+            Console.WriteLine(" ║  SERVICIO  ║        SERVICIO          ║        DESCRIPCION          ║      HORARIO            ║ PRECIO ║");
+            //Console.WriteLine(" ╠════════════╬══════════════════════════╬═════════════════════════════╬═════════════════════════╬════════╣");
             if (_servicios.Tope() != null)
             {
                 MostrarServicio(_servicios.Tope());
             }
-            Console.WriteLine("╚════════════╩══════════════════════════╩═════════════════════════════╩═════════════════════════╩════════╝");
+            Console.WriteLine(" ╚════════════╩══════════════════════════╩═════════════════════════════╩═════════════════════════╩════════╝");
             Console.ReadLine();
         }
 
         public static void MostrarServicio(NodoServicio unServicio)
         {
 
+            Console.WriteLine(" ╠════════════╬══════════════════════════╬═════════════════════════════╬═════════════════════════╬════════╣");
 
-
-            Console.WriteLine("║" + unServicio.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
+            Console.WriteLine(" ║" + unServicio.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
                               unServicio.Nombre_servi.PadRight(26, ' ') + "║" +
                               unServicio.Descripcion.PadRight(29, ' ') + "║" +
                               unServicio.Horario.PadRight(25, ' ').Substring(0, 25) + "║" +
@@ -817,20 +824,20 @@ namespace PryHoteleria_Upn_Grupo4
         public static void VisualizarServiciosEliminados()
         {
             Console.Clear();
-            Console.WriteLine("SERVICIOS ELIMINADOS - COLA ");
-            Console.WriteLine("╔════════════╦══════════════════════════╦═════════════════════════════╦══════════════════════╦════════╗");
-            Console.WriteLine("║     NRO.   ║                          ║                             ║                      ║        ║");
-            Console.WriteLine("║  SERVICIO  ║        SERVICIO          ║        DESCRIPCION          ║      HORARIO         ║ PRECIO ║");
-            Console.WriteLine("╠════════════╬══════════════════════════╬═════════════════════════════╬══════════════════════╬════════╣");
+            Console.WriteLine(" SERVICIOS ELIMINADOS - COLA ");
+            Console.WriteLine(" ╔════════════╦══════════════════════════╦═════════════════════════════╦══════════════════════╦════════╗");
+            Console.WriteLine(" ║     NRO.   ║                          ║                             ║                      ║        ║");
+            Console.WriteLine(" ║  SERVICIO  ║        SERVICIO          ║        DESCRIPCION          ║      HORARIO         ║ PRECIO ║");
+            Console.WriteLine(" ╠════════════╬══════════════════════════╬═════════════════════════════╬══════════════════════╬════════╣");
             MostrarServicioEliminado(_eliminados.Peek);
-            Console.WriteLine("╚════════════╩══════════════════════════╩═════════════════════════════╩══════════════════════╩════════╝");
+            Console.WriteLine(" ╚════════════╩══════════════════════════╩═════════════════════════════╩══════════════════════╩════════╝");
             Console.ReadLine();
         }
         public static void MostrarServicioEliminado(NodoServicioEliminado unServicioEliminado)
         {
             if (unServicioEliminado != null)
             {
-                Console.WriteLine("║" + unServicioEliminado.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
+                Console.WriteLine(" ║" + unServicioEliminado.IdServicio.ToString().PadLeft(5, ' ') + "       ║" +
                              unServicioEliminado.Nombre_servi.PadRight(26, ' ') + "║" +
                              unServicioEliminado.Descripcion.PadRight(29, ' ') + "║" +
                              unServicioEliminado.Horario.PadRight(22, ' ') + "║" +
@@ -849,7 +856,7 @@ namespace PryHoteleria_Upn_Grupo4
                 hb_tipoHabit = Console.ReadLine();
                 if (int.TryParse(hb_tipoHabit, out _) == true)
                 {
-                    Console.WriteLine("Ingrese un valor correcto");
+                    Console.WriteLine(" Ingrese un valor correcto");
                 }
             }
             //Mientras que los valores pasados se puedan convertir a entero, va a seguir en el bucle
@@ -859,7 +866,7 @@ namespace PryHoteleria_Upn_Grupo4
 
             do
             {
-                Console.Write("Ingresar Capacidad: ");
+                Console.Write(" Ingresar Capacidad: ");
             } while (!int.TryParse(Console.ReadLine(), out hb_capacidad));
 
             do
@@ -868,7 +875,7 @@ namespace PryHoteleria_Upn_Grupo4
                 hb_serv_hab = Console.ReadLine();
                 if (int.TryParse(hb_serv_hab, out _) == true)
                 {
-                    Console.WriteLine("Ingrese un valor correcto");
+                    Console.WriteLine(" Ingrese un valor correcto");
                 }
             }
             //Mientras que los valores pasados se puedan convertir a entero, va a seguir en el bucle
@@ -877,7 +884,7 @@ namespace PryHoteleria_Upn_Grupo4
 
             do
             {
-                Console.Write("Ingresar Precio por Noche: ");
+                Console.Write(" Ingresar Precio por Noche: ");
             } while (!double.TryParse(Console.ReadLine(), out hb_precio));
 
             Console.WriteLine(" Habitación Ingresada Correctamente!");
