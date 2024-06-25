@@ -8,7 +8,9 @@ namespace PryHoteleria_Upn_Grupo4.ArbolMantenimiento
 {
     class Mantenimiento
     {
+        //atributo statico
         public static int contador = 1000;
+        //atributos privados
         private int idMantenimiento;
         private int idHabitacion;
         private int idEmpleado;
@@ -18,8 +20,10 @@ namespace PryHoteleria_Upn_Grupo4.ArbolMantenimiento
         //Nivel que tiene el nodo en el Arbol
         private int nivel;
 
+        //Constructor sin parametros
         public Mantenimiento() { }
 
+        //Constructor con parametros
         public Mantenimiento(int idHabitacion, int idEmpleado, string fechaMante, string tipoMante, string descripMante)
         {
             Id = contador++;

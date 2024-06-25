@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace PryHoteleria_Upn_Grupo4.ArbolMantenimiento
 {
+    //Este nodo se almacenará en el Arbol
     class NodoMantenimiento
     {
         private Mantenimiento dato;

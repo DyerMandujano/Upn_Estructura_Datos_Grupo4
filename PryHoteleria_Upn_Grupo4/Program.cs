@@ -64,6 +64,8 @@ namespace PryHoteleria_Upn_Grupo4
             ListaMateriales materiales = new ListaMateriales();
             ListaHabitacion habitacion = new ListaHabitacion();
             habitacion.InsertarHabitacionInicio("Individual", 1, 50, "Tv");
+
+            //Arbol
             ArbolMtn arbolMante = new ArbolMtn();
 
             //Reserva
@@ -494,16 +496,34 @@ namespace PryHoteleria_Upn_Grupo4
                                             break;
 
                                         case 2:
-                                            Console.WriteLine("Tipo de Mantenimiento a Buscar: ");
-                                            tp_mante = Console.ReadLine();
-                                            arbolMante.busquedaTipoMantenimiento(tp_mante);
-                                            Console.ReadKey();
+                                            if (arbolMante.Arbol_Mant == null)
+                                            {
+                                                Console.WriteLine("Arbol Vacio!!");
+                                                Console.ReadKey();
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("Tipo de Mantenimiento a Buscar: ");
+                                                tp_mante = Console.ReadLine();
+                                                arbolMante.busquedaTipoMantenimiento(tp_mante);
+                                                Console.ReadKey();
+                                            }
+
                                             break;
 
                                         case 3:
-                                            arbolMante.muestraArbol(arbolMante.Arbol_Mant,0);
-                                            Console.ReadKey();
-                                            break;  
+                                            if (arbolMante.Arbol_Mant == null)
+                                            {
+                                                Console.WriteLine("Arbol Vacio!!");
+                                                Console.ReadKey();
+                                            }
+                                            else
+                                            {
+                                                arbolMante.muestraArbol(arbolMante.Arbol_Mant, 0);
+                                                Console.ReadKey();
+                                            }
+
+                                            break;
                                     }
                                 }
                                 catch
@@ -512,7 +532,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.ReadKey();
                                 }
 
-                            } while (opC != 4);
+                            } while (opMant != 4);
                             break;
                     }
                 }
@@ -948,7 +968,7 @@ namespace PryHoteleria_Upn_Grupo4
 
         public static Mantenimiento IngresoDatosMante()
         {
-            
+
             do
             {
                 Console.Write(" Ingresar IdHabitacion: ");
@@ -978,7 +998,7 @@ namespace PryHoteleria_Upn_Grupo4
             Console.Write(" Ingresar Descripcion: ");
             descrp_mante = Console.ReadLine();
 
-            Mantenimiento m = new Mantenimiento(idHabita, idEmple,fec_mant, tp_mante,descrp_mante);
+            Mantenimiento m = new Mantenimiento(idHabita, idEmple, fec_mant, tp_mante, descrp_mante);
             Console.WriteLine(" Mantenimiento Ingresado Correctamente!");
             Console.ReadKey();
             return m;
