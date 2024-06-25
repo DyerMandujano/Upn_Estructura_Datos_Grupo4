@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbolMantenimiento\ArbolMtn.cs" />
+    <Compile Include="ArbolMantenimiento\Mantenimiento.cs" />
+    <Compile Include="ArbolMantenimiento\NodoMantenimiento.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Empleados.cs" />
     <Compile Include="Habitacion.cs" />

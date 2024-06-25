@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PryHoteleria_Upn_Grupo4.ArbolMantenimiento;
+using PryHoteleria_Upn_Grupo4.arbololMantenimiento;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -47,6 +49,11 @@ namespace PryHoteleria_Upn_Grupo4
         static public ListaReserva cola = new ListaReserva();
         static public PilaReserva pila = new PilaReserva();
 
+        //Mantenimiento
+        static int idHabita, idEmple, opMant, nivel_mante;
+        static string fec_mant, tp_mante, descrp_mante;
+        //Ingresar en Tipo Mantenimiento: Fontaneria, Electrico, Limpieza, Piscina, Aire Acondicionado, Mobiliario
+
         static void Main(string[] args)
         {
             //Reserva
@@ -57,6 +64,7 @@ namespace PryHoteleria_Upn_Grupo4
             ListaMateriales materiales = new ListaMateriales();
             ListaHabitacion habitacion = new ListaHabitacion();
             habitacion.InsertarHabitacionInicio("Individual", 1, 50, "Tv");
+            ArbolMtn arbolMante = new ArbolMtn();
 
             //Reserva
             ListaReserva reserva = new ListaReserva();
@@ -90,7 +98,9 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" ║[4]Gestion de Habitaciones                  ║");
                     Console.WriteLine(" ║[5]Gestion de Reservas                      ║");
                     Console.WriteLine(" ║[6]Gestion de Servicios                     ║");
-                    Console.WriteLine(" ║[7]SALIR                                    ║");
+                    Console.WriteLine(" ║[7]Gestion de Mantenimiento                 ║");
+                    Console.WriteLine(" ║[8]Gestion de Atencion al Cliente           ║");
+                    Console.WriteLine(" ║[9]SALIR                                    ║");
                     Console.WriteLine(" ╚════════════════════════════════════════════╝");
                     Console.Write(" Elija una Opcion: ");
                     op = int.Parse(Console.ReadLine());
@@ -459,6 +469,51 @@ namespace PryHoteleria_Upn_Grupo4
                         case 6:
                             MantenimientoServicios();
                             break;
+                        case 7:
+                            do
+                            {
+                                //Menu Cliente
+                                Console.Clear();
+                                Console.WriteLine("");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de Mantenimiento                   ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Mantenimiento                   ║");
+                                Console.WriteLine(" ║[2]Buscar Mantenimiento (Busqueda Arbol)    ║");
+                                Console.WriteLine(" ║[3]Mostrar Mantenimiento (Muestra Arbol)    ║");
+                                Console.WriteLine(" ║[4]Salir                                    ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
+                                Console.Write(" ELIJA UNA OPCION: ");
+                                try
+                                {
+                                    opMant = int.Parse(Console.ReadLine());
+                                    switch (opMant)
+                                    {
+                                        case 1:
+                                            arbolMante.insertaNodo(IngresoDatosMante());
+                                            break;
+
+                                        case 2:
+                                            Console.WriteLine("Tipo de Mantenimiento a Buscar: ");
+                                            tp_mante = Console.ReadLine();
+                                            arbolMante.busquedaTipoMantenimiento(tp_mante);
+                                            Console.ReadKey();
+                                            break;
+
+                                        case 3:
+                                            arbolMante.muestraArbol(arbolMante.Arbol_Mant,0);
+                                            Console.ReadKey();
+                                            break;  
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Coloque una opción valida!!.");
+                                    Console.ReadKey();
+                                }
+
+                            } while (opC != 4);
+                            break;
                     }
                 }
                 catch
@@ -466,7 +521,7 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" Ingrese un valor valido");
                     Console.ReadKey();
                 }
-            } while (op != 7);
+            } while (op != 9);
 
         }
 
@@ -889,6 +944,44 @@ namespace PryHoteleria_Upn_Grupo4
 
             Console.WriteLine(" Habitación Ingresada Correctamente!");
             Console.ReadKey();
+        }
+
+        public static Mantenimiento IngresoDatosMante()
+        {
+            
+            do
+            {
+                Console.Write(" Ingresar IdHabitacion: ");
+            } while (!int.TryParse(Console.ReadLine(), out idHabita));
+
+            do
+            {
+                Console.Write(" Ingresar idEmpleado: ");
+            } while (!int.TryParse(Console.ReadLine(), out idEmple));
+
+            Console.Write(" Ingresar Fecha de Mantenimiento: ");
+            fec_mant = Console.ReadLine();
+
+            do
+            {
+                Console.Write(" Ingresar Tipo de Mantenimiento: ");
+                tp_mante = Console.ReadLine();
+                if (int.TryParse(tp_mante, out _) == true)
+                {
+                    Console.WriteLine(" Ingrese un valor correcto");
+                }
+            }
+            //Mientras que los valores pasados se puedan convertir a entero, va a seguir en el bucle
+            //Sino sale del bucle, ya que el valor que se estaria pasando seria un string
+            while (int.TryParse(hb_serv_hab, out _));
+
+            Console.Write(" Ingresar Descripcion: ");
+            descrp_mante = Console.ReadLine();
+
+            Mantenimiento m = new Mantenimiento(idHabita, idEmple,fec_mant, tp_mante,descrp_mante);
+            Console.WriteLine(" Mantenimiento Ingresado Correctamente!");
+            Console.ReadKey();
+            return m;
         }
     }
 }
