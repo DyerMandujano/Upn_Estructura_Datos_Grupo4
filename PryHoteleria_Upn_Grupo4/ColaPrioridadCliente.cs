@@ -14,14 +14,14 @@ namespace PryHoteleria_Upn_Grupo4
         {
             CP_AtencionCliente = null;
         }
-        public void queueColaPrioridadCliente(int IdAt,int IdCl,int IdHa,string FeSo,string Des,int prio,int des_prio)
+        public void queueColaPrioridadCliente(int IdCl,int IdHa,string FeSo,string Des,int prio,string des_prio)
         {
             if (prio < 1 || prio > 3)
             {
                 Console.WriteLine("Prioridad incorrecta");
             }
 
-            Atencion_Cliente q = new Atencion_Cliente(IdAt,IdCl,IdHa,FeSo,Des,prio,des_prio);
+            Atencion_Cliente q = new Atencion_Cliente(IdCl,IdHa,FeSo,Des,prio,des_prio);
             Atencion_Cliente t = CP_AtencionCliente;
             Atencion_Cliente ant = null;
             if (CP_AtencionCliente == null)
@@ -32,24 +32,23 @@ namespace PryHoteleria_Upn_Grupo4
             {
                 while (t != null)
                 {
-                    if (prio <= t.Prioridad)
+                    if ((prio <= t.Prioridad) && (t == CP_AtencionCliente))
                     {
-                        if (ant == null)
-                        {
-                            q.Sgte = CP_AtencionCliente;
-                            CP_AtencionCliente = q;
-                        }
-                        else
-                        {
-                            q.Sgte = t;
-                            ant.Sgte = q;
-                        }
+                        q.Sgte = CP_AtencionCliente;
+                        CP_AtencionCliente = q;
+                        return;
+                    }
+                    if (prio <= t.Prioridad && prio > ant.Prioridad)
+                    {
+                        q.Sgte = t;
+                        ant.Sgte = q;
                         return;
                     }
                     ant = t;
                     t = t.Sgte;
                 }
                 ant.Sgte = q;
+                return;    
             }
         }
         public int DequeueColaPrioridadCliente()
@@ -57,12 +56,30 @@ namespace PryHoteleria_Upn_Grupo4
             if (CP_AtencionCliente == null)
             {
                 Console.WriteLine("No hay elementos en la cola!!!");
+                Console.ReadKey();
                 return 0;
             }
 
             int valor = CP_AtencionCliente.IdAtencion;
             CP_AtencionCliente = CP_AtencionCliente.Sgte;
+            Console.WriteLine("Se elimino de la COLA Correctamente!!");
+            Console.ReadKey();
             return valor;
+        }
+
+        public void muestraColaPrioridad()
+        {
+            Atencion_Cliente t = CP_AtencionCliente;
+            if(t == null)
+            {
+                Console.Write("No hay elementos en la cola");
+                return;
+            }    
+            while (t != null)
+            {
+                Console.Write(" -> (" + t.Descripcion + "," + t.Prioridad + ", "+t.Descripcion_Prioridad +") ");
+                t = t.Sgte;
+            }
         }
 
     }

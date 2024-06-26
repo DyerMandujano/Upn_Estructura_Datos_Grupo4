@@ -54,6 +54,10 @@ namespace PryHoteleria_Upn_Grupo4
         static string fec_mant, tp_mante, descrp_mante;
         //Ingresar en Tipo Mantenimiento: Fontaneria, Electrico, Limpieza, Piscina, Aire Acondicionado, Mobiliario
 
+        //AtencionCliente
+        static int opAtC;
+        
+
         static void Main(string[] args)
         {
             //Reserva
@@ -70,6 +74,15 @@ namespace PryHoteleria_Upn_Grupo4
 
             //Reserva
             ListaReserva reserva = new ListaReserva();
+
+            //AtencionCliente
+            Atencion_Cliente a1 = new Atencion_Cliente(1,2,"20/09/2022","Averia del Aire acondicionad",1,"ALTA");
+            Atencion_Cliente a2 = new Atencion_Cliente(2, 5, "20/09/2022", "Averia Tuberias", 1, "ALTA");
+            Atencion_Cliente a3 = new Atencion_Cliente(3, 3, "20/09/2022", "Piso roto", 3, "BAJA");
+            Atencion_Cliente a4 = new Atencion_Cliente(4, 4, "20/09/2022", "Foco roto", 2, "MEDIA");
+            Atencion_Cliente a5 = new Atencion_Cliente(5, 2, "20/09/2022", "Foco roto", 2, "MEDIA");
+
+            ColaPrioridadCliente colaAtCli = new ColaPrioridadCliente();
 
             do
             {
@@ -532,6 +545,52 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.ReadKey();
                                 }
 
+                            } while (opMant != 4);
+                            break;
+                        case 8:
+                            do
+                            {
+                                //Menu Cliente
+                                Console.Clear();
+                                Console.WriteLine("");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de Atención al Cliente             ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Solicitud de Atención al Cliente║");
+                                Console.WriteLine(" ║[2]Eliminar Solicitud de Atención al Cliente║");
+                                Console.WriteLine(" ║[3]Mostrar Solicitudes                      ║");
+                                Console.WriteLine(" ║[4]Mostrar de Cola a Pila                   ║");
+                                Console.WriteLine(" ║[5]Salir                                    ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
+                                Console.Write(" ELIJA UNA OPCION: ");
+                                try
+                                {
+                                    opAtC = int.Parse(Console.ReadLine());
+                                    switch (opAtC)
+                                    {
+                                        case 1:
+                                            colaAtCli.queueColaPrioridadCliente(1, 2, "20/09/2022", "Barco", 1, "ALTA");
+                                            colaAtCli.queueColaPrioridadCliente(3, 3, "20/09/2022", "Piso roto", 3, "BAJA");
+                                            colaAtCli.queueColaPrioridadCliente(4, 4, "20/09/2022", "Foco roto", 2, "MEDIA");
+                                            colaAtCli.queueColaPrioridadCliente(2, 5, "20/09/2022", "Averia Tuberias", 1, "ALTA");
+                                            colaAtCli.queueColaPrioridadCliente(5, 2, "20/09/2022", "Foco roto", 2, "MEDIA");
+                                            Console.WriteLine("Se ingreso Correctamente!");
+                                            Console.ReadKey();
+                                            break;
+                                        case 2:
+                                            colaAtCli.DequeueColaPrioridadCliente();
+                                            break;
+                                        case 3:
+                                            colaAtCli.muestraColaPrioridad();
+                                            Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Coloque una opción valida!!.");
+                                    Console.ReadKey();
+                                }
                             } while (opMant != 4);
                             break;
                     }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,22 +9,23 @@ namespace PryHoteleria_Upn_Grupo4
 {
     internal class Atencion_Cliente
     {
+        public static int contador = 1000;
         private int idAtencion;
         private int idCliente;
         private int idHabitacion;
         private string fechasolicitud;
         private string descripcion;
         private int prioridad;
-        private int descripcion_prioridad;
+        private string descripcion_prioridad;
         private Atencion_Cliente sgte;
 
         public Atencion_Cliente()
         {
 
         }
-        public Atencion_Cliente(int idAten,int idClie, int idHab,string fecSoli,string descrip,int priori,int descri_priori)
+        public Atencion_Cliente(int idClie, int idHab,string fecSoli,string descrip,int priori,string descri_priori)
         {
-            IdAtencion = idAten;
+            IdAtencion = contador++;
             IdCliente = idClie;
             IdHabitacion = idHab;
             FechaSolicitud = fecSoli;
@@ -68,7 +70,7 @@ namespace PryHoteleria_Upn_Grupo4
             get { return prioridad; }
             set { prioridad = value; }
         }
-        public int Descripcion_Prioridad
+        public string Descripcion_Prioridad
         {
             get { return descripcion_prioridad; }
             set { descripcion_prioridad = value; }
