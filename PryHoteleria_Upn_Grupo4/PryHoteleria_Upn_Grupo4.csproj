@@ -48,6 +48,7 @@
     <Compile Include="ArbolMantenimiento\NodoMantenimiento.cs" />
     <Compile Include="Atencion_Cliente.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="ColaPrioridadCliente.cs" />
     <Compile Include="Empleados.cs" />
     <Compile Include="Habitacion.cs" />
     <Compile Include="ListaCliente.cs" />
