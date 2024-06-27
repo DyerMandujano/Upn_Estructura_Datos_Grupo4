@@ -55,8 +55,11 @@ namespace PryHoteleria_Upn_Grupo4
         //Ingresar en Tipo Mantenimiento: Fontaneria, Electrico, Limpieza, Piscina, Aire Acondicionado, Mobiliario
 
         //AtencionCliente
-        static int opAtC;
-        
+        static int opAtC, idClien, idHab, priori;
+        static string fecSoli, descrip, descri_priori;
+
+        static public ColaPrioridadCliente colaAtCli = new ColaPrioridadCliente();
+        static public PilaAtencionCliente pilaac = new PilaAtencionCliente();
 
         static void Main(string[] args)
         {
@@ -82,7 +85,13 @@ namespace PryHoteleria_Upn_Grupo4
             Atencion_Cliente a4 = new Atencion_Cliente(4, 4, "20/09/2022", "Foco roto", 2, "MEDIA");
             Atencion_Cliente a5 = new Atencion_Cliente(5, 2, "20/09/2022", "Foco roto", 2, "MEDIA");
 
-            ColaPrioridadCliente colaAtCli = new ColaPrioridadCliente();
+            /*
+            pilaac.push(a1);
+            pilaac.push(a2);
+            pilaac.push(a3);
+            pilaac.push(a4);
+            pilaac.push(a5);
+            */
 
             do
             {
@@ -569,19 +578,30 @@ namespace PryHoteleria_Upn_Grupo4
                                     switch (opAtC)
                                     {
                                         case 1:
-                                            colaAtCli.queueColaPrioridadCliente(1, 2, "20/09/2022", "Barco", 1, "ALTA");
+                                            IngresaDatosAtencionCliente();
+                                            colaAtCli.queueColaPrioridadCliente(idClien, idHab, fecSoli, descrip, priori, descri_priori);
+                                            /*colaAtCli.queueColaPrioridadCliente(1, 2, "20/09/2022", "Barco", 1, "ALTA");
                                             colaAtCli.queueColaPrioridadCliente(3, 3, "20/09/2022", "Piso roto", 3, "BAJA");
                                             colaAtCli.queueColaPrioridadCliente(4, 4, "20/09/2022", "Foco roto", 2, "MEDIA");
                                             colaAtCli.queueColaPrioridadCliente(2, 5, "20/09/2022", "Averia Tuberias", 1, "ALTA");
                                             colaAtCli.queueColaPrioridadCliente(5, 2, "20/09/2022", "Foco roto", 2, "MEDIA");
                                             Console.WriteLine("Se ingreso Correctamente!");
-                                            Console.ReadKey();
+                                            Console.ReadKey();*/
                                             break;
                                         case 2:
-                                            colaAtCli.DequeueColaPrioridadCliente();
+                                            Atencion_Cliente at_Eliminado = colaAtCli.DequeueColaPrioCliente();
+                                            if(at_Eliminado != null)
+                                            {
+                                                pilaac.push(at_Eliminado);
+                                            }
+                                            Console.ReadKey();
                                             break;
                                         case 3:
                                             colaAtCli.muestraColaPrioridad();
+                                            Console.ReadKey();
+                                            break;
+                                        case 4:
+                                            pilaac.muestraPilaAtencionCliente();
                                             Console.ReadKey();
                                             break;
                                     }
@@ -591,7 +611,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.WriteLine("Coloque una opción valida!!.");
                                     Console.ReadKey();
                                 }
-                            } while (opMant != 4);
+                            } while (opMant != 5);
                             break;
                     }
                 }
@@ -1061,6 +1081,59 @@ namespace PryHoteleria_Upn_Grupo4
             Console.WriteLine(" Mantenimiento Ingresado Correctamente!");
             Console.ReadKey();
             return m;
+        }
+        public static void IngresaDatosAtencionCliente()
+        {
+            do
+            {
+                Console.Write(" Ingresar Cliente: ");
+            } while (!int.TryParse(Console.ReadLine(), out idClien));
+
+            do
+            {
+                Console.Write(" Ingresar Habitacion: ");
+            } while (!int.TryParse(Console.ReadLine(), out idHab));
+
+            do
+            {
+                Console.Write(" Ingresar Fecha de Solicitud: ");
+                fecSoli = Console.ReadLine();
+                if (int.TryParse(fecSoli, out _) == true)
+                {
+                    Console.WriteLine(" Ingrese un valor correcto");
+                }
+            }
+            while (int.TryParse(fecSoli, out _));
+
+            do
+            {
+                Console.Write(" Ingresar Descrpicion: ");
+                descrip = Console.ReadLine();
+                if (int.TryParse(descrip, out _) == true)
+                {
+                    Console.WriteLine(" Ingrese un valor correcto");
+                }
+            }
+            while (int.TryParse(descrip, out _));
+
+            do
+            {
+                Console.Write(" Ingresar Prioridad: ");
+            } while (!int.TryParse(Console.ReadLine(), out priori));
+
+            do
+            {
+                Console.Write(" Ingresar Descrpicion Prioridad: ");
+                descri_priori = Console.ReadLine();
+                if (int.TryParse(descri_priori, out _) == true)
+                {
+                    Console.WriteLine(" Ingrese un valor correcto");
+                }
+            }
+            while (int.TryParse(descri_priori, out _));
+
+            Console.WriteLine("Se ingreso Correctamente!");
+            Console.ReadKey();
         }
     }
 }

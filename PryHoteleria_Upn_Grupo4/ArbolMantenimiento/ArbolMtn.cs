@@ -147,17 +147,12 @@ namespace PryHoteleria_Upn_Grupo4.arbololMantenimiento
                     if (buscar_mant.CompareTo(valorRaiz) == 0)
                     {
                         //Imprime lo siguiente en consola
-                        Console.WriteLine("--------------------------");
-                        Console.WriteLine("\tMANTENIMIENTO ENCONTRADO ");
-                        Console.WriteLine("--------------------------");
-                        Console.WriteLine(" IdMantenimiento     : " + t.Dato.Id);
-                        Console.WriteLine(" IdHabitacion        : " + t.Dato.IdHabit);
-                        Console.WriteLine(" IdEmpleado         : " + t.Dato.IdEmple);
-                        Console.WriteLine(" Fecha de Mantenimiento  : " + t.Dato.Fecha_Mant);
-                        Console.WriteLine(" Tipo de Mantenimiento  : " + t.Dato.Tipo_Mant);
-                        Console.WriteLine(" Descripción  : " + t.Dato.Descrip_Mant);
-                        Console.WriteLine(" Nivel      : " + t.Dato.Nivel);
-                        Console.WriteLine("--------------------------");
+                        Console.WriteLine(" ╔════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
+                        Console.WriteLine(" ║                                              \tMANTENIMIENTO ENCONTRADO                                                ║");
+                        Console.WriteLine(" ╠═══════════════════╦════════════════╦════════════╦════════════════════════╦═══════════════════════╦═════════════╦═══════╣");
+                        Console.WriteLine(" ║  IdMantenimiento  ║  IdHabitacion  ║ IdEmpleado ║ Fecha de Mantenimiento ║ Tipo de Mantenimiento ║ Descripcion ║ Nivel ║");
+                        Console.WriteLine(" ║{0,19}║{1,16}║{2,12}║{3,24}║{4,23}║{5,13}║{6,7}║", t.Dato.Id, t.Dato.IdHabit, t.Dato.IdEmple, t.Dato.Fecha_Mant, t.Dato.Tipo_Mant, t.Dato.Descrip_Mant, t.Dato.Nivel);
+                        Console.WriteLine(" ╚═══════════════════╩════════════════╩════════════╩════════════════════════╩═══════════════════════╩═════════════╩═══════╝");
                         return;
                     }
                     //Si el valor pasado por parametro 'buscar_mant' se encuentrá antes (-1) que el 'valorRaiz' de forma alfabetica

@@ -17,7 +17,7 @@ namespace PryHoteleria_Upn_Grupo4
         private string descripcion;
         private int prioridad;
         private string descripcion_prioridad;
-        private Atencion_Cliente sgte;
+        public Atencion_Cliente sgte;
 
         public Atencion_Cliente()
         {

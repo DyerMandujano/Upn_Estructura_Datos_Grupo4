@@ -57,6 +57,7 @@
     <Compile Include="ListaReserva.cs" />
     <Compile Include="Lista_Empleados.cs" />
     <Compile Include="Materiales.cs" />
+    <Compile Include="PilaAtencionCliente.cs" />
     <Compile Include="PilaReserva.cs" />
     <Compile Include="NodoServicio.cs" />
     <Compile Include="NodoServicioEliminado.cs" />
