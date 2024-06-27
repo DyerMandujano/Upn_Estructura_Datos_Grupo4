@@ -89,16 +89,16 @@ namespace PryHoteleria_Upn_Grupo4
                 return;
             }
             Console.WriteLine(" ╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗");
-            Console.WriteLine(" ║                                               Atención Cliente                                                            ║");
-            Console.WriteLine(" ╠═════════════╦═══════════════╦════════════════╦═════════════════╦═══════════════╦═══════════════╦══════════════════════════╣");
-            Console.WriteLine(" ║   Atencion  ║    Cliente    ║   Habitacion   ║ Fecha Solicitud ║  Descripcion  ║   Prioridad   ║  Descripcion Prioridad   ║");
+            Console.WriteLine(" ║                                                Atención Cliente                                                           ║");
+            Console.WriteLine(" ╠═════════════╦═══════════╦════════════════╦═════════════════╦═══════════════════════╦═══════════════╦══════════════════════╣");
+            Console.WriteLine(" ║   Atencion  ║  Cliente  ║   Habitacion   ║ Fecha Solicitud ║      Descripcion      ║   Prioridad   ║  Descrip Prioridad   ║");
             while (t != null)
             {
-                Console.WriteLine(" ╠═════════════╬═══════════════╬════════════════╬═════════════════╬═══════════════╬═══════════════╬══════════════════════════╣");
-                Console.WriteLine(" ║{0,13}║{1,15}║{2,16}║{3,17}║{4,15}║{5,15}║{6,26}║", t.IdAtencion, t.IdCliente, t.IdHabitacion, t.FechaSolicitud, t.Descripcion, t.Prioridad, t.Descripcion_Prioridad);
+                Console.WriteLine(" ╠═════════════╬═══════════╬════════════════╬═════════════════╬═══════════════════════╬═══════════════╬══════════════════════╣");
+                Console.WriteLine(" ║{0,13}║{1,11}║{2,16}║{3,17}║{4,23}║{5,15}║{6,22}║", t.IdAtencion, t.IdCliente, t.IdHabitacion, t.FechaSolicitud, t.Descripcion, t.Prioridad, t.Descripcion_Prioridad);
                 t = t.Sgte;
             }
-            Console.WriteLine(" ╚═════════════╩═══════════════╩════════════════╩═════════════════╩═══════════════╩═══════════════╩══════════════════════════╝");
+            Console.WriteLine(" ╚═════════════╩═══════════╩════════════════╩═════════════════╩═══════════════════════╩═══════════════╩══════════════════════╝");
         }
 
     }

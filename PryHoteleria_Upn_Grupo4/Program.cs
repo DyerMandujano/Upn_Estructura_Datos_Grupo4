@@ -79,11 +79,12 @@ namespace PryHoteleria_Upn_Grupo4
             ListaReserva reserva = new ListaReserva();
 
             //AtencionCliente
-            Atencion_Cliente a1 = new Atencion_Cliente(1,2,"20/09/2022","Averia del Aire acondicionad",1,"ALTA");
+            /*
+            Atencion_Cliente a1 = new Atencion_Cliente(1,2,"20/09/2022","Averia Luz",1,"ALTA");
             Atencion_Cliente a2 = new Atencion_Cliente(2, 5, "20/09/2022", "Averia Tuberias", 1, "ALTA");
-            Atencion_Cliente a3 = new Atencion_Cliente(3, 3, "20/09/2022", "Piso roto", 3, "BAJA");
+            Atencion_Cliente a3 = new Atencion_Cliente(3, 3, "20/09/2022", "Refri vacio", 3, "BAJA");
             Atencion_Cliente a4 = new Atencion_Cliente(4, 4, "20/09/2022", "Foco roto", 2, "MEDIA");
-            Atencion_Cliente a5 = new Atencion_Cliente(5, 2, "20/09/2022", "Foco roto", 2, "MEDIA");
+            Atencion_Cliente a5 = new Atencion_Cliente(5, 2, "20/09/2022", "Foco roto", 2, "MEDIA");*/
 
             /*
             pilaac.push(a1);
@@ -1086,28 +1087,20 @@ namespace PryHoteleria_Upn_Grupo4
         {
             do
             {
-                Console.Write(" Ingresar Cliente: ");
+                Console.Write(" Ingresar IdCliente: ");
             } while (!int.TryParse(Console.ReadLine(), out idClien));
 
             do
             {
-                Console.Write(" Ingresar Habitacion: ");
+                Console.Write(" Ingresar IdHabitacion: ");
             } while (!int.TryParse(Console.ReadLine(), out idHab));
 
-            do
-            {
-                Console.Write(" Ingresar Fecha de Solicitud: ");
-                fecSoli = Console.ReadLine();
-                if (int.TryParse(fecSoli, out _) == true)
-                {
-                    Console.WriteLine(" Ingrese un valor correcto");
-                }
-            }
-            while (int.TryParse(fecSoli, out _));
+            Console.Write(" Ingresar Fecha de Solicitud: ");
+            fecSoli = Console.ReadLine();
 
             do
             {
-                Console.Write(" Ingresar Descrpicion: ");
+                Console.Write(" Ingresar Descripcion: ");
                 descrip = Console.ReadLine();
                 if (int.TryParse(descrip, out _) == true)
                 {
@@ -1123,7 +1116,7 @@ namespace PryHoteleria_Upn_Grupo4
 
             do
             {
-                Console.Write(" Ingresar Descrpicion Prioridad: ");
+                Console.Write(" Ingresar Descripcion Prioridad: ");
                 descri_priori = Console.ReadLine();
                 if (int.TryParse(descri_priori, out _) == true)
                 {
