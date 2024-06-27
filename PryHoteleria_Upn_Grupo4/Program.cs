@@ -612,7 +612,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.WriteLine("Coloque una opción valida!!.");
                                     Console.ReadKey();
                                 }
-                            } while (opMant != 5);
+                            } while (opAtC != 5);
                             break;
                     }
                 }
