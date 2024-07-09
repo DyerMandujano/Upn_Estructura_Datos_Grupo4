@@ -43,10 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArbolCheckIn\ArbolChkIn.cs" />
+    <Compile Include="ArbolCheckIn\NodoCheckIn.cs" />
     <Compile Include="ArbolMantenimiento\ArbolMtn.cs" />
     <Compile Include="ArbolMantenimiento\Mantenimiento.cs" />
     <Compile Include="ArbolMantenimiento\NodoMantenimiento.cs" />
     <Compile Include="Atencion_Cliente.cs" />
+    <Compile Include="ArbolCheckIn\CheckIn.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="ColaPrioridadCliente.cs" />
     <Compile Include="Empleados.cs" />
