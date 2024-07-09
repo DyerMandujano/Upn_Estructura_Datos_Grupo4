@@ -14,7 +14,7 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
         public NodoCheckIn Arbol_CheckIn
         {
             get { return arbol_checkin; }
-            set { arbol_checkin = value;}
+            set { arbol_checkin = value; }
         }
 
         public ArbolChkIn()
@@ -123,7 +123,7 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
             }
         }
 
-        public void busquedaTipoServicio(string buscar_serv)
+        public void buscarTipoServ(string buscar_serv)
         {
             string valorRaiz;
             NodoCheckIn t = Arbol_CheckIn;
@@ -131,8 +131,7 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
 
             if (Arbol_CheckIn == null)
             {
-
-                return;
+                Console.WriteLine("Arbol vacio, no se puede ejecutar la operacion");
             }
             else
             {
@@ -144,14 +143,24 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                     //Si el valor pasado por parametro 'buscar_mant' es IGUAL al valorRaiz
                     if (buscar_serv.CompareTo(valorRaiz) == 0)
                     {
-                        //Imprime lo siguiente en consola
                         Console.WriteLine("--------------------------");
                         Console.WriteLine("\tTERMINO ENCONTRADO ... ");
                         Console.WriteLine("--------------------------");
                         Console.WriteLine(" Tipo Servicio       : " + t.Dato.Tipo_Serv_Adic);
                         Console.WriteLine(" Nombre Servicio     : " + t.Dato.Nom_Serv);
                         Console.WriteLine("--------------------------");
-                        return;
+                        //Si el nodoDerecho es diferente de null
+                        if (t.N_Der != null)
+                        {
+                            //Avanza al siguiente Nodo y almacena sus datos
+                            t = t.N_Der;
+                        }
+                        //De lo contrario
+                        else
+                        {
+                            //Termina la funcion
+                            return;
+                        }
                     }
                     //Si el valor pasado por parametro 'buscar_mant' se encuentrá antes (-1) que el 'valorRaiz' de forma alfabetica
                     else if (buscar_serv.CompareTo(valorRaiz) == -1)
@@ -163,12 +172,10 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                             //Es decir, el objeto 't' almacenará todo los valores del objeto que se encuentra en el NodoIzquierdo
                             t = t.N_Izq;
                         }
-                        //De lo contrario
-                        //Si ya recorrio todo ese lado, es decir que el 't.N_Izq == null'
                         else
                         {
                             //Entonces no se encuentra.
-                            Console.WriteLine("El Tipo de Mantenimiento " + buscar_serv + " NO se encuentra en el arbol!!");
+                            Console.WriteLine("El Tipo de Servicio " + buscar_serv + " NO se encuentra en el arbol!!");
                             //Termina el programa
                             return;
                         }
@@ -182,15 +189,13 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                             //entonces el t apunta al nodo derecho (Hasta encontrar una posición vacia, es decir hasta que sea null)
                             //Es decir, el objeto 't' almacenará todo los valores del objeto que se encuentra en el NodoDerecho
                             t = t.N_Der;
-                            //luego de la linea de codigo 189, entrará nuevamente al While ya que el 't' al tener los valores del objeto 'N_Der'
-                            //seguirá siendo diferente de 'null'.
                         }
                         //De lo contrario
                         //Si ya recorrio todo ese lado, es decir que el 't.N_Der == null'
                         else
                         {
                             //Entonces no se encuentra.
-                            Console.WriteLine("El Tipo de Mantenimiento " + buscar_serv + " NO se encuentra en el arbol!!");
+                            Console.WriteLine("El Tipo de Servicio " + buscar_serv + " NO se encuentra en el arbol!!");
                             //Termina el programa
                             return;
                         }

@@ -1,4 +1,5 @@
-﻿using PryHoteleria_Upn_Grupo4.ArbolMantenimiento;
+﻿using PryHoteleria_Upn_Grupo4.ArbolCheckIn;
+using PryHoteleria_Upn_Grupo4.ArbolMantenimiento;
 using PryHoteleria_Upn_Grupo4.arbololMantenimiento;
 using System;
 using System.Collections.Generic;
@@ -61,6 +62,9 @@ namespace PryHoteleria_Upn_Grupo4
         static public ColaPrioridadCliente colaAtCli = new ColaPrioridadCliente();
         static public PilaAtencionCliente pilaac = new PilaAtencionCliente();
 
+        //CheckIn
+        static int opChk;
+
         static void Main(string[] args)
         {
             //Reserva
@@ -74,6 +78,15 @@ namespace PryHoteleria_Upn_Grupo4
 
             //Arbol
             ArbolMtn arbolMante = new ArbolMtn();
+
+            //Arbol CheckIn
+            ArbolChkIn arbolChk = new ArbolChkIn();
+
+            CheckIn ch1= new CheckIn("Dyer ", "78909765",1,3,"20/08/2023", "Restaurant", "Tanta");
+            CheckIn ch2 = new CheckIn("Robert ", "78799765", 2, 1, "20/09/2023", "Restaurant", "Madam Tusam");
+            CheckIn ch3 = new CheckIn("Daniela ", "90909765", 3, 2, "20/10/2023", "Restaurant", "El Peruanito");
+            CheckIn ch4 = new CheckIn("Juan", "78901165", 4, 1, "20/11/2023", "Gym", "Smart Fit");
+            CheckIn ch5 = new CheckIn("Maria", "78909723", 5, 3, "20/12/2023", "Gym", "Only Fit");
 
             //Reserva
             ListaReserva reserva = new ListaReserva();
@@ -125,7 +138,9 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" ║[6]Gestion de Servicios                     ║");
                     Console.WriteLine(" ║[7]Gestion de Mantenimiento                 ║");
                     Console.WriteLine(" ║[8]Gestion de Atencion al Cliente           ║");
-                    Console.WriteLine(" ║[9]SALIR                                    ║");
+                    Console.WriteLine(" ║[9]Gestion de CheckIn                       ║");
+                    Console.WriteLine(" ║[10]Gestion de CheckOut                     ║");
+                    Console.WriteLine(" ║[11]SALIR                                   ║");
                     Console.WriteLine(" ╚════════════════════════════════════════════╝");
                     Console.Write(" Elija una Opcion: ");
                     op = int.Parse(Console.ReadLine());
@@ -614,6 +629,61 @@ namespace PryHoteleria_Upn_Grupo4
                                 }
                             } while (opAtC != 5);
                             break;
+                        case 9:
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine("");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de CheckIn                         ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Datos del CheckIn               ║");
+                                Console.WriteLine(" ║[2]Mostrar CheckIns                         ║");
+                                Console.WriteLine(" ║[3]Buscar por Tipo Servicio                 ║");
+                                Console.WriteLine(" ║[4]Mostrar PreOrden                         ║");
+                                Console.WriteLine(" ║[5]Mostrar InOrden                          ║");
+                                Console.WriteLine(" ║[6]Mostrar PostOrden                        ║");
+                                Console.WriteLine(" ║[7]Salir                                    ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
+                                Console.Write(" ELIJA UNA OPCION: ");
+                                try
+                                {
+                                    opChk = int.Parse(Console.ReadLine());
+                                    switch (opChk)
+                                    {
+                                        case 1:
+                                            arbolChk.insertaNodo(ch1);
+                                            arbolChk.insertaNodo(ch2);
+                                            arbolChk.insertaNodo(ch3);
+                                            arbolChk.insertaNodo(ch4);
+                                            arbolChk.insertaNodo(ch5);
+                                            Console.WriteLine("Ingresado correctamente");
+                                            Console.ReadKey();
+                                            break;
+                                        case 2:
+                                            arbolChk.muestraArbol(arbolChk.Arbol_CheckIn, 0);
+                                            Console.ReadKey();
+                                            break;
+                                        case 3:
+                                            arbolChk.buscarTipoServ("mani");
+                                            Console.ReadKey();
+                                            break;
+                                        case 4:
+                                           
+                                            Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Coloque una opción valida!!.");
+                                    Console.ReadKey();
+                                }
+                            } while (opChk !=7);
+                            break;
+
+                        case 10:
+                            break;
                     }
                 }
                 catch
@@ -621,7 +691,7 @@ namespace PryHoteleria_Upn_Grupo4
                     Console.WriteLine(" Ingrese un valor valido");
                     Console.ReadKey();
                 }
-            } while (op != 9);
+            } while (op != 11);
 
         }
 
