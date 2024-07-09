@@ -63,7 +63,8 @@ namespace PryHoteleria_Upn_Grupo4
         static public PilaAtencionCliente pilaac = new PilaAtencionCliente();
 
         //CheckIn
-        static int opChk;
+        static int opChk,id_habit,num_per;
+        static string nombre_clien,dni_clien,fecha_checkin,tipo_serv_ad,nom_serv;
 
         static void Main(string[] args)
         {
@@ -106,6 +107,27 @@ namespace PryHoteleria_Upn_Grupo4
             pilaac.push(a4);
             pilaac.push(a5);
             */
+
+            //Datos Mantenimiento
+            Mantenimiento mt = new Mantenimiento(1,2,"11/09/2023","Electrico","Cambiar Focos");
+            Mantenimiento mt2 = new Mantenimiento(2, 3, "11/10/2023", "Limpieza", "Limpieza General");
+            Mantenimiento mt3 = new Mantenimiento(3, 4, "11/11/2023", "Gasfiteria", "Reparar tubos");
+            Mantenimiento mt4 = new Mantenimiento(4, 3, "11/12/2023", "Aire Acondicionado", "Renovar Productos");
+            Mantenimiento mt5 = new Mantenimiento(5, 2, "20/09/2023", "Muebleria", "Renovar Escritorio");
+
+            arbolMante.insertaNodo(mt);
+            arbolMante.insertaNodo(mt2);
+            arbolMante.insertaNodo(mt3);
+            arbolMante.insertaNodo(mt4);
+            arbolMante.insertaNodo(mt5);
+
+
+            //datos checkIn
+            arbolChk.insertaNodo(ch1);
+            arbolChk.insertaNodo(ch2);
+            arbolChk.insertaNodo(ch3);
+            arbolChk.insertaNodo(ch4);
+            arbolChk.insertaNodo(ch5);
 
             do
             {
@@ -521,7 +543,9 @@ namespace PryHoteleria_Upn_Grupo4
                                 Console.WriteLine(" ║[1]Ingresar Mantenimiento                   ║");
                                 Console.WriteLine(" ║[2]Buscar Mantenimiento (Busqueda Arbol)    ║");
                                 Console.WriteLine(" ║[3]Mostrar Mantenimiento (Muestra Arbol)    ║");
-                                Console.WriteLine(" ║[4]Salir                                    ║");
+                                Console.WriteLine(" ║[4]Eliminar Mantenimiento                   ║");
+                                Console.WriteLine(" ║[5]Mantenimiento de Arbol a Pila            ║");
+                                Console.WriteLine(" ║[6]Salir                                    ║");
                                 Console.WriteLine(" ╚════════════════════════════════════════════╝");
                                 Console.Write(" ELIJA UNA OPCION: ");
                                 try
@@ -562,6 +586,11 @@ namespace PryHoteleria_Upn_Grupo4
                                             }
 
                                             break;
+                                        case 4:
+
+                                            break;
+                                        case 5:
+                                            break;
                                     }
                                 }
                                 catch
@@ -570,7 +599,7 @@ namespace PryHoteleria_Upn_Grupo4
                                     Console.ReadKey();
                                 }
 
-                            } while (opMant != 4);
+                            } while (opMant != 6);
                             break;
                         case 8:
                             do
@@ -652,12 +681,14 @@ namespace PryHoteleria_Upn_Grupo4
                                     switch (opChk)
                                     {
                                         case 1:
+                                            /*
                                             arbolChk.insertaNodo(ch1);
                                             arbolChk.insertaNodo(ch2);
                                             arbolChk.insertaNodo(ch3);
                                             arbolChk.insertaNodo(ch4);
-                                            arbolChk.insertaNodo(ch5);
-                                            Console.WriteLine("Ingresado correctamente");
+                                            arbolChk.insertaNodo(ch5);*/
+                                            //PODEMOS PROBAR CON LOS SIGUIENTES DATOS EN TIPO SERVICIO: SPA - BAR
+                                            arbolChk.insertaNodo(IngresoDatosCheckIn());
                                             Console.ReadKey();
                                             break;
                                         case 2:
@@ -665,11 +696,21 @@ namespace PryHoteleria_Upn_Grupo4
                                             Console.ReadKey();
                                             break;
                                         case 3:
-                                            arbolChk.buscarTipoServ("mani");
+                                            Console.Write("Ingrese el Tipo de Servicio: ");
+                                            tipo_serv_ad = Console.ReadLine();
+                                            arbolChk.buscarTipoServ(tipo_serv_ad);
                                             Console.ReadKey();
                                             break;
                                         case 4:
-                                           
+                                            arbolChk.preOrden(arbolChk.Arbol_CheckIn);
+                                            Console.ReadKey();
+                                            break;
+                                        case 5:
+                                            arbolChk.inOrden(arbolChk.Arbol_CheckIn);
+                                            Console.ReadKey();
+                                            break;
+                                        case 6:
+                                            arbolChk.postOrden(arbolChk.Arbol_CheckIn);
                                             Console.ReadKey();
                                             break;
                                     }
@@ -1197,6 +1238,62 @@ namespace PryHoteleria_Upn_Grupo4
 
             Console.WriteLine("Se ingreso Correctamente!");
             Console.ReadKey();
+        }
+
+        public static CheckIn IngresoDatosCheckIn()
+        {
+            do
+            {
+                Console.Write("Ingresar Nombre: ");
+                nombre_clien = Console.ReadLine();
+            }
+
+            while
+            (int.TryParse(nombre_clien, out _));
+
+            do
+            {
+                Console.Write(" Ingresar Dni: ");
+                dni_clien = Console.ReadLine();
+                if (!EsDNIValido(dni_clien))
+                {
+                    Console.WriteLine(" Coloque un DNI valido");
+                }
+            }
+            while (!EsDNIValido(dni_clien));
+
+            do
+            {
+                Console.Write(" Ingresar IdHabitacion: ");
+            } while (!int.TryParse(Console.ReadLine(), out id_habit));
+
+            do
+            {
+                Console.Write(" Num de Personas: ");
+            } while (!int.TryParse(Console.ReadLine(), out num_per));
+
+            do
+            { 
+                Console.Write(" Ingresar Fecha de CheckIn: ");
+                fecha_checkin = Console.ReadLine();
+            } while (int.TryParse(fecha_checkin, out _));
+
+            do
+            {
+                Console.Write(" Ingresar Tipo de Servicio Adic.: ");
+                tipo_serv_ad = Console.ReadLine();
+            } while (int.TryParse(tipo_serv_ad, out _));
+
+            do
+            {
+                Console.Write(" Nombre de Servicio: ");
+                nom_serv = Console.ReadLine();
+            } while (int.TryParse(nom_serv, out _));
+
+            CheckIn chk = new CheckIn(nombre_clien, dni_clien, id_habit, num_per, fecha_checkin,tipo_serv_ad,nom_serv);
+            Console.WriteLine(" CheckIn Ingresado Correctamente!");
+            Console.ReadKey();
+            return chk;     
         }
     }
 }

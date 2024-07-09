@@ -174,8 +174,9 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                         }
                         else
                         {
+                            
                             //Entonces no se encuentra.
-                            Console.WriteLine("El Tipo de Servicio " + buscar_serv + " NO se encuentra en el arbol!!");
+                            Console.WriteLine("Busqueda Concluida!!");
                             //Termina el programa
                             return;
                         }
@@ -195,12 +196,93 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                         else
                         {
                             //Entonces no se encuentra.
-                            Console.WriteLine("El Tipo de Servicio " + buscar_serv + " NO se encuentra en el arbol!!");
+                            Console.WriteLine("Busqueda Concluida!!");
                             //Termina el programa
                             return;
                         }
                     }
                 }
+            }
+        }
+
+        //Metodos para recorrer el arbol por Profundidad
+        //Metodo para mostrar el arbol en PreOrden
+        //PreOrden : Raiz - Arbol Izquierdo - Arbol Derecho
+        public void preOrden(NodoCheckIn arbol)
+        {
+            //Si el arbol no es nulo
+            if (arbol != null)
+            {
+                //Mostrar datos
+                Console.WriteLine("--------------------------");
+                Console.WriteLine("\tDATOS CHECKIN ... ");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine(" Cliente                   : " + arbol.Dato.Nombre_Cli);
+                Console.WriteLine(" DNI                       : " + arbol.Dato.Dni_Cli);
+                Console.WriteLine(" IdHabitación              : " + arbol.Dato.Id_Habi);
+                Console.WriteLine(" Num de Personas           : " + arbol.Dato.Num_Per);
+                Console.WriteLine(" Fecha de CheckIn          : " + arbol.Dato.Fecha_CheckIn);
+                Console.WriteLine(" Tipo de Servicio Adicional: " + arbol.Dato.Tipo_Serv_Adic);
+                Console.WriteLine(" Nombre Servicio           : " + arbol.Dato.Nom_Serv);
+                Console.WriteLine("--------------------------\n");
+                //Mostrar el arbol por la izquierda
+                preOrden(arbol.N_Izq);
+                //Mostrar el arbol por la derecha
+                preOrden(arbol.N_Der);
+            }
+        }
+
+
+        //Metodo para mostrar el arbol en InOrden
+        //InOrden : Arbol Izquierdo - Raiz - Arbol Derecho
+        public void inOrden(NodoCheckIn arbol)
+        {
+            //Si el arbol no es nulo
+            if (arbol != null)
+            {
+                //Mostrar el arbol por la izquierda
+                inOrden(arbol.N_Izq);
+                //Mostrar datos
+                Console.WriteLine("--------------------------");
+                Console.WriteLine("\tDATOS CHECKIN ... ");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine(" Cliente                   : " + arbol.Dato.Nombre_Cli);
+                Console.WriteLine(" DNI                       : " + arbol.Dato.Dni_Cli);
+                Console.WriteLine(" IdHabitación              : " + arbol.Dato.Id_Habi);
+                Console.WriteLine(" Num de Personas           : " + arbol.Dato.Num_Per);
+                Console.WriteLine(" Fecha de CheckIn          : " + arbol.Dato.Fecha_CheckIn);
+                Console.WriteLine(" Tipo de Servicio Adicional: " + arbol.Dato.Tipo_Serv_Adic);
+                Console.WriteLine(" Nombre Servicio           : " + arbol.Dato.Nom_Serv);
+                Console.WriteLine("--------------------------");
+                //Mostrar el arbol por la derecha
+                inOrden(arbol.N_Der);
+            }
+        }
+
+
+        //Metodo para mostrar el arbol en PostOrden
+        //PostOrden : Arbol Izquierdo - Arbol Derecho - Raiz
+        public void postOrden(NodoCheckIn arbol)
+        {
+            //Si el arbol no es nulo
+            if (arbol != null)
+            {
+                //Mostrar el arbol por la izquierda
+                postOrden(arbol.N_Izq);
+                //Mostrar el arbol por la derecha
+                postOrden(arbol.N_Der);
+                //Mostrar datos
+                Console.WriteLine("--------------------------");
+                Console.WriteLine("\tDATOS CHECKIN ... ");
+                Console.WriteLine("--------------------------");
+                Console.WriteLine(" Cliente                   : " + arbol.Dato.Nombre_Cli);
+                Console.WriteLine(" DNI                       : " + arbol.Dato.Dni_Cli);
+                Console.WriteLine(" IdHabitación              : " + arbol.Dato.Id_Habi);
+                Console.WriteLine(" Num de Personas           : " + arbol.Dato.Num_Per);
+                Console.WriteLine(" Fecha de CheckIn          : " + arbol.Dato.Fecha_CheckIn);
+                Console.WriteLine(" Tipo de Servicio Adicional: " + arbol.Dato.Tipo_Serv_Adic);
+                Console.WriteLine(" Nombre Servicio           : " + arbol.Dato.Nom_Serv);
+                Console.WriteLine("--------------------------");
             }
         }
 
