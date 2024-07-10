@@ -1,4 +1,5 @@
 ﻿using PryHoteleria_Upn_Grupo4.ArbolCheckIn;
+using PryHoteleria_Upn_Grupo4.ArbolCheckOut;
 using PryHoteleria_Upn_Grupo4.ArbolMantenimiento;
 using PryHoteleria_Upn_Grupo4.arbololMantenimiento;
 using System;
@@ -65,6 +66,11 @@ namespace PryHoteleria_Upn_Grupo4
         //CheckIn
         static int opChk;
 
+        //CheckOut
+        static int opChkOut, idhabita;
+        static string TipoMetodoPago, nomclie, dniclie, fechacheckout, metpag, nommetpag;
+        static double montototal;
+
         static void Main(string[] args)
         {
             //Reserva
@@ -82,7 +88,7 @@ namespace PryHoteleria_Upn_Grupo4
             //Arbol CheckIn
             ArbolChkIn arbolChk = new ArbolChkIn();
 
-            CheckIn ch1= new CheckIn("Dyer ", "78909765",1,3,"20/08/2023", "Restaurant", "Tanta");
+            CheckIn ch1 = new CheckIn("Dyer ", "78909765",1,3,"20/08/2023", "Restaurant", "Tanta");
             CheckIn ch2 = new CheckIn("Robert ", "78799765", 2, 1, "20/09/2023", "Restaurant", "Madam Tusam");
             CheckIn ch3 = new CheckIn("Daniela ", "90909765", 3, 2, "20/10/2023", "Restaurant", "El Peruanito");
             CheckIn ch4 = new CheckIn("Juan", "78901165", 4, 1, "20/11/2023", "Gym", "Smart Fit");
@@ -90,6 +96,15 @@ namespace PryHoteleria_Upn_Grupo4
 
             //Reserva
             ListaReserva reserva = new ListaReserva();
+
+            //Arbol CheckOut
+            ArbCheckOut arbolCheckOut = new ArbCheckOut();
+
+            CheckOut cho1 = new CheckOut("Dyer ", "78909765", 1, "20/08/2023", "Tarjeta Credito", "Visa", 100);
+            CheckOut cho2 = new CheckOut("Robert ", "78799765", 2, "20/09/2023", "Tarjeta Credito", "Visa", 150);
+            CheckOut cho3 = new CheckOut("Daniela ", "90909765", 3, "20/10/2023", "Efectivo", "Soles", 90);
+            CheckOut cho4 = new CheckOut("Juan", "78901165", 4, "20/11/2023", "Efectivo", "Soles", 80);
+            CheckOut cho5 = new CheckOut("Maria", "78909723", 5, "20/12/2023", "Billetera Virtual", "Yape", 50);
 
             //AtencionCliente
             /*
@@ -106,6 +121,9 @@ namespace PryHoteleria_Upn_Grupo4
             pilaac.push(a4);
             pilaac.push(a5);
             */
+
+            NodoCheckOut arbolcheckout = null;
+            //ArbCheckOut objArbolCheckOut = new ArbCheckOut();
 
             do
             {
@@ -683,6 +701,93 @@ namespace PryHoteleria_Upn_Grupo4
                             break;
 
                         case 10:
+                            do
+                            {
+                                Console.Clear();
+                                Console.WriteLine("");
+                                Console.WriteLine(" ╔════════════════════════════════════════════╗");
+                                Console.WriteLine(" ║    Menu de CheckOut                        ║");
+                                Console.WriteLine(" ╠════════════════════════════════════════════╣");
+                                Console.WriteLine(" ║[1]Ingresar Datos del CheckOut              ║");
+                                Console.WriteLine(" ║[2]Mostrar CheckOuts                        ║");
+                                Console.WriteLine(" ║[3]Buscar por Tipo Metodo Pago              ║");
+                                Console.WriteLine(" ║[4]Mostrar PreOrden                         ║");
+                                Console.WriteLine(" ║[5]Mostrar InOrden                          ║");
+                                Console.WriteLine(" ║[6]Mostrar PostOrden                        ║");
+                                Console.WriteLine(" ║[7]Salir                                    ║");
+                                Console.WriteLine(" ╚════════════════════════════════════════════╝");
+                                Console.Write(" ELIJA UNA OPCION: ");
+                                try
+                                {
+                                    opChkOut = int.Parse(Console.ReadLine());
+                                    switch (opChkOut)
+                                    {
+                                        case 1:
+                                            arbolCheckOut.insertaNodo(IngresoTipoCheckOut());
+                                            /*arbolCheckOut.insertaNodo(cho1);
+                                            arbolCheckOut.insertaNodo(cho2);
+                                            arbolCheckOut.insertaNodo(cho3);
+                                            arbolCheckOut.insertaNodo(cho4);
+                                            arbolCheckOut.insertaNodo(cho5);
+                                            Console.WriteLine("Ingresado correctamente");*/
+                                            Console.ReadKey();
+                                            break;
+                                        case 2:
+                                            arbolCheckOut.muestraArbol(arbolCheckOut.Arbol_CheckOut, 0);
+                                            Console.ReadKey();
+                                            break;
+                                        case 3: 
+                                            Console.Write(" Ingrese el tipo de Pago: ");
+                                            TipoMetodoPago = Console.ReadLine();
+                                            arbolCheckOut.buscarTipoMetodoPago(TipoMetodoPago);
+                                            Console.ReadKey();
+                                            break;
+                                        case 4: //Recorrido del arbol check out en PreOrden
+                                            if (arbolCheckOut != null)
+                                            {
+                                                Console.WriteLine("Recorrido PreOrden : \n");
+                                                arbolCheckOut.preOrden(arbolCheckOut.Arbol_CheckOut);
+                                                Console.Write("\n"); //Salto de linea
+                                                Console.ReadKey();
+                                            }
+                                            else
+                                                Console.WriteLine("El arbol no tiene elementos");
+                                            break;
+                                        case 5://Recorrido del arbol check out en InOrden
+                                            if (arbolCheckOut != null)
+                                            {
+                                                Console.WriteLine("Recorrido InOrden : \n");
+                                                arbolCheckOut.inOrden(arbolCheckOut.Arbol_CheckOut);
+                                                Console.Write("\n"); //Salto de linea
+                                                Console.ReadKey();
+                                            }
+                                            else
+                                                Console.WriteLine("El arbol no tiene elementos");
+                                            break;
+                                        case 6: //Recorrido del arbol check out en PostOrden
+                                            if (arbolCheckOut != null)
+                                            {
+                                                Console.WriteLine("Recorrido PostOrden : \n");
+                                                arbolCheckOut.postOrden(arbolCheckOut.Arbol_CheckOut);
+                                                Console.Write("\n"); //Salto de linea
+                                                Console.ReadKey();
+                                            }
+                                            else
+                                                Console.WriteLine("El arbol no tiene elementos");
+                                            break;
+                                        case 7:
+                                            Console.ReadKey();
+                                            break;
+                                    }
+                                }
+                                catch
+                                {
+                                    Console.WriteLine("Coloque una opción valida!!.");
+                                    Console.ReadKey();
+                                }
+                            } while (opChkOut != 7);
+                            break;
+                        case 11:
                             break;
                     }
                 }
@@ -1197,6 +1302,38 @@ namespace PryHoteleria_Upn_Grupo4
 
             Console.WriteLine("Se ingreso Correctamente!");
             Console.ReadKey();
+        }
+        public static CheckOut IngresoTipoCheckOut()
+        {
+            Console.Write(" Ingresar Nombre Cliente: ");
+            nomclie = Console.ReadLine();
+
+            Console.Write(" Ingresar DNI Cliente: ");
+            dniclie = Console.ReadLine();
+
+            do
+            {
+                Console.Write(" Ingresar Id Habitacion: ");
+            } while (!int.TryParse(Console.ReadLine(), out idhabita));
+
+            Console.Write(" Ingresar Fecha Check Out: ");
+            fechacheckout = Console.ReadLine();
+
+            Console.Write(" Ingresar Metodo Pago: ");
+            metpag = Console.ReadLine();
+
+            Console.Write(" Ingresar Nombre Metodo Pago: ");
+            nommetpag = Console.ReadLine();
+
+            do
+            {
+                Console.Write(" Ingresar Monto Total: ");
+            } while (!double.TryParse(Console.ReadLine(), out montototal));
+
+            CheckOut m = new CheckOut(nomclie, dniclie, idhabita, fechacheckout, metpag, nommetpag, montototal);
+            Console.WriteLine(" Check Out Ingresado Correctamente!");
+            Console.ReadKey();
+            return m;
         }
     }
 }
