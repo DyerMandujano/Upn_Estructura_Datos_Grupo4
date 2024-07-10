@@ -1,6 +1,7 @@
 ﻿using PryHoteleria_Upn_Grupo4.ArbolMantenimiento;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -200,6 +201,154 @@ namespace PryHoteleria_Upn_Grupo4.arbololMantenimiento
                     }
                 }
             }
+        }
+
+        public Mantenimiento busquedaTipoMant(string buscar_mant)
+        {
+            string valorRaiz;
+            Mantenimiento m = null;
+            NodoMantenimiento t = Arbol_Mant;
+            int nivel = 0;
+
+            if (Arbol_Mant == null)
+            {
+
+                return m;
+            }
+            else
+            {
+                while (t != null)
+                {
+                    nivel++;
+                    //En 'valorRaiz' almacenamos el valor base o primer valor que se encuentra en el arbol
+                    valorRaiz = t.Dato.Tipo_Mant;
+                    //Si el valor pasado por parametro 'buscar_mant' es IGUAL al valorRaiz
+                    if (buscar_mant.CompareTo(valorRaiz) == 0)
+                    {
+                        m = t.Dato;
+                        return m;
+                    }
+                    //Si el valor pasado por parametro 'buscar_mant' se encuentrá antes (-1) que el 'valorRaiz' de forma alfabetica
+                    else if (buscar_mant.CompareTo(valorRaiz) == -1)
+                    {
+                        //Ahora, si el nodoIzquierdo es diferente de null
+                        if (t.N_Izq != null)
+                        {
+                            //entonces el t apunta al nodo izquierdo (Hasta encontrar una posición vacia, es decir hasta que sea null)
+                            //Es decir, el objeto 't' almacenará todo los valores del objeto que se encuentra en el NodoIzquierdo
+                            t = t.N_Izq;
+                        }
+                        //De lo contrario
+                        //Si ya recorrio todo ese lado, es decir que el 't.N_Izq == null'
+                        else
+                        {
+                            //Entonces no se encuentra.
+                            Console.WriteLine("El Tipo de Mantenimiento " + buscar_mant + " NO se encuentra en el arbol!!");
+                            //Termina el programa
+                            return m;
+                        }
+                    }
+                    //De lo contrario, Si el valor 'buscar_mant' es posterior que el 'valorRaiz' de forma alfabetica
+                    else
+                    {
+                        //Ahora, si el nodoDerecho es diferente de null
+                        if (t.N_Der != null)
+                        {
+                            //entonces el t apunta al nodo derecho (Hasta encontrar una posición vacia, es decir hasta que sea null)
+                            //Es decir, el objeto 't' almacenará todo los valores del objeto que se encuentra en el NodoDerecho
+                            t = t.N_Der;
+                            //luego de la linea de codigo 189, entrará nuevamente al While ya que el 't' al tener los valores del objeto 'N_Der'
+                            //seguirá siendo diferente de 'null'.
+                        }
+                        //De lo contrario
+                        //Si ya recorrio todo ese lado, es decir que el 't.N_Der == null'
+                        else
+                        {
+                            //Entonces no se encuentra.
+                            Console.WriteLine("El Tipo de Mantenimiento " + buscar_mant + " NO se encuentra en el arbol!!");
+                            //Termina el programa
+                            return m;
+                        }
+                    }
+                }
+                return m;
+            }
+        }
+
+
+        //Este Metodo sirve para encontrar el Valor MAS PEQUEÑO DEL ARBOL
+        //Es decir, que por teoria de arboles binarios el valor mas pequeño es el que se encuentra
+        //más a la Izquieda del arbol.
+        public NodoMantenimiento BuscarMin(NodoMantenimiento pNodo)
+        {
+            if (pNodo.N_Izq == null)
+            {
+                return pNodo;
+            }
+            return BuscarMin(pNodo.N_Izq);
+        }
+
+
+        //METODO PARA ELIMINAR CUENTA CLIENTE MEDIANTE IDCLIENTE
+        public NodoMantenimiento Delete(NodoMantenimiento pNodo, string tp_mante)
+        {
+
+            //Si el 'pNodo' es null
+            if (pNodo == null)
+            {
+                //retorna el 'pNodo'
+                return pNodo;
+            }
+
+            //Si parametro 'tp_mante' se encuentrá antes (-1) que la propiedad 'Tipo_Mant' de forma alfabetica 
+            if (tp_mante.CompareTo(pNodo.Dato.Tipo_Mant) == -1)
+            {
+                //Realiza metodo recursivo en el Nodo Izquierdo
+                pNodo.N_Izq = Delete(pNodo.N_Izq, tp_mante);
+            }
+
+            //Si parametro 'tp_mante' es posterior (1) que la propiedad 'Tipo_Mant' de forma alfabetica 
+            if (tp_mante.CompareTo(pNodo.Dato.Tipo_Mant) == 1)
+            {
+                //Realiza metodo recursivo en el Nodo Derecho
+                pNodo.N_Der = Delete(pNodo.N_Der, tp_mante);
+            }
+
+            //De lo contrario Si el NodoIzq es null y el tp_mante es igual que el valor de la propiedad Tipo_Mant
+            else if (pNodo.N_Izq == null && tp_mante.Equals(pNodo.Dato.Tipo_Mant))
+            {
+                //Se crea un objeto temp de tipo NodoCuentaBanco que almacenará el NodoDer
+                NodoMantenimiento temp = pNodo.N_Der;
+                //El NodoDer se elimina
+                pNodo.N_Der = null;
+                //retorna el objeto 'temp'
+                return temp;
+            }
+
+            //De lo contrario Si el NodoDer es null y el idCli es igual que el valor de la propiedad NumeroCliente
+            else if (pNodo.N_Der == null && tp_mante.Equals(pNodo.Dato.Tipo_Mant))
+            {
+                //Se crea un objeto 'temp' de tipo NodoCuentaBanco que almacenará el NodoIzq
+                NodoMantenimiento temp = pNodo.N_Izq;
+                //El NodoIzq se elimina
+                pNodo.N_Izq = null;
+                //retorna el objeto 'temp'
+                return temp;
+            }
+
+            //De lo contrario Si el NodoDer y el NodoIzq son diferentes de null
+            //y el idCli es igual que el valor de la propiedad NumeroCliente
+            else if (pNodo.N_Der != null && pNodo.N_Izq != null && tp_mante.Equals(pNodo.Dato.Tipo_Mant))
+            {
+                //Creamos un objeto 'min' el cual almacenará el valor de retorno que nos da el metodo BuscarMin
+                NodoMantenimiento min = BuscarMin(pNodo.N_Der);
+                //La propiedad NumeroCliente almacenará el valor del NumeroCliente del objeto 'min'
+                pNodo.Dato.Tipo_Mant = min.Dato.Tipo_Mant;
+                //Se realiza metodo recursivo de 'Delete' por el NodoDer y ese valor se almacena en el 'pNodo.N_Der'
+                pNodo.N_Der = Delete(pNodo.N_Der, min.Dato.Tipo_Mant);
+            }
+            //RETORNA 'pNodo'
+            return pNodo;
         }
 
     }

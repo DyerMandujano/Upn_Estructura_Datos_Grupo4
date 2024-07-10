@@ -114,6 +114,10 @@ namespace PryHoteleria_Upn_Grupo4
             Mantenimiento mt3 = new Mantenimiento(3, 4, "11/11/2023", "Gasfiteria", "Reparar tubos");
             Mantenimiento mt4 = new Mantenimiento(4, 3, "11/12/2023", "Aire Acondicionado", "Renovar Productos");
             Mantenimiento mt5 = new Mantenimiento(5, 2, "20/09/2023", "Muebleria", "Renovar Escritorio");
+            Mantenimiento mtt;
+
+            PilaMantenimiento pl_Mant = new PilaMantenimiento();
+
 
             arbolMante.insertaNodo(mt);
             arbolMante.insertaNodo(mt2);
@@ -587,10 +591,28 @@ namespace PryHoteleria_Upn_Grupo4
 
                                             break;
                                         case 4:
-
+                                            
+                                            Console.Write("Tipo de Mantenimiento a Eliminar: ");
+                                            tp_mante = Console.ReadLine();
+                                            mtt = arbolMante.busquedaTipoMant(tp_mante);
+                                            if (mtt != null)
+                                            {
+                                                arbolMante.Delete(arbolMante.Arbol_Mant, tp_mante);
+                                                pl_Mant.push(mtt);
+                                                Console.WriteLine("Eliminado Correctamente!");
+                                                
+                                            }
+                                            else
+                                            {
+                                                Console.WriteLine("");
+                                            }
+                                            Console.ReadKey();
                                             break;
                                         case 5:
+                                            pl_Mant.muestraPila();
+                                            Console.ReadKey();
                                             break;
+                                            
                                     }
                                 }
                                 catch

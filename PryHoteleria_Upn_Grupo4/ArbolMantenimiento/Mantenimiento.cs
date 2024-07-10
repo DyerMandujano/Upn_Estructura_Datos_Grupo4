@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -19,6 +20,7 @@ namespace PryHoteleria_Upn_Grupo4.ArbolMantenimiento
         private string descripMante;
         //Nivel que tiene el nodo en el Arbol
         private int nivel;
+        private Mantenimiento m_sgte;
 
         //Constructor sin parametros
         public Mantenimiento() { }
@@ -33,9 +35,17 @@ namespace PryHoteleria_Upn_Grupo4.ArbolMantenimiento
             Tipo_Mant = tipoMante;
             Descrip_Mant = descripMante;
             Nivel = 0;
+            M_Sgte = null;
         }
 
         //GETTERS Y SETTERS DE LAS PROPIEDADES
+        
+        public Mantenimiento M_Sgte
+        {
+            get { return m_sgte;}
+            set { m_sgte = value;}
+        }
+        
         public int Id
         {
             get { return idMantenimiento; }

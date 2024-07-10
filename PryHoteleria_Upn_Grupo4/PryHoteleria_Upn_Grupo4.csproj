@@ -48,6 +48,7 @@
     <Compile Include="ArbolMantenimiento\ArbolMtn.cs" />
     <Compile Include="ArbolMantenimiento\Mantenimiento.cs" />
     <Compile Include="ArbolMantenimiento\NodoMantenimiento.cs" />
+    <Compile Include="ArbolMantenimiento\PilaMantenimiento.cs" />
     <Compile Include="Atencion_Cliente.cs" />
     <Compile Include="ArbolCheckIn\CheckIn.cs" />
     <Compile Include="Cliente.cs" />
