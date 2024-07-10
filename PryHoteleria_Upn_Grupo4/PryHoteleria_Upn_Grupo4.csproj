@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="ArbolCheckIn\ArbolChkIn.cs" />
     <Compile Include="ArbolCheckIn\NodoCheckIn.cs" />
+    <Compile Include="ArbolCheckOut\ArbCheckOut.cs" />
+    <Compile Include="ArbolCheckOut\CheckOut.cs" />
+    <Compile Include="ArbolCheckOut\NodoCheckOut.cs" />
     <Compile Include="ArbolMantenimiento\ArbolMtn.cs" />
     <Compile Include="ArbolMantenimiento\Mantenimiento.cs" />
     <Compile Include="ArbolMantenimiento\NodoMantenimiento.cs" />
