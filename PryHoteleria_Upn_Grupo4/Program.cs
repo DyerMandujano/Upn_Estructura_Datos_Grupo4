@@ -843,9 +843,6 @@ namespace PryHoteleria_Upn_Grupo4
                                             else
                                                 Console.WriteLine("El arbol no tiene elementos");
                                             break;
-                                        case 7:
-                                            Console.ReadKey();
-                                            break;
                                     }
                                 }
                                 catch

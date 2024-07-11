@@ -40,16 +40,16 @@ namespace PryHoteleria_Upn_Grupo4.ArbolMantenimiento
             
             while (t != null)
             {
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tDATOS CHECKIN ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Id Mantenimiento      : " + t.Id);
-                Console.WriteLine(" Id Habitacion         : " + t.IdHabit);
-                Console.WriteLine(" Id Empleado           : " + t.IdEmple);
-                Console.WriteLine(" Fecha de Mantenimiento: " + t.Fecha_Mant);
-                Console.WriteLine(" Tipo Mantenimiento    : " + t.Tipo_Mant);
-                Console.WriteLine(" Descripcion           : " + t.Descrip_Mant);
-                Console.WriteLine("--------------------------\n");
+                Console.WriteLine("╔═══════════════════════════╗");
+                Console.WriteLine("║  DATOS CHECKIN            ║");
+                Console.WriteLine("╠═══════════════════════════╬════════════════════╗");
+                Console.WriteLine("║Id Mantenimiento           ║ {0,-19}║", t.Id);
+                Console.WriteLine("║Id Habitacion              ║ {0,-19}║", t.IdHabit);
+                Console.WriteLine("║Id Empleado                ║ {0,-19}║", t.IdEmple);
+                Console.WriteLine("║Fecha de Mantenimiento     ║ {0,-19}║", t.Fecha_Mant);
+                Console.WriteLine("║Tipo Mantenimiento         ║ {0,-19}║", t.Tipo_Mant);
+                Console.WriteLine("║Descripcion                ║ {0,-19}║", t.Descrip_Mant);
+                Console.WriteLine("╚═══════════════════════════╩════════════════════╝");
                 t = t.M_Sgte;
             }
         }

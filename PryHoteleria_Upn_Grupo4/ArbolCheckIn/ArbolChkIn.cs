@@ -143,12 +143,12 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                     //Si el valor pasado por parametro 'buscar_mant' es IGUAL al valorRaiz
                     if (buscar_serv.CompareTo(valorRaiz) == 0)
                     {
-                        Console.WriteLine("--------------------------");
-                        Console.WriteLine("\tTERMINO ENCONTRADO ... ");
-                        Console.WriteLine("--------------------------");
-                        Console.WriteLine(" Tipo Servicio       : " + t.Dato.Tipo_Serv_Adic);
-                        Console.WriteLine(" Nombre Servicio     : " + t.Dato.Nom_Serv);
-                        Console.WriteLine("--------------------------");
+                        Console.WriteLine(" ╔════════════════════════════════════════╗");
+                        Console.WriteLine(" ║  TERMINO ENCONTRADO                    ║");
+                        Console.WriteLine(" ╠════════════════════════════════════════╣");
+                        Console.WriteLine(" ║ Tipo Servicio :{0,-24}║", t.Dato.Tipo_Serv_Adic);
+                        Console.WriteLine(" ║ Nombre Servicio :{0,-22}║", t.Dato.Nom_Serv);
+                        Console.WriteLine(" ╚════════════════════════════════════════╝");
                         //Si el nodoDerecho es diferente de null
                         if (t.N_Der != null)
                         {
@@ -214,17 +214,17 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
             if (arbol != null)
             {
                 //Mostrar datos
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tDATOS CHECKIN ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Cliente                   : " + arbol.Dato.Nombre_Cli);
-                Console.WriteLine(" DNI                       : " + arbol.Dato.Dni_Cli);
-                Console.WriteLine(" IdHabitación              : " + arbol.Dato.Id_Habi);
-                Console.WriteLine(" Num de Personas           : " + arbol.Dato.Num_Per);
-                Console.WriteLine(" Fecha de CheckIn          : " + arbol.Dato.Fecha_CheckIn);
-                Console.WriteLine(" Tipo de Servicio Adicional: " + arbol.Dato.Tipo_Serv_Adic);
-                Console.WriteLine(" Nombre Servicio           : " + arbol.Dato.Nom_Serv);
-                Console.WriteLine("--------------------------\n");
+                Console.WriteLine(" ╔═══════════════════════════╗");
+                Console.WriteLine(" ║  DATOS CHECKIN            ║");
+                Console.WriteLine(" ╠═══════════════════════════╬═════════════════╗");
+                Console.WriteLine(" ║Cliente                    ║ {0,-16}║", arbol.Dato.Nombre_Cli);
+                Console.WriteLine(" ║DNI                        ║ {0,-16}║", arbol.Dato.Dni_Cli);
+                Console.WriteLine(" ║IdHabitación               ║ {0,-16}║", arbol.Dato.Id_Habi);
+                Console.WriteLine(" ║Num de Personas            ║ {0,-16}║", arbol.Dato.Num_Per);
+                Console.WriteLine(" ║Fecha de CheckIn           ║ {0,-16}║", arbol.Dato.Fecha_CheckIn);
+                Console.WriteLine(" ║Tipo de Servicio Adicional ║ {0,-16}║", arbol.Dato.Tipo_Serv_Adic);
+                Console.WriteLine(" ║Nombre Servicio            ║ {0,-16}║", arbol.Dato.Nom_Serv);
+                Console.WriteLine(" ╚═══════════════════════════╩═════════════════╝");
                 //Mostrar el arbol por la izquierda
                 preOrden(arbol.N_Izq);
                 //Mostrar el arbol por la derecha
@@ -243,17 +243,17 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                 //Mostrar el arbol por la izquierda
                 inOrden(arbol.N_Izq);
                 //Mostrar datos
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tDATOS CHECKIN ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Cliente                   : " + arbol.Dato.Nombre_Cli);
-                Console.WriteLine(" DNI                       : " + arbol.Dato.Dni_Cli);
-                Console.WriteLine(" IdHabitación              : " + arbol.Dato.Id_Habi);
-                Console.WriteLine(" Num de Personas           : " + arbol.Dato.Num_Per);
-                Console.WriteLine(" Fecha de CheckIn          : " + arbol.Dato.Fecha_CheckIn);
-                Console.WriteLine(" Tipo de Servicio Adicional: " + arbol.Dato.Tipo_Serv_Adic);
-                Console.WriteLine(" Nombre Servicio           : " + arbol.Dato.Nom_Serv);
-                Console.WriteLine("--------------------------");
+                Console.WriteLine(" ╔═══════════════════════════╗");
+                Console.WriteLine(" ║  DATOS CHECKIN            ║");
+                Console.WriteLine(" ╠═══════════════════════════╬═════════════════╗");
+                Console.WriteLine(" ║Cliente                    ║ {0,-16}║", arbol.Dato.Nombre_Cli);
+                Console.WriteLine(" ║DNI                        ║ {0,-16}║", arbol.Dato.Dni_Cli);
+                Console.WriteLine(" ║IdHabitación               ║ {0,-16}║", arbol.Dato.Id_Habi);
+                Console.WriteLine(" ║Num de Personas            ║ {0,-16}║", arbol.Dato.Num_Per);
+                Console.WriteLine(" ║Fecha de CheckIn           ║ {0,-16}║", arbol.Dato.Fecha_CheckIn);
+                Console.WriteLine(" ║Tipo de Servicio Adicional ║ {0,-16}║", arbol.Dato.Tipo_Serv_Adic);
+                Console.WriteLine(" ║Nombre Servicio            ║ {0,-16}║", arbol.Dato.Nom_Serv);
+                Console.WriteLine(" ╚═══════════════════════════╩═════════════════╝");
                 //Mostrar el arbol por la derecha
                 inOrden(arbol.N_Der);
             }
@@ -272,17 +272,17 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckIn
                 //Mostrar el arbol por la derecha
                 postOrden(arbol.N_Der);
                 //Mostrar datos
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tDATOS CHECKIN ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Cliente                   : " + arbol.Dato.Nombre_Cli);
-                Console.WriteLine(" DNI                       : " + arbol.Dato.Dni_Cli);
-                Console.WriteLine(" IdHabitación              : " + arbol.Dato.Id_Habi);
-                Console.WriteLine(" Num de Personas           : " + arbol.Dato.Num_Per);
-                Console.WriteLine(" Fecha de CheckIn          : " + arbol.Dato.Fecha_CheckIn);
-                Console.WriteLine(" Tipo de Servicio Adicional: " + arbol.Dato.Tipo_Serv_Adic);
-                Console.WriteLine(" Nombre Servicio           : " + arbol.Dato.Nom_Serv);
-                Console.WriteLine("--------------------------");
+                Console.WriteLine(" ╔═══════════════════════════╗");
+                Console.WriteLine(" ║  DATOS CHECKIN            ║");
+                Console.WriteLine(" ╠═══════════════════════════╬═════════════════╗");
+                Console.WriteLine(" ║Cliente                    ║ {0,-16}║", arbol.Dato.Nombre_Cli);
+                Console.WriteLine(" ║DNI                        ║ {0,-16}║", arbol.Dato.Dni_Cli);
+                Console.WriteLine(" ║IdHabitación               ║ {0,-16}║", arbol.Dato.Id_Habi);
+                Console.WriteLine(" ║Num de Personas            ║ {0,-16}║", arbol.Dato.Num_Per);
+                Console.WriteLine(" ║Fecha de CheckIn           ║ {0,-16}║", arbol.Dato.Fecha_CheckIn);
+                Console.WriteLine(" ║Tipo de Servicio Adicional ║ {0,-16}║", arbol.Dato.Tipo_Serv_Adic);
+                Console.WriteLine(" ║Nombre Servicio            ║ {0,-16}║", arbol.Dato.Nom_Serv);
+                Console.WriteLine(" ╚═══════════════════════════╩═════════════════╝");
             }
         }
 

@@ -143,13 +143,13 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckOut
                     //Si el valor pasado por parametro 'buscar_mant' es IGUAL al valorRaiz
                     if (buscar_met_pag.CompareTo(valorRaiz) == 0)
                     {
-                        Console.WriteLine("--------------------------");
-                        Console.WriteLine("\tTERMINO ENCONTRADO ... ");
-                        Console.WriteLine("--------------------------");
-                        Console.WriteLine(" Tipo Metodo Pago       : " + t.Dato.MetodoPago);
-                        Console.WriteLine(" Nombre Metodo Pago     : " + t.Dato.Nom_MetodoPago);
-                        Console.WriteLine(" Monto Pagar            : " + t.Dato.Monto);
-                        Console.WriteLine("--------------------------");
+                        Console.WriteLine(" ╔════════════════════════════════════════╗");
+                        Console.WriteLine(" ║  TERMINO ENCONTRADO                    ║");
+                        Console.WriteLine(" ╠════════════════════════════════════════╣");
+                        Console.WriteLine(" ║Tipo Metodo Pago   :{0,-20}║", t.Dato.MetodoPago);
+                        Console.WriteLine(" ║Nombre Metodo Pago :{0,-20}║", t.Dato.Nom_MetodoPago);
+                        Console.WriteLine(" ║Monto Pagar        :{0,-20}║", t.Dato.Monto);
+                        Console.WriteLine(" ╚════════════════════════════════════════╝");
                         //Si el nodoDerecho es diferente de null
                         if (t.N_Der != null)
                         {
@@ -211,18 +211,18 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckOut
             if (arbolcheckout != null)
             {
                 //Mostrar la Raiz
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tTERMINO ENCONTRADO ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Id Check Out           : " + arbolcheckout.Id_CheckOut);
-                Console.WriteLine(" Nombre Cliente         : " + arbolcheckout.Dato.Nombre_Cli);
-                Console.WriteLine(" DNI Cliente            : " + arbolcheckout.Dato.Dni_Cli);
-                Console.WriteLine(" Id Habitacion          : " + arbolcheckout.Dato.Id_Habi);
-                Console.WriteLine(" Fecha Check Out        : " + arbolcheckout.Dato.FechaCheckOut);
-                Console.WriteLine(" Tipo Metodo Pago       : " + arbolcheckout.Dato.MetodoPago);
-                Console.WriteLine(" Nombre Metodo Pago     : " + arbolcheckout.Dato.Nom_MetodoPago);
-                Console.WriteLine(" Monto Pagar            : " + arbolcheckout.Dato.Monto);
-                Console.WriteLine("--------------------------");
+                Console.WriteLine(" ╔═══════════════════════════╗");
+                Console.WriteLine(" ║  TERMINO ENCONTRADO       ║");
+                Console.WriteLine(" ╠═══════════════════════════╬═══════════════════╗");
+                Console.WriteLine(" ║Id Check Out               ║ {0,-18}║", arbolcheckout.Id_CheckOut);
+                Console.WriteLine(" ║Nombre Cliente             ║ {0,-18}║", arbolcheckout.Dato.Nombre_Cli);
+                Console.WriteLine(" ║DNI Cliente                ║ {0,-18}║", arbolcheckout.Dato.Dni_Cli);
+                Console.WriteLine(" ║Id Habitacion              ║ {0,-18}║", arbolcheckout.Dato.Id_Habi);
+                Console.WriteLine(" ║Fecha Check Out            ║ {0,-18}║", arbolcheckout.Dato.FechaCheckOut);
+                Console.WriteLine(" ║Tipo Metodo Pago           ║ {0,-18}║", arbolcheckout.Dato.MetodoPago);
+                Console.WriteLine(" ║Nombre Metodo Pago         ║ {0,-18}║", arbolcheckout.Dato.Nom_MetodoPago);
+                Console.WriteLine(" ║Monto Pagar                ║ {0,-18}║", arbolcheckout.Dato.Monto);
+                Console.WriteLine(" ╚═══════════════════════════╩═══════════════════╝");
                 //Mostrar el arbol por la izquierda
                 preOrden(arbolcheckout.N_Izq);
                 //Mostrar el arbol por la derecha
@@ -239,18 +239,18 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckOut
                 //Mostrar el arbol por la izquierda
                 inOrden(arbolcheckout.N_Izq);
                 //Mostrar la Raiz
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tTERMINO ENCONTRADO ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Id Check Out           : " + arbolcheckout.Id_CheckOut);
-                Console.WriteLine(" Nombre Cliente         : " + arbolcheckout.Dato.Nombre_Cli);
-                Console.WriteLine(" DNI Cliente            : " + arbolcheckout.Dato.Dni_Cli);
-                Console.WriteLine(" Id Habitacion          : " + arbolcheckout.Dato.Id_Habi);
-                Console.WriteLine(" Fecha Check Out        : " + arbolcheckout.Dato.FechaCheckOut);
-                Console.WriteLine(" Tipo Metodo Pago       : " + arbolcheckout.Dato.MetodoPago);
-                Console.WriteLine(" Nombre Metodo Pago     : " + arbolcheckout.Dato.Nom_MetodoPago);
-                Console.WriteLine(" Monto Pagar            : " + arbolcheckout.Dato.Monto);
-                Console.WriteLine("--------------------------");
+                Console.WriteLine(" ╔═══════════════════════════╗");
+                Console.WriteLine(" ║  TERMINO ENCONTRADO       ║");
+                Console.WriteLine(" ╠═══════════════════════════╬═══════════════════╗");
+                Console.WriteLine(" ║Id Check Out               ║ {0,-18}║", arbolcheckout.Id_CheckOut);
+                Console.WriteLine(" ║Nombre Cliente             ║ {0,-18}║", arbolcheckout.Dato.Nombre_Cli);
+                Console.WriteLine(" ║DNI Cliente                ║ {0,-18}║", arbolcheckout.Dato.Dni_Cli);
+                Console.WriteLine(" ║Id Habitacion              ║ {0,-18}║", arbolcheckout.Dato.Id_Habi);
+                Console.WriteLine(" ║Fecha Check Out            ║ {0,-18}║", arbolcheckout.Dato.FechaCheckOut);
+                Console.WriteLine(" ║Tipo Metodo Pago           ║ {0,-18}║", arbolcheckout.Dato.MetodoPago);
+                Console.WriteLine(" ║Nombre Metodo Pago         ║ {0,-18}║", arbolcheckout.Dato.Nom_MetodoPago);
+                Console.WriteLine(" ║Monto Pagar                ║ {0,-18}║", arbolcheckout.Dato.Monto);
+                Console.WriteLine(" ╚═══════════════════════════╩═══════════════════╝");
                 //Mostrar el arbol por la derecha
                 inOrden(arbolcheckout.N_Der);
             }
@@ -267,18 +267,18 @@ namespace PryHoteleria_Upn_Grupo4.ArbolCheckOut
                 //Mostrar el arbol por la derecha
                 postOrden(arbolcheckout.N_Der);
                 //Mostrar la Raiz
-                Console.WriteLine("--------------------------");
-                Console.WriteLine("\tTERMINO ENCONTRADO ... ");
-                Console.WriteLine("--------------------------");
-                Console.WriteLine(" Id Check Out           : " + arbolcheckout.Id_CheckOut);
-                Console.WriteLine(" Nombre Cliente         : " + arbolcheckout.Dato.Nombre_Cli);
-                Console.WriteLine(" DNI Cliente            : " + arbolcheckout.Dato.Dni_Cli);
-                Console.WriteLine(" Id Habitacion          : " + arbolcheckout.Dato.Id_Habi);
-                Console.WriteLine(" Fecha Check Out        : " + arbolcheckout.Dato.FechaCheckOut);
-                Console.WriteLine(" Tipo Metodo Pago       : " + arbolcheckout.Dato.MetodoPago);
-                Console.WriteLine(" Nombre Metodo Pago     : " + arbolcheckout.Dato.Nom_MetodoPago);
-                Console.WriteLine(" Monto Pagar            : " + arbolcheckout.Dato.Monto);
-                Console.WriteLine("--------------------------");
+                Console.WriteLine(" ╔═══════════════════════════╗");
+                Console.WriteLine(" ║  TERMINO ENCONTRADO       ║");
+                Console.WriteLine(" ╠═══════════════════════════╬═══════════════════╗");
+                Console.WriteLine(" ║Id Check Out               ║ {0,-18}║", arbolcheckout.Id_CheckOut);
+                Console.WriteLine(" ║Nombre Cliente             ║ {0,-18}║", arbolcheckout.Dato.Nombre_Cli);
+                Console.WriteLine(" ║DNI Cliente                ║ {0,-18}║", arbolcheckout.Dato.Dni_Cli);
+                Console.WriteLine(" ║Id Habitacion              ║ {0,-18}║", arbolcheckout.Dato.Id_Habi);
+                Console.WriteLine(" ║Fecha Check Out            ║ {0,-18}║", arbolcheckout.Dato.FechaCheckOut);
+                Console.WriteLine(" ║Tipo Metodo Pago           ║ {0,-18}║", arbolcheckout.Dato.MetodoPago);
+                Console.WriteLine(" ║Nombre Metodo Pago         ║ {0,-18}║", arbolcheckout.Dato.Nom_MetodoPago);
+                Console.WriteLine(" ║Monto Pagar                ║ {0,-18}║", arbolcheckout.Dato.Monto);
+                Console.WriteLine(" ╚═══════════════════════════╩═══════════════════╝");
             }
         }
     }
